@@ -325,6 +325,14 @@
       </div>
     </div>
   </div>
+
+
+  <fieldset *ngIf="backendTestString">
+    <legend>
+      If Back- and Frontend Communication works, You should see text in this box
+    </legend>
+    <h1>{{ backendTestString }}</h1>
+  </fieldset>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -334,6 +342,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet/>

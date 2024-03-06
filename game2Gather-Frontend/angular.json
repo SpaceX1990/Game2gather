@@ -60,7 +60,8 @@
               "buildTarget": "game2Gather-Frontend:build:production"
             },
             "development": {
-              "buildTarget": "game2Gather-Frontend:build:development"
+              "buildTarget": "game2Gather-Frontend:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -91,5 +92,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

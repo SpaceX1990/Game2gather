@@ -4,3 +4,6 @@ spring:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     username: SA
     password: Game_2_Gather
+  liquibase:
+    change-log: "db/db.changelog-master.xml"
+

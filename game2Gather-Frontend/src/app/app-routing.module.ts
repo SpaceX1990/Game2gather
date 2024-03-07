@@ -2,14 +2,14 @@ import {Route, RouterModule, Routes} from '@angular/router';
 import {MainpageComponent} from "./mainpage/mainpage.component";
 import {NgModule} from "@angular/core";
 
-const mainboardRoute: Route = {path: "mainboard", component: MainpageComponent}
-const emptyRoute: Route = {path: "", redirectTo: "mainboard", pathMatch: "full"}
+const mainpageRoute: Route = {path: "mainpage", component: MainpageComponent}
+const invalidRoute: Route = {path: "**", redirectTo: "/mainpage"}
 
-export const routes: Routes = [mainboardRoute, emptyRoute];
+export const routes: Routes = [mainpageRoute, invalidRoute];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutes {
+export class AppRoutingModule {
 }

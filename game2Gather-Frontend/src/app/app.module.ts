@@ -3,6 +3,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppComponent} from "./app.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {RouterOutlet} from "@angular/router";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import {RouterOutlet} from "@angular/router";
     BrowserModule,
     HttpClientModule,
     RouterOutlet,
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-mainboard',
+  selector: 'app-mainpage',
   standalone: true,
   imports: [],
-  templateUrl: './mainboard.component.html',
-  styleUrl: './mainboard.component.css'
+  templateUrl: './mainpage.component.html',
+  styleUrl: './mainpage.component.css'
 })
 export class MainpageComponent {
 

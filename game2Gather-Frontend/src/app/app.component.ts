@@ -8,16 +8,21 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AppComponent {
   title = 'game2Gather-Frontend';
-  backendTestString?: string;
+  backendTestObjects?: TestEntity[];
 
 
   constructor(private http: HttpClient) {
 
-    http.get("/test",{responseType: "text"}).subscribe(value => {
-        this.backendTestString = value;
+    http.get<TestEntity[]>("/test").subscribe(value => {
+        this.backendTestObjects = value;
       },
     )
   }
 
 
+}
+
+interface TestEntity {
+  id: number,
+  text: string
 }

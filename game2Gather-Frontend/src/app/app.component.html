@@ -327,11 +327,11 @@
   </div>
 
 
-  <fieldset *ngIf="backendTestString">
+  <fieldset *ngIf="backendTestObjects">
     <legend>
       If Back- and Frontend Communication works, You should see text in this box
     </legend>
-    <h1>{{ backendTestString }}</h1>
+    <h1 *ngFor="let object of backendTestObjects">{{ object.id }} {{ object.text }}</h1>
   </fieldset>
 </main>
 

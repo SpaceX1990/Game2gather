@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './mainboard.component.html',
   styleUrl: './mainboard.component.css'
 })
-export class MainboardComponent {
+export class MainpageComponent {
 
 }

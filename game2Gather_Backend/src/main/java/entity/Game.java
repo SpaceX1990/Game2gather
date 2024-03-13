@@ -33,7 +33,7 @@ public class Game {
     @Nullable
     private String genre;
     @Nullable
-    private String imagePath;
+    private byte[] imageBytes;
     @Nullable
     @OneToMany (mappedBy="game")
     private List<Comment> comments = new ArrayList<>();

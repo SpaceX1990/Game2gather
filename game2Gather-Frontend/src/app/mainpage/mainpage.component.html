@@ -1,0 +1,11 @@
+<div class="">
+  <div *ngIf="loggedIn">
+    <button routerLink="/sessionliste">Zur Sessionliste</button>
+    <button routerLink="/spielesammlung">Zur Spielesammlung</button>
+  </div>
+  <div *ngIf="!loggedIn">
+    <p>Willkommen bei Game2Gather. Logge dich jetzt ein um Loszulegen.”</p>
+    <button (click)=logIN()>Einloggen</button>
+    <button>Regsitrieren</button>
+  </div>
+</div>

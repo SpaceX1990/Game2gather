@@ -14,7 +14,7 @@ import {RouterLink} from "@angular/router";
     RouterLink
   ],
   templateUrl: './mainpage.component.html',
-  styleUrl: './mainpage.component.css'
+  styleUrl: './mainpage.component.scss'
 })
 export class MainpageComponent {
 

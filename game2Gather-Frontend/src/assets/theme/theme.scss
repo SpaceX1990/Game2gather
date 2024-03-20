@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+@import './variables';
+@import './_fonts';
+@import './primeng-theme-base/_components';
+@import './_extensions';
+
+@include mat.core();
+
+$custom-mat-theme: mat.define-light-theme((
+  color: (
+    primary: mat.define-palette($primaryPalette),
+    accent: mat.define-palette($secondaryPalette)
+  )
+));
+
+@include mat.all-component-themes($custom-mat-theme)

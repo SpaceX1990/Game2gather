@@ -18,8 +18,6 @@ export class AppComponent {
       },
     )
   }
-
-
 }
 
 interface TestEntity {

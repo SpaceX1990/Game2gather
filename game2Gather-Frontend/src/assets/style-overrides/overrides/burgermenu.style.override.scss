@@ -1,0 +1,34 @@
+.navbar {
+  p-menu {
+    width: 100%;
+    height: 100%;
+
+    div {
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      .p-menu-list {
+        width: 100%;
+        height: 60%;
+        align-self: center;
+        display: grid;
+        grid-template-rows: 0 1fr 1fr 1fr 1fr 1fr;
+
+        .p-submenu-header {
+          height: 0;
+          width: 0;
+          padding: 0;
+        }
+
+        .p-menuitem {
+          .p-menuitem-content {
+            a {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

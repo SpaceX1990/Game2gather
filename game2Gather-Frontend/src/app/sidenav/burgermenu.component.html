@@ -1,6 +1,9 @@
-<p-sidebar [(visible)]="isSidebarVisible">
-  test
+<p-sidebar class="navbar" [(visible)]="isSidebarVisible">
+  <ng-template pTemplate="headless">
+    <p-menu [model]="navBarPageList">
+    </p-menu>
+  </ng-template>
 </p-sidebar>
-<button mat-fab color="primary" (click)="isSidebarVisible = true">
+<button mat-fab color="primary" (click)="toggleSidebar()">
   <mat-icon>menu</mat-icon>
 </button>

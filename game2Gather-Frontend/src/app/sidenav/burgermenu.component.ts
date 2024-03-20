@@ -2,6 +2,11 @@ import {Component} from '@angular/core';
 import {SidebarModule} from "primeng/sidebar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {ButtonModule} from "primeng/button";
+import {RouterLink} from "@angular/router";
+import {NgForOf} from "@angular/common";
+import {MenuModule} from "primeng/menu";
+import {MenuItem} from "primeng/api";
 
 @Component({
   selector: 'app-burgermenu',
@@ -10,11 +15,27 @@ import {MatIconModule} from "@angular/material/icon";
   imports: [
     SidebarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    ButtonModule,
+    RouterLink,
+    NgForOf,
+    MenuModule
   ],
   styleUrl: './burgermenu.component.scss'
 })
 export class BurgermenuComponent {
-  isSidebarVisible: boolean = false;
+  protected isSidebarVisible: boolean = false;
 
+  protected navBarPageList: MenuItem[] = [{
+    items: [
+      {url:"/mainpage",label:"Home"},
+      {url:"/",label:"aktuelle Session"},
+      {url:"/sessionliste",label:"alle Sessions"},
+      {url:"/spielesammlung",label:"alle Spiele"},
+      {url:"/",label:"Logout"}
+    ]
+  }]
+  protected toggleSidebar() {
+    this.isSidebarVisible = !this.isSidebarVisible;
+  }
 }

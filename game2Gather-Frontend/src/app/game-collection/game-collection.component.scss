@@ -1,0 +1,47 @@
+
+
+.collection {
+  margin: 0 1em 0 1em;
+
+  .collection_header {
+    margin: 1em 0 1em 0;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    button {
+      height: 3em;
+    }
+  }
+
+  .collection_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    & > mat-card {
+      background-color: #f8f9fa ;
+      border: 1px solid #dee2e6;
+      img {
+        max-width: 100%;
+      }
+
+      mat-card-title {
+        display: flex;
+        align-items: end;
+        gap: 0.7em;
+        margin: 0.5em 0 0.9em 0;
+
+        p {
+          margin: 0;
+          vertical-align: baseline;
+
+          span {
+            font-weight: bolder;
+            font-size: x-large;
+            margin-right: 0.2em;
+          }
+        }
+      }
+    }
+  }
+}

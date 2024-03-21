@@ -1,9 +1,9 @@
 INSERT INTO Game (title, minPlayer, maxPlayer, genre)
-VALUES ('Super Mario Bros', 1, 2, 'Platformer'),
-       ('The Legend of Zelda: Breath of the Wild', 1, 1, 'Action-Adventure'),
-       ('Tetris', 1, NULL, 'Puzzle'),
-       ('Final Fantasy VII', 1, NULL, 'RPG'),
-       ('Civilization VI', 1, NULL, 'Strategy'),
-       ('Catan', 3, 4, 'Brettspiel'),
-       ('Codenames', 4, NULL, 'Brettspiel'),
-       ('Scrabble', 2, 4, 'Brettspiel');
+VALUES ('Die Siedler von Catan', 3, 4, 'Strategie'),
+       ('Risiko', 2, 6, 'Strategie'),
+       ('Carcassonne', 2, 5, 'Familie'),
+       ('Descent: Die Reise ins Dunkel', 2, 5, 'Abenteuer'),
+       ('Schach', 2, 2, 'Klassiker'),
+       ('Pandemic', 2, 4, 'Koop'),
+       ('Scrabble', 2, 4, 'Wortspiel'),
+       ('Codenames', 4, NULL, 'Wortspiel');

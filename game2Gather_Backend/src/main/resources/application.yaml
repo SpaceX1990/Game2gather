@@ -1,7 +1,4 @@
 spring:
-  sql:
-    init:
-      data-locations: classpath:testdata/gamesData.sql
   datasource:
     url: jdbc:sqlserver://localhost;databaseName=game2gather;encrypt=true;trustServerCertificate=true
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver

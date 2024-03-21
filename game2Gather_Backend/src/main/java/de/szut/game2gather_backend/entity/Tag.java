@@ -1,4 +1,4 @@
-package entity;
+package de.szut.game2gather_backend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

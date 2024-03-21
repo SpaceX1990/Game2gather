@@ -1,4 +1,4 @@
-package configuration;
+package de.szut.game2gather_backend.configuration;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;

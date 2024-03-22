@@ -9,7 +9,8 @@
 $custom-mat-theme: mat.define-light-theme((
   color: (
     primary: mat.define-palette($primaryPalette),
-    accent: mat.define-palette($secondaryPalette)
+    accent: mat.define-palette($secondaryPalette),
+    warn: mat.define-palette($errorPalette)
   )
 ));
 

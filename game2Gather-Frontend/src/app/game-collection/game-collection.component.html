@@ -1,3 +1,31 @@
-<div class="add_game">Spiel hinzufügen</div>
-<div class="filter"></div>
-<div class="collection"></div>
+<div class="collection">
+  <div class="collection_header">
+    <button mat-raised-button color="primary" routerLink="/creategame">Spiel hinzufügen</button>
+    <p-toolbar>
+      <input type="text" pInputText placeholder="name filter">
+      <input type="text" pInputText placeholder="genre filter">
+      <p-chips placeholder="tag filter"/>
+      <p-inputNumber mode="decimal" [showButtons]="true" placeholder="min player"/>
+      <p-inputNumber mode="decimal" [showButtons]="true" placeholder="max player"/>
+    </p-toolbar>
+  </div>
+  <div class="collection_content">
+    <mat-card *ngFor="let game of gameCollection">
+      <mat-card-header>
+        <img *ngIf="!game.image" mat-card-image src="assets/images/dummy_600x400.png" alt="placeholder image"/>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card-title>
+          <p><span>{{ game.title }}</span>{{ game.genre }}</p>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <p-chip *ngFor="let tag of game.tags">{{ tag }}</p-chip>
+        </mat-card-subtitle>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" routerLink="/editgame/{{game.id}}">Spiel bearbeiten</button>
+        <button mat-raised-button color="warn" (click)="deleteGame(game.id)">Spiel löschen</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

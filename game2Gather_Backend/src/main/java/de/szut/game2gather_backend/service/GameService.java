@@ -16,4 +16,8 @@ public class GameService {
     public List<Game> readAll() {
         return repository.findAll();
     }
+
+    public void delete(int id) {
+        repository.deleteById(id);
+    }
 }

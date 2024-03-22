@@ -16,7 +16,7 @@ $dialogHeaderBg: #ffffff;
 
 /// Border of a dialog header
 /// @group overlay
-$dialogHeaderBorder: 1px solid #dee2e6;
+$dialogHeaderBorder: 0;
 
 /// Text color of a dialog header
 /// @group overlay
@@ -40,7 +40,7 @@ $dialogContentPadding: 0 1.5rem;
 
 /// Border of a dialog footer
 /// @group overlay
-$dialogFooterBorder: 1px solid #dee2e6;
+$dialogFooterBorder: 0;
 
 /// Padding of a dialog footer
 /// @group overlay

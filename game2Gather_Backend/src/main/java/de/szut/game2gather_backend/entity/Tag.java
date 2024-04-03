@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,5 +20,5 @@ public class Tag {
     @NonNull
     private String label;
     @ManyToMany(mappedBy = "tags")
-    private Set<Game> games;
+    private List<Game> games;
 }

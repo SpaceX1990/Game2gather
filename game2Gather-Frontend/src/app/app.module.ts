@@ -20,6 +20,11 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {MatCardModule} from "@angular/material/card";
 import {NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
+import { GameDetailsComponent } from './game-details/game-details.component';
+import { GameFormComponent } from './game-form/game-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormField} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -27,6 +32,8 @@ import {ChipModule} from "primeng/chip";
     SessionlistComponent,
     MainpageComponent,
     GameCollectionComponent,
+    GameDetailsComponent,
+    GameFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,10 @@ import {ChipModule} from "primeng/chip";
     InputNumberModule,
     MatCardModule,
     NgOptimizedImage,
-    ChipModule
+    ChipModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatInput
   ],
   bootstrap: [AppComponent]
 })

@@ -9,8 +9,14 @@ import {GameModel} from "../models/game.model"
   styleUrl: './game-form.component.scss'
 })
 export class GameFormComponent {
-  // gameForm: FormGroup;
+  gameForm: FormGroup;
   // gameId: number;
   // gameModel: GameModel;
 
+  constructor(
+    protected fb: FormBuilder ) {
+    this.gameForm = this.fb.group({
+
+      })
+  }
 }

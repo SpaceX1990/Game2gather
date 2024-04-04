@@ -12,7 +12,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {SidebarModule} from "primeng/sidebar";
 import {BurgermenuComponent} from './sidenav/burgermenu.component';
 import {ButtonModule} from "primeng/button";
-import {MatButton, MatFabButton} from "@angular/material/button";
+import {MatButton, MatButtonModule, MatFabButton} from "@angular/material/button";
 import {ToolbarModule} from "primeng/toolbar";
 import {InputTextModule} from "primeng/inputtext";
 import {ChipsModule} from "primeng/chips";
@@ -20,6 +20,10 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {MatCardModule} from "@angular/material/card";
 import {NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
+import { CreateGameComponent } from './create-game/create-game.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -27,6 +31,7 @@ import {ChipModule} from "primeng/chip";
     SessionlistComponent,
     MainpageComponent,
     GameCollectionComponent,
+    CreateGameComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,11 @@ import {ChipModule} from "primeng/chip";
     InputNumberModule,
     MatCardModule,
     NgOptimizedImage,
-    ChipModule
+    ChipModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule
   ],
   bootstrap: [AppComponent]
 })

@@ -41,4 +41,5 @@ public class Game {
     @Nullable
     @OneToMany(mappedBy = "game")
     private List<Comment> comments = new ArrayList<>();
+
 }

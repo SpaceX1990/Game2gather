@@ -14,6 +14,10 @@ export class GameApiService {
     return this.http.get<GameModel[]>("/api/game");
   }
 
+  readGame(id: number | undefined) :Observable<GameModel> {
+    return this.http.get<GameModel>("/api/game/read/" + id)
+  }
+
   deleteGame(id: number | undefined) {
     return this.http.delete("/api/game/delete/" + id);
   }

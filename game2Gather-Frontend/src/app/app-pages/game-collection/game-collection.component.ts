@@ -56,6 +56,10 @@ export class GameCollectionComponent implements OnInit{
     this.getGames()
   }
 
+  // getGame(game: GameModel | undefined) {
+  //   this.gameApiService.readGame(game?.id).subscribe();
+  // }
+
   getGames() {
     this.gameApiService.getAllGames().subscribe(result => {
       this.gameCollection = result;

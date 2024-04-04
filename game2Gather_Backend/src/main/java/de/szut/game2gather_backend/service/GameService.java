@@ -18,6 +18,10 @@ public class GameService {
     public List<Game> readAll() {
         return repository.findAll();
     }
+
+    public void delete(int id) {
+        repository.deleteById(id);
+    }
     public Game create(@RequestBody CreateGameCommand createGameCommand) {
         Game game = new Game();
         game.setId(createGameCommand.getId());

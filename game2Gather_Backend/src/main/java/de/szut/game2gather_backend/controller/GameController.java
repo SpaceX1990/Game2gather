@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/game")
+@RequestMapping(value = "/api/game")
 @RequiredArgsConstructor
 public class GameController {
 
@@ -20,6 +20,10 @@ public class GameController {
         return gameService.readAll();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteGame(@PathVariable int id) {
+        gameService.delete(id);
+    }
     @PostMapping()
     public Game create(@RequestBody CreateGameCommand createGameCommand) {
         return gameService.create(createGameCommand);

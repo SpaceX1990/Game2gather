@@ -22,10 +22,11 @@ import {NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
-import { CreateGameComponent } from './app-pages/create-game/create-game.component';
+import { GameCreateComponent } from './app-pages/game-create-or-update/game-create/game-create.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
+import {GameUpdateComponent} from "./app-pages/game-create-or-update/game-update/game-update.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatSelectModule} from "@angular/material/select";
     SessionlistComponent,
     MainpageComponent,
     GameCollectionComponent,
-    CreateGameComponent,
+    GameUpdateComponent,
+    GameCreateComponent,
   ],
   imports: [
     BrowserModule,

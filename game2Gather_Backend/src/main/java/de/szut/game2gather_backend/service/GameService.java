@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +29,14 @@ public class GameService {
         game.setMinPlayer(createGameCommand.getMinimumPlayers());
         game.setMaxPlayer(createGameCommand.getMaximumPlayers());
         game.setTitle(createGameCommand.getTitle());
+        return repository.save(game);
+    }
+
+    public Optional<Game> read(int id) {
+        return repository.findById(id);
+    }
+
+    public Game update(Game game) {
         return repository.save(game);
     }
 }

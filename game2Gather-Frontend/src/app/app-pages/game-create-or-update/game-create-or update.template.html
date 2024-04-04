@@ -6,18 +6,18 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Input</mat-label>
-    <input matInput formControlName="minimumPlayers">
+    <input matInput formControlName="minPlayer">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Input</mat-label>
-    <input matInput formControlName="maximumPlayers">
+    <input matInput formControlName="maxPlayer">
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Tags</mat-label>
     <mat-select formControlName="tags" multiple>
       @for(tag of tagsOptions; track tag) {
-        <mat-option [value]="tag.id">{{tag.label}}</mat-option>
+        <mat-option [value]="tag">{{tag.label}}</mat-option>
       }
     </mat-select>
 
@@ -26,7 +26,7 @@
     <mat-label>Genre</mat-label>
     <mat-select formControlName="genre">
       @for(genre of genresOptions; track genre) {
-        <mat-option [value]="genre.id">{{genre.label}}</mat-option>
+        <mat-option [value]="genre.label">{{genre.label}}</mat-option>
         }
     </mat-select>
   </mat-form-field>
@@ -35,12 +35,7 @@
 
 
 
-<button mat-raised-button color="primary" (click)="saveNewGame()">Save new game</button>
+<button mat-raised-button color="primary" (click)="onFormSubmit()">{{submitLabel}}</button>
 
-<div>
-  {{
-  gameForm.getRawValue() | json
-  }}
-</div>
 
 

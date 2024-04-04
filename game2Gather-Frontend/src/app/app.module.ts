@@ -5,14 +5,14 @@ import {BrowserModule} from "@angular/platform-browser";
 import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {SessionlistComponent} from "./sessionlist/sessionlist.component";
-import {MainpageComponent} from "./mainpage/mainpage.component";
-import {GameCollectionComponent} from "./game-collection/game-collection.component";
+import {SessionlistComponent} from "./app-pages/sessionlist/sessionlist.component";
+import {MainpageComponent} from "./app-pages/mainpage/mainpage.component";
+import {GameCollectionComponent} from "./app-pages/game-collection/game-collection.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {SidebarModule} from "primeng/sidebar";
-import {BurgermenuComponent} from './sidenav/burgermenu.component';
+import {BurgermenuComponent} from './standalone-components/sidenav/burgermenu.component';
 import {ButtonModule} from "primeng/button";
-import {MatButton, MatFabButton} from "@angular/material/button";
+import {MatButton, MatButtonModule, MatFabButton} from "@angular/material/button";
 import {ToolbarModule} from "primeng/toolbar";
 import {InputTextModule} from "primeng/inputtext";
 import {ChipsModule} from "primeng/chips";
@@ -22,9 +22,14 @@ import {NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { GameFormComponent } from './game-form/game-form.component';
-import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {ConfirmationService} from "primeng/api";
+import { CreateGameComponent } from './app-pages/create-game/create-game.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import {MatInput} from "@angular/material/input";
     GameCollectionComponent,
     GameDetailsComponent,
     GameFormComponent,
+    CreateGameComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,8 +62,15 @@ import {MatInput} from "@angular/material/input";
     ChipModule,
     ReactiveFormsModule,
     MatFormField,
-    MatInput
+    MatInput,
+    ConfirmDialogModule,
+    ChipModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule
   ],
+  providers:[ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

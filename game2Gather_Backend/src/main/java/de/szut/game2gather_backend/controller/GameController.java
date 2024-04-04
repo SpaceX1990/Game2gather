@@ -24,6 +24,7 @@ public class GameController {
     public void deleteGame(@PathVariable int id) {
         gameService.delete(id);
     }
+
     @PostMapping()
     public Game create(@RequestBody CreateGameCommand createGameCommand) {
         return gameService.create(createGameCommand);

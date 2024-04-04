@@ -1,1 +1,28 @@
 <p>game-form works!</p>
+
+<form [formGroup]="gameForm">
+  <mat-form-field appearance="fill">
+    <mat-label>ID</mat-label>
+    <input matInput formControlName="id">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Titel</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Spieler minimum</mat-label>
+    <input matInput formControlName="minPlayer">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Spieler maximum</mat-label>
+    <input matInput formControlName="maxPlayer">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Genre</mat-label>
+    <input matInput formControlName="genre">
+  </mat-form-field>
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Tags</mat-label>-->
+<!--    <input matInput formControlName="tags">-->
+<!--  </mat-form-field>-->
+</form>

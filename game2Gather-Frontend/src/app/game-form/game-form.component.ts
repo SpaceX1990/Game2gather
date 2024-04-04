@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GameModel} from "../models/game.model";
 
 @Component({
@@ -16,8 +16,8 @@ export class GameFormComponent {
     protected fb: FormBuilder
   ) {
     this.gameForm = this.fb.group({
-      // id: [{value: '', disabled: true}],
-      // lastName: ['', Validators.required],
+      id: [{value: '', disabled: true}],
+      title: ['', Validators.required],
       // firstName: ['', Validators.required],
       // street: ['', Validators.required],
       // postcode: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
@@ -27,10 +27,10 @@ export class GameFormComponent {
   }
 
   ngOnInit() {
-    // let employeeIdParam = this.route.snapshot.paramMap.get(':employeeId');
+    // let gameIdParam = this.route.snapshot.paramMap.get(':employeeId');
     //
-    // if (employeeIdParam != null) {
-    //   this.employeeId = Number.parseInt(employeeIdParam);
+    // if (gameIdParam != null) {
+    //   this.gameId = Number.parseInt(gameIdParam);
     // }
     //
     // if (this.employeeId != null) {

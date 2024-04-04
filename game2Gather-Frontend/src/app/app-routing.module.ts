@@ -1,8 +1,8 @@
 import {Route, RouterModule, Routes} from '@angular/router';
-import {MainpageComponent} from "./mainpage/mainpage.component";
+import {MainpageComponent} from "./app-pages/mainpage/mainpage.component";
 import {NgModule} from "@angular/core";
-import {GameCollectionComponent} from "./game-collection/game-collection.component";
-import {SessionlistComponent} from "./sessionlist/sessionlist.component";
+import {GameCollectionComponent} from "./app-pages/game-collection/game-collection.component";
+import {SessionlistComponent} from "./app-pages/sessionlist/sessionlist.component";
 
 const mainpageRoute: Route = {path: "mainpage", component: MainpageComponent}
 const spielesammlungRoute: Route = {path: "spielesammlung", component: GameCollectionComponent}

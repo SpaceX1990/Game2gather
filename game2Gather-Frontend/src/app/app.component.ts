@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -8,19 +7,4 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AppComponent {
   title = 'game2Gather-Frontend';
-  backendTestObjects?: TestEntity[];
-
-
-  constructor(private http: HttpClient) {
-
-    http.get<TestEntity[]>("/test").subscribe(value => {
-        this.backendTestObjects = value;
-      },
-    )
-  }
-}
-
-interface TestEntity {
-  id: number,
-  text: string
 }

@@ -25,6 +25,8 @@ public class TestDataConfiguration {
     private void generateTestData() {
         generateDatabaseData("db/testdata/clearTables.sql");
         generateDatabaseData("db/testData/gamesData.sql");
+        generateDatabaseData("db/testData/tagsData.sql");/*
+        generateDatabaseData("db/testData/commentsData.sql");*/
     }
 
 

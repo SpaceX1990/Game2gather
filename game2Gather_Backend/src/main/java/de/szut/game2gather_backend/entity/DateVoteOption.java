@@ -5,12 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import org.hibernate.mapping.Map;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FoodVote {
+@Entity
+public class DateVoteOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -21,11 +25,8 @@ public class FoodVote {
     private Session session;
 
     @NonNull
-    private String foodValue;
+    private Date dateValue;
 
-    @ElementCollection
-    @CollectionTable(name = "VoteValues_PlayerVotes", joinColumns = @JoinColumn(name = "food_vote_id"))
-    @MapKeyJoinColumn(name = "player_id")
-    @Column(name = "vote_value")
-    private Map playerVotes;
+    @OneToMany(mappedBy = "dateVoteOption", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PlayerVote> playerVotes = new ArrayList<>();
 }

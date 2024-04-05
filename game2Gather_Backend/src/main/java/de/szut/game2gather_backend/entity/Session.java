@@ -33,21 +33,23 @@ public class Session {
     private Integer maxPlayer;
 
     @NonNull
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @NonNull
-    @OneToMany(mappedBy = "session")
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Player> playerList = new ArrayList<>();
 
     @NonNull
-    @OneToMany(mappedBy = "session")
-    private List<GameVote> gameVotes = new ArrayList<>();
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<GameVoteOption> gameVoteOptions = new ArrayList<>();
 
     @Nullable
-    @OneToMany(mappedBy = "session")
-    private List<FoodVote> foodVotes = new ArrayList<>();
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FoodVoteOption> foodVoteOptions = new ArrayList<>();
 
     @Nullable
-    @OneToMany(mappedBy = "session")
-    private List<DateVote> dateVotes = new ArrayList<>();
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DateVoteOption> dateVoteOptions = new ArrayList<>();
 }

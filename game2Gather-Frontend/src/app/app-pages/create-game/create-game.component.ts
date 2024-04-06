@@ -45,4 +45,4 @@ export class CreateGameComponent {
   }
 }
 
-//TODO: komentarz, bild hochladen, design
+//TODO: komentarz, bild hochladen, design, services aus dem Backend

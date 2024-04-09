@@ -1,4 +1,4 @@
-INSERT INTO Game (title, minPlayer, maxPlayer, genre)
+INSERT INTO Game (title, min_player, max_player, genre)
 VALUES ('Die Siedler von Catan', 3, 4, 'Strategie'),
        ('Risiko', 2, 6, 'Strategie'),
        ('Carcassonne', 2, 5, 'Familie'),

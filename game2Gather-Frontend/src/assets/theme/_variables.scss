@@ -4,7 +4,8 @@ $primaryDarkColor: #1E88E5;
 $primaryDarkerColor: #1976D2;
 $primaryTextColor: #ffffff;
 $secondaryColor: #607D8B;
-
+$secondaryTextColor: #6c757d;
+$cardBg: #f8f9fa;
 
 $primaryPalette: (
   50 : #e4f2fe,
@@ -71,6 +72,41 @@ $secondaryPalette: (
     A700 : #000000,
   )
 );
+
+$errorPalette: (
+  50 : #ffe8e6,
+  100 : #ffc6c2,
+  200 : #ffa099,
+  300 : #ff7970,
+  400 : #ff5d51,
+  500 : #ff4032,
+  600 : #ff3a2d,
+  700 : #ff3226,
+  800 : #ff2a1f,
+  900 : #ff1c13,
+  A100 : #ffffff,
+  A200 : #fffafa,
+  A400 : #ffc8c7,
+  A700 : #ffb0ad,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
 
 $colors: (
   "blue": #2196F3,

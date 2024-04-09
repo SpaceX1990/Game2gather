@@ -11,12 +11,12 @@
             <column name="title" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="minPlayer" type="INT">
+            <column name="min_player" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="maxPlayer" type="INT"/>
+            <column name="max_player" type="INT"/>
             <column name="genre" type="NVARCHAR(255)"/>
-            <column name="imageBytes" type="BLOB"/>
+            <column name="image_bytes" type="BLOB"/>
             <column name="comments" type="NVARCHAR(255)"/>
         </createTable>
     </changeSet>
@@ -29,7 +29,7 @@
             <column name="author" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="dateCreate" type="TIMESTAMP">
+            <column name="date_create" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="content" type="NVARCHAR(255)">
@@ -56,7 +56,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="createGameTagsTable" author="yourname">
+    <changeSet id="createGameTagsTable" author="dua">
         <createTable tableName="game_tags">
             <column name="game_id" type="INT">
                 <constraints nullable="false"/>

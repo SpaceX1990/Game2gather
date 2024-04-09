@@ -28,13 +28,14 @@ export class BurgermenuComponent {
 
   protected navBarPageList: MenuItem[] = [{
     items: [
-      {url:"/mainpage",label:"Home"},
-      {url:"/",label:"aktuelle Session"},
-      {url:"/sessionliste",label:"alle Sessions"},
-      {url:"/spielesammlung",label:"alle Spiele"},
-      {url:"/",label:"Logout"}
+      {routerLink: "/mainpage", label: "Home", command: () => this.toggleSidebar()},
+      {routerLink: "/", label: "aktuelle Session", command: () => this.toggleSidebar()},
+      {routerLink: "/sessionliste", label: "alle Sessions", command: () => this.toggleSidebar()},
+      {routerLink: "/spielesammlung", label: "alle Spiele", command: () => this.toggleSidebar()},
+      {routerLink: "/", label: "Logout", command: () => this.toggleSidebar()}
     ]
   }]
+
   protected toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
   }

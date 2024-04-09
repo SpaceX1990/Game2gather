@@ -22,6 +22,7 @@ import {NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
+import {CarouselModule} from "primeng/carousel";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {ConfirmationService} from "primeng/api";
     MatCardModule,
     NgOptimizedImage,
     ChipModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    CarouselModule
   ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {TagService} from "../../service/tag.service";
-import {Tag} from "../../models/tag.model";
+import {TagModel} from "../../models/tag.model";
 import {Genre} from "../../models/genre.model";
 import {GenreService} from "../../service/genre.service";
 import {HttpClient} from "@angular/common/http";
@@ -16,14 +16,14 @@ import {GameApiService} from "../../service/game-api.service";
 })
 export class CreateGameComponent {
 
-  tagsOptions: Tag[] = [];
+  tagsOptions: TagModel[] = [];
   genresOptions: Genre[] = [];
 
   public gameForm = this._fb.group({
     title: '',
     minimumPlayers: 1,
     maximumPlayers: new FormControl<number>(1, [Validators.max(15)]),
-    tags: null as Tag[] | null,
+    tags: null as TagModel[] | null,
     genre: null as number | null
   });
 
@@ -33,7 +33,9 @@ export class CreateGameComponent {
               private genreService: GenreService,
               private gameService: GameApiService,
               private http: HttpClient) {
-    this.tagsOptions = this.tagService.getAll();
+     this.tagService.getAll().subscribe(tags=>{
+       this.tagsOptions = tags;
+     });
     this.genresOptions = this.genreService.getAll();
   }
 

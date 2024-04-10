@@ -10,7 +10,7 @@ public class CreateGameCommand {
     private String title;
     private int minimumPlayers;
     private int maximumPlayers;
-    private List<Long> tags;
+    private List<Integer> tags;
     private long genre;
 
 }

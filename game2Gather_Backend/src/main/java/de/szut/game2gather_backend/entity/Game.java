@@ -35,7 +35,7 @@ public class Game {
     )
     private Set<Tag> tags;
     @Nullable
-    private String genre;
+    private Genre genre;
     @Nullable
     private byte[] imageBytes;
     @Nullable

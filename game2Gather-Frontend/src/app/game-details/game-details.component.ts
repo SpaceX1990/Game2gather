@@ -17,8 +17,8 @@ import {GameModel} from "../models/game.model";
 })
 export class GameDetailsComponent{
 
-  // tagsOptions: Tag[] = [];
-  // genresOptions: Genre[] = [];
+  tagsOptions: Tag[] = [];
+  genresOptions: Genre[] = [];
 
   public gameForm: FormGroup | undefined;
   public gameId: number | undefined;
@@ -30,8 +30,8 @@ export class GameDetailsComponent{
               private tagService: TagService,
               private genreService: GenreService,
               private http: HttpClient) {
-    // this.tagsOptions = this.tagService.getAll();
-    // this.genresOptions = this.genreService.getAll();
+    this.tagsOptions = this.tagService.getAll();
+    this.genresOptions = this.genreService.getAll();
     this.gameId =parseInt(route.snapshot.paramMap.get('game-id')!);
     this.readGame();
   }
@@ -51,5 +51,9 @@ export class GameDetailsComponent{
       tags: new FormControl(game.tags),
       genre: new FormControl(game.genre)
     })
+  }
+
+  navToMainMenu() {
+    this.router.navigateByUrl('/spielesammlung');
   }
 }

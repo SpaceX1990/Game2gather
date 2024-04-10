@@ -9,13 +9,11 @@ import lombok.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Game")
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

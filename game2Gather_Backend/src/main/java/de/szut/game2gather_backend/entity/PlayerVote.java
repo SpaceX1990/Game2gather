@@ -39,4 +39,9 @@ public class PlayerVote {
     @NonNull
     @Enumerated(EnumType.STRING)
     private VoteEnum vote;
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "session_id")
+    private Session session;
 }

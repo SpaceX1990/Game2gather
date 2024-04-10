@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Session")
 public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +29,7 @@ public class Session {
     private String sessionVoteLink;
 
     @Nullable
-    private Integer maxPlayer;
+    private int maxPlayer;
 
     @NonNull
     @ManyToOne

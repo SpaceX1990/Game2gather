@@ -18,13 +18,17 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @NonNull
     private String author;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dateCreate;
+
     @NonNull
     private String content;
+
     @NonNull
     @ManyToOne
     @JoinColumn(name="game_id", nullable=false)

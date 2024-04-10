@@ -24,7 +24,9 @@ public class GameVoteOption {
     private Session session;
 
     @NonNull
-    private String gameOptionValue;
+    @ManyToOne
+    @JoinColumn(name = "game_id")
+    private Game gameOptionValue;
 
     @OneToMany(mappedBy = "gameVoteOption", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PlayerVote> playerVotes = new ArrayList<>();

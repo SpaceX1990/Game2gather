@@ -12,13 +12,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="Tag")
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @NonNull
     private String label;
+
     @ManyToMany(mappedBy = "tags")
     private List<Game> games;
 }

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {GameModel} from "../../models/game.model";
-import {Router} from "@angular/router";
 import {GameApiService} from "../../service/game-api.service";
 import {ConfirmationService} from "primeng/api";
 
@@ -11,7 +10,6 @@ import {ConfirmationService} from "primeng/api";
 })
 export class GameCollectionComponent implements OnInit{
   protected isSidebarVisible: boolean = false;
-  // protected game: GameModel;
   protected gameCollection: GameModel[] = [
     /*{
       id: 1,
@@ -51,20 +49,12 @@ export class GameCollectionComponent implements OnInit{
     }*/
   ]
 
-  constructor(private gameApiService: GameApiService,
-              private confirmationService: ConfirmationService,
-              private router : Router) {
+  constructor(private gameApiService: GameApiService, private confirmationService: ConfirmationService) {
   }
 
   ngOnInit() {
     this.getGames()
   }
-
-  // getGame(game: GameModel) {
-  //   this.gameApiService.readGame(game?.id).subscribe({
-  //       // this.game = result;
-  //   });
-  // }
 
   getGames() {
     this.gameApiService.getAllGames().subscribe(result => {
@@ -73,24 +63,24 @@ export class GameCollectionComponent implements OnInit{
   }
 
   deleteGame(game: GameModel | undefined) {
-      this.confirmationService.confirm({
-        dismissableMask: true,
-        message:`Soll das Spiel ${game?.title} wirklich gelöscht werden?`,
-        header:"Spiel löschen",
-        acceptIcon: "none",
-        acceptLabel: "Löschen",
-        acceptButtonStyleClass: "p-button-danger",
-        rejectIcon: "none",
-        rejectLabel: "Abbrechen",
-        closeOnEscape: false,
-        defaultFocus: "reject",
-        accept: () => {
-          this.gameApiService.deleteGame(game?.id).subscribe({
-            next: () => {
-              this.getGames();
-            },
-          })
-        },
-      })
+    this.confirmationService.confirm({
+      dismissableMask: true,
+      message:`Soll das Spiel ${game?.title} wirklich gelöscht werden?`,
+      header:"Spiel löschen",
+      acceptIcon: "none",
+      acceptLabel: "Löschen",
+      acceptButtonStyleClass: "p-button-danger",
+      rejectIcon: "none",
+      rejectLabel: "Abbrechen",
+      closeOnEscape: false,
+      defaultFocus: "reject",
+      accept: () => {
+        this.gameApiService.deleteGame(game?.id).subscribe({
+          next: () => {
+            this.getGames();
+          },
+        })
+      },
+    })
   }
 }

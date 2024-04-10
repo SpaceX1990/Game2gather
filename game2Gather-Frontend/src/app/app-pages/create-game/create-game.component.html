@@ -26,7 +26,7 @@
     <mat-label>Genre</mat-label>
     <mat-select formControlName="genre">
       @for(genre of genresOptions; track genre) {
-        <mat-option [value]="genre.id">{{genre.label}}</mat-option>
+        <mat-option [value]="genre.value">{{genre.label}}</mat-option>
         }
     </mat-select>
   </mat-form-field>

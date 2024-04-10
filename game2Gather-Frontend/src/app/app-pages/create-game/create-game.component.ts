@@ -24,7 +24,7 @@ export class CreateGameComponent {
     minimumPlayers: new FormControl<number>(1, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]),
     maximumPlayers: new FormControl<number>(1, [Validators.required, Validators.max(15), Validators.pattern(/^\d+$/)]),
     tags: null as TagModel[] | null,
-    genre: null as Genre[] | null
+    genre: null as Genre | null
   });
 
   constructor(private readonly _fb: FormBuilder,

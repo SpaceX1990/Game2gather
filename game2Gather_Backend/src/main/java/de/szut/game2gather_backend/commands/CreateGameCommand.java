@@ -1,4 +1,5 @@
 package de.szut.game2gather_backend.commands;
+import de.szut.game2gather_backend.entity.Genre;
 import lombok.Data;
 
 import java.util.List;
@@ -11,6 +12,6 @@ public class CreateGameCommand {
     private int minimumPlayers;
     private int maximumPlayers;
     private List<Integer> tags;
-    private long genre; // z frontendu do backendu jako command ??
+    private Genre genre; // z frontendu do backendu jako command ??   input CQRS
 
 }

@@ -1,6 +1,7 @@
 package de.szut.game2gather_backend.controller;
 
 
+import de.szut.game2gather_backend.dto.GenreDTO;
 import de.szut.game2gather_backend.entity.Genre;
 import de.szut.game2gather_backend.service.GenreService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class GenreController {
     private final GenreService genreService;
 
     @GetMapping()
-    public List<Genre> getAllGenres() {
+    public List<GenreDTO> getAllGenres() {
         return genreService.readAll();
     }
 }

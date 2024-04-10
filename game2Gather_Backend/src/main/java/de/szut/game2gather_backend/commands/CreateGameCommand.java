@@ -11,6 +11,6 @@ public class CreateGameCommand {
     private int minimumPlayers;
     private int maximumPlayers;
     private List<Integer> tags;
-    private long genre;
+    private long genre; // z frontendu do backendu jako command ??
 
 }

@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
 import {Genre} from "../models/genre.model";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GenreService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAll(): Genre[]{
-    return [
-      {
-        id: 1,
-        label: "elektroniczne"
-      },
-      {
-        id: 2,
-        label: "planszowki"
-      }
-    ]
+  getAll(): Observable<Genre[]>{
+    return this.http.get<Genre[]>("api/genre"); // pobieranie z backendu do frontendu
   }
+
 }

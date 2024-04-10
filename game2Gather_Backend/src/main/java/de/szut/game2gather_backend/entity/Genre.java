@@ -1,6 +1,17 @@
 package de.szut.game2gather_backend.entity;
 
-public enum Genre {
-    CARD_BOARD,
-    ELECTRONIC
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import lombok.Data;
+
+@Data
+@Entity
+public class Genre {
+
+    @Id
+    private long id;
+
+    @Enumerated
+    private GenreEnum genreEnum;
 }

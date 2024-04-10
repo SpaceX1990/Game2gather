@@ -20,11 +20,11 @@ export class CreateGameComponent {
   genresOptions: Genre[] = [];
 
   public gameForm = this._fb.group({
-    title: '',
-    minimumPlayers: 1,
-    maximumPlayers: new FormControl<number>(1, [Validators.max(15)]),
+    title: new FormControl<String>('', [Validators.required]),
+    minimumPlayers: new FormControl<number>(1, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]),
+    maximumPlayers: new FormControl<number>(1, [Validators.required, Validators.max(15), Validators.pattern(/^\d+$/)]),
     tags: null as TagModel[] | null,
-    genre: null as number | null
+    genre: null as Genre[] | null
   });
 
   constructor(private readonly _fb: FormBuilder,
@@ -36,7 +36,11 @@ export class CreateGameComponent {
      this.tagService.getAll().subscribe(tags=>{
        this.tagsOptions = tags;
      });
-    this.genresOptions = this.genreService.getAll();
+
+     this.genreService.getAll().subscribe(genres =>{
+       this.genresOptions = genres;
+     });
+
   }
 
   saveNewGame() {
@@ -47,4 +51,4 @@ export class CreateGameComponent {
   }
 }
 
-//TODO: komentarz, bild hochladen, design, services aus dem Backend
+//TODO: bild hochladen, design

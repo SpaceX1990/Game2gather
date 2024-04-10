@@ -35,7 +35,8 @@ public class Game {
     )
     private Set<Tag> tags;
     @Nullable
-    private Genre genre;
+    @Enumerated
+    private GenreEnum genre;
     @Nullable
     private byte[] imageBytes;
     @Nullable

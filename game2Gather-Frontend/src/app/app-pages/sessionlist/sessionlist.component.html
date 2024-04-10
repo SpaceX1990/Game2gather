@@ -1,16 +1,41 @@
-<p-carousel [value]="sessions" [numVisible]="2" [numScroll]="2">
-  <ng-template let-product pTemplate="item">
-    <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-      <div class="mb-3">
-        <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" [alt]="product.name" class="w-6 shadow-2" />
-      </div>
-      <div>
-        <h4 class="mb-1">{{sessions?.sessionTitel}}</h4>
-        <h6 class="mt-0 mb-3">{{sessions?.maxPlayer}}</h6>
-        <div class="carousel_button">
-          <p-button label="Session löschen" (onClick)="showdeleteDialog()"></p-button>
+<div class="carousel">
+  <p-carousel [value]="sessions" [numVisible]="2" [numScroll]="2">
+    <ng-template let-sessions pTemplate="item">
+      <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+        <div class="mb-3">
+          <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div>
+              <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image" class="w-6 shadow-2" width="400"></p-image>
+            </div>
+            <div>
+              <h4 class="mb-1">{{ sessions?.sessionTitel }}</h4>
+              <h6 class="mt-0 mb-3">Max Player: {{ sessions?.maxPlayer }}</h6>
+              <div class="carousel_button">
+                <p-button label="Session löschen" (onClick)="showdeleteDialog()"></p-button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </ng-template>
-</p-carousel>
+    </ng-template>
+  </p-carousel>
+</div>
+
+<div class="carousel">
+  <p-carousel [value]="sessions" [numVisible]="2" [numScroll]="2">
+    <ng-template let-sessions pTemplate="item">
+      <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+        <div class="mb-3">
+          <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image" width="400"></p-image>
+        </div>
+        <div>
+          <h4 class="mb-1">{{ sessions?.sessionTitel }}</h4>
+          <h6 class="mt-0 mb-3">Max Player: {{ sessions?.maxPlayer }}</h6>
+          <div class="carousel_button">
+            <p-button label="Session löschen" (onClick)="showdeleteDialog()"></p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>

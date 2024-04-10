@@ -23,6 +23,7 @@ import {ChipModule} from "primeng/chip";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
 import {CarouselModule} from "primeng/carousel";
+import {ImageModule} from "primeng/image";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {CarouselModule} from "primeng/carousel";
     NgOptimizedImage,
     ChipModule,
     ConfirmDialogModule,
-    CarouselModule
+    CarouselModule,
+    ImageModule
   ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent]

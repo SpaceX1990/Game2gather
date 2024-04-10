@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Router} from "@angular/router";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {GameFormComponent} from "../game-form/game-form.component";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {GameApiService} from "../service/game-api.service";
 import {TagService} from "../service/tag.service";
 import {GenreService} from "../service/genre.service";

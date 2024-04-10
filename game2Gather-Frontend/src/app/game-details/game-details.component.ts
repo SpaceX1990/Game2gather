@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Router} from "@angular/router";
-import {FormBuilder} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {GameFormComponent} from "../game-form/game-form.component";
 import {GameApiService} from "../service/game-api.service";
 import {TagService} from "../service/tag.service";
@@ -21,13 +21,9 @@ export class GameDetailsComponent{
   // tagsOptions: Tag[] = [];
   // genresOptions: Genre[] = [];
 
-  public gameForm = this._fb.group({
-    title: null,
-    minPlayer: null,
-    maxPlayer: null,
-    tags: null,
-    genre: null
-  })
+  public gameForm: FormGroup | undefined;
+  public gameId: number | undefined;
+  public game: GameModel |undefined;
   constructor(private readonly _fb: FormBuilder,
               private router: Router,
               private route: ActivatedRoute,
@@ -37,12 +33,24 @@ export class GameDetailsComponent{
               private http: HttpClient) {
     // this.tagsOptions = this.tagService.getAll();
     // this.genresOptions = this.genreService.getAll();
+    this.gameId =parseInt(route.snapshot.paramMap.get('game-id')!);
     this.readGame();
   }
 
-  readGame(game: GameModel) {
-    this.gameApiService.readGame(game.id).subscribe({
+  readGame() {
+    this.gameApiService.readGame(this.gameId).subscribe(game => {
+      this.game = game;
+      this.setGameForm(game);
+    })
+  }
 
+  private setGameForm(game: GameModel) {
+    this.gameForm = new FormGroup({
+      title: new FormControl(game.title),
+      minPlayer: new FormControl(game.minPlayer),
+      maxPlayer: new FormControl(game.maxPlayer),
+      tags: new FormControl(game.tags),
+      genre: new FormControl(game.genre)
     })
   }
 }

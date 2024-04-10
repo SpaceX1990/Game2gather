@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/game")
@@ -18,6 +19,11 @@ public class GameController {
     @GetMapping()
     public List<Game> getAll() {
         return gameService.readAll();
+    }
+
+    @GetMapping(value = "/read/{id}")
+    public Optional<Game> getGame(@PathVariable int id) {
+        return gameService.read(id);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GameModel} from "../../models/game.model";
+import {Router} from "@angular/router";
 import {GameApiService} from "../../service/game-api.service";
 import {ConfirmationService} from "primeng/api";
 
@@ -10,6 +11,7 @@ import {ConfirmationService} from "primeng/api";
 })
 export class GameCollectionComponent implements OnInit{
   protected isSidebarVisible: boolean = false;
+  // protected game: GameModel;
   protected gameCollection: GameModel[] = [
     /*{
       id: 1,
@@ -49,15 +51,19 @@ export class GameCollectionComponent implements OnInit{
     }*/
   ]
 
-  constructor(private gameApiService: GameApiService, private confirmationService: ConfirmationService) {
+  constructor(private gameApiService: GameApiService,
+              private confirmationService: ConfirmationService,
+              private router : Router) {
   }
 
   ngOnInit() {
     this.getGames()
   }
 
-  // getGame(game: GameModel | undefined) {
-  //   this.gameApiService.readGame(game?.id).subscribe();
+  // getGame(game: GameModel) {
+  //   this.gameApiService.readGame(game?.id).subscribe({
+  //       // this.game = result;
+  //   });
   // }
 
   getGames() {

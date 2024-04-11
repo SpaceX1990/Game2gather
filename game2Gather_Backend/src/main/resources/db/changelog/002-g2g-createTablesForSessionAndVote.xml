@@ -3,18 +3,9 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="create votevalue table" author="dua">
-        <createTable tableName="Vote_Value">
-            <column name="id" type="INT">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="enum_value" type="NVARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-
     <changeSet id="create user table" author="dua">
         <createTable tableName="User">
-            <column name="id" type="INT">
+            <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="username" type="NVARCHAR(255)">
@@ -38,7 +29,7 @@
 
     <changeSet id="create player table" author="dua">
         <createTable tableName="Player">
-            <column name="id" type="INT">
+            <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="username" type="NVARCHAR(255)">
@@ -49,7 +40,7 @@
 
     <changeSet id="create session table" author="dua">
         <createTable tableName="Session">
-            <column name="id" type="INT">
+            <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="session_title" type="NVARCHAR(255)">
@@ -74,7 +65,7 @@
 
     <changeSet id="create vote table" author="dua">
         <createTable tableName="Vote">
-            <column name="id" type="INT">
+            <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="fk_session_id" type="INT">
@@ -88,7 +79,7 @@
             </column>
             <column name="dateOption" type="DATETIME"/>
             <column name="foodOption" type="NVARCHAR(255)"/>
-            <column name="fk_votevalue_id" type="INT">
+            <column name="vote_value" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -101,9 +92,6 @@
         <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_game_id"
                                  referencedTableName="Game" referencedColumnNames="id"
                                  constraintName="fk_game_vote"/>
-        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_votevalue_id"
-                                 referencedTableName="Vote_Value" referencedColumnNames="id"
-                                 constraintName="fk_votevalue_vote"/>
     </changeSet>
 
 </databaseChangeLog>

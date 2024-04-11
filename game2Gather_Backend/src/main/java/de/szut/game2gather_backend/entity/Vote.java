@@ -23,7 +23,7 @@ public class Vote {
 
     @ManyToOne
     @JoinColumn(name = "fk_player_id")
-    private User player;
+    private Player player;
 
     @ManyToOne
     @JoinColumn(name = "fk_game_id")
@@ -33,8 +33,6 @@ public class Vote {
 
     private String foodOption;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_votevalue_id")
-    private VoteValue votevalue;
+    private VoteEnum votevalue;
 
 }

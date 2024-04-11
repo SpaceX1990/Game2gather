@@ -7,9 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,22 +30,6 @@ public class Session {
 
     @NonNull
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "fk_user_Id")
     private User user;
-
-    @NonNull
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Player> playerList = new ArrayList<>();
-
-    @NonNull
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<GameVoteOption> gameVoteOptions = new ArrayList<>();
-
-    @Nullable
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FoodVoteOption> foodVoteOptions = new ArrayList<>();
-
-    @Nullable
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DateVoteOption> dateVoteOptions = new ArrayList<>();
 }

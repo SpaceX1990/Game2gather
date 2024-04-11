@@ -3,177 +3,107 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="Create session table" author="dua">
-        <createTable tableName="Session">
-            <column name="id" type="int">
+    <changeSet id="create votevalue table" author="dua">
+        <createTable tableName="Vote_Value">
+            <column name="id" type="INT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="sessionTitle" type="nvarchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="active" type="boolean">
-                <constraints nullable="false"/>
-            </column>
-            <column name="sessionVoteLink" type="nvarchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="maxPlayer" type="int">
-                <constraints nullable="true"/>
-            </column>
-            <column name="user_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="create player table" author="dua">
-        <createTable tableName="Player">
-            <column name="id" type="int">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="username" type="nvarchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="session_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="create gameVoteOption table" author="dua">
-        <createTable tableName="GameVoteOption">
-            <column name="id" type="int">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="session_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="game_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="gameOptionValue" type="nvarchar(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="create FoodVoteOption table" author="dua">
-        <createTable tableName="FoodVoteOption">
-            <column name="id" type="int">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="session_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="foodVoteOption" type="nvarchar(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="create dateVoteOption" author="dua">
-        <createTable tableName="DateVoteOption">
-            <column name="id" type="int">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="session_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="dateValue" type="datetime">
-                <constraints nullable="false"/>
-            </column>
+            <column name="enum_value" type="NVARCHAR(255)"/>
         </createTable>
     </changeSet>
 
     <changeSet id="create user table" author="dua">
         <createTable tableName="User">
-            <column name="id" type="int">
+            <column name="id" type="INT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="username" type="nvarchar(255)">
+            <column name="username" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="email" type="nvarchar(255)">
+            <column name="email" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="passwordHash" type="nvarchar(255)">
+            <column name="password_hash" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="dateCreated" type="datetime">
+            <column name="date_created" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
-            <column name="userFirstname" type="nvarchar(255)">
+            <column name="user_firstname" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="userLastname" type="nvarchar(255)">
-                <constraints nullable="true"/>
-            </column>
+            <column name="user_lastname" type="NVARCHAR(255)"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="create playerVote table" author="dua">
-        <createTable tableName="PlayerVote">
-            <column name="id" type="int">
+    <changeSet id="create player table" author="dua">
+        <createTable tableName="Player">
+            <column name="id" type="INT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date_vote_option_id" type="int">
-                <constraints nullable="true"/>
-            </column>
-            <column name="food_vote_option_id" type="int">
-                <constraints nullable="true"/>
-            </column>
-            <column name="game_vote_option_id" type="int">
-                <constraints nullable="true"/>
-            </column>
-            <column name="player_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="session_id" type="int">
+            <column name="username" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
 
-    <changeSet id="create foreign keys" author="dua">
-        <addForeignKeyConstraint baseTableName="Session" baseColumnNames="user_id"
-                                 constraintName="FK_Session_User" referencedTableName="User"
-                                 referencedColumnNames="id"/>
+    <changeSet id="create session table" author="dua">
+        <createTable tableName="Session">
+            <column name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="session_title" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="session_vote_link" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_player" type="INT"/>
+            <column name="fk_user_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="Session" baseColumnNames="fk_user_id"
+                                 constraintName="FK_Session_User"
+                                 referencedTableName="User" referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
+    </changeSet>
 
-        <addForeignKeyConstraint baseTableName="Player" baseColumnNames="session_id"
-                                 constraintName="FK_Player_Session" referencedTableName="Session"
-                                 referencedColumnNames="id"/>
-
-        <addForeignKeyConstraint baseTableName="GameVoteOption" baseColumnNames="session_id"
-                                 constraintName="FK_GameVoteOption_Session" referencedTableName="Session"
-                                 referencedColumnNames="id"/>
-
-        <addForeignKeyConstraint baseTableName="FoodVoteOption" baseColumnNames="session_id"
-                                 constraintName="FK_FoodVoteOption_Session" referencedTableName="Session"
-                                 referencedColumnNames="id"/>
-
-        <addForeignKeyConstraint baseTableName="DateVoteOption" baseColumnNames="session_id"
-                                 constraintName="FK_DateVoteOption_Session" referencedTableName="Session"
-                                 referencedColumnNames="id"/>
-
-        <addForeignKeyConstraint baseTableName="PlayerVote" baseColumnNames="date_vote_option_id"
-                                 constraintName="FK_PlayerVote_DateVoteOption" referencedTableName="DateVoteOption"
-                                 referencedColumnNames="id" onDelete="CASCADE"/>
-
-        <addForeignKeyConstraint baseTableName="PlayerVote" baseColumnNames="food_vote_option_id"
-                                 constraintName="FK_PlayerVote_FoodVoteOption" referencedTableName="FoodVoteOption"
-                                 referencedColumnNames="id" onDelete="CASCADE"/>
-
-        <addForeignKeyConstraint baseTableName="PlayerVote" baseColumnNames="game_vote_option_id"
-                                 constraintName="FK_PlayerVote_GameVoteOption" referencedTableName="GameVoteOption"
-                                 referencedColumnNames="id" onDelete="CASCADE"/>
-
-        <addForeignKeyConstraint baseTableName="PlayerVote" baseColumnNames="player_id"
-                                 constraintName="FK_PlayerVote_Player" referencedTableName="Player"
-                                 referencedColumnNames="id" onDelete="CASCADE"/>
-
-        <addForeignKeyConstraint baseTableName="PlayerVote" baseColumnNames="session_id"
-                                 constraintName="FK_PlayerVote_Session" referencedTableName="Session"
-                                 referencedColumnNames="id"/>
+    <changeSet id="create vote table" author="dua">
+        <createTable tableName="Vote">
+            <column name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="fk_session_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_player_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_game_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateOption" type="DATETIME"/>
+            <column name="foodOption" type="NVARCHAR(255)"/>
+            <column name="fk_votevalue_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_session_id"
+                                 referencedTableName="Session" referencedColumnNames="id"
+                                 constraintName="fk_session_vote"/>
+        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_player_id"
+                                 referencedTableName="User" referencedColumnNames="id"
+                                 constraintName="fk_player_vote"/>
+        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_game_id"
+                                 referencedTableName="Game" referencedColumnNames="id"
+                                 constraintName="fk_game_vote"/>
+        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_votevalue_id"
+                                 referencedTableName="Vote_Value" referencedColumnNames="id"
+                                 constraintName="fk_votevalue_vote"/>
     </changeSet>
 
 </databaseChangeLog>

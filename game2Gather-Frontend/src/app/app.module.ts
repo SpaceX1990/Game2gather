@@ -30,6 +30,7 @@ import { CreateGameComponent } from './app-pages/create-game/create-game.compone
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
+import {TagModule} from "primeng/tag";
 
 @NgModule({
   declarations: [
@@ -41,35 +42,36 @@ import {MatSelectModule} from "@angular/material/select";
     GameFormComponent,
     CreateGameComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    RouterOutlet,
-    AppRoutingModule,
-    MatSidenavModule,
-    SidebarModule,
-    BurgermenuComponent,
-    ButtonModule,
-    MatFabButton,
-    MatButton,
-    ToolbarModule,
-    InputTextModule,
-    ChipsModule,
-    InputNumberModule,
-    MatCardModule,
-    NgOptimizedImage,
-    ChipModule,
-    ReactiveFormsModule,
-    MatFormField,
-    MatInput,
-    ConfirmDialogModule,
-    ChipModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        RouterOutlet,
+        AppRoutingModule,
+        MatSidenavModule,
+        SidebarModule,
+        BurgermenuComponent,
+        ButtonModule,
+        MatFabButton,
+        MatButton,
+        ToolbarModule,
+        InputTextModule,
+        ChipsModule,
+        InputNumberModule,
+        MatCardModule,
+        NgOptimizedImage,
+        ChipModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatInput,
+        ConfirmDialogModule,
+        ChipModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        TagModule
+    ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent]
 })

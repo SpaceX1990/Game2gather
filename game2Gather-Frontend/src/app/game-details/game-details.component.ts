@@ -9,6 +9,7 @@ import {HttpClient} from "@angular/common/http";
 import {Tag} from "../models/tag.model";
 import {Genre} from "../models/genre.model";
 import {GameModel} from "../models/game.model";
+import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-game-details',
@@ -29,9 +30,10 @@ export class GameDetailsComponent{
               private gameApiService: GameApiService,
               private tagService: TagService,
               private genreService: GenreService,
-              private http: HttpClient) {
-    this.tagsOptions = this.tagService.getAll();
-    this.genresOptions = this.genreService.getAll();
+              private http: HttpClient,
+              public tag: TagModule) {
+    this.tagsOptions = this.tagService.getAll(); // neue Methode für die individuellen Tags implementieren
+    // this.genresOptions = this.genreService.getAll();
     this.gameId =parseInt(route.snapshot.paramMap.get('game-id')!);
     this.readGame();
   }

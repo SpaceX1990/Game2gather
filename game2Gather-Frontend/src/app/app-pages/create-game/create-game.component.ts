@@ -6,8 +6,8 @@ import {TagModel} from "../../models/tag.model";
 import {Genre} from "../../models/genre.model";
 import {GenreService} from "../../service/genre.service";
 import {HttpClient} from "@angular/common/http";
-import {GameModel} from "../../models/game.model";
 import {GameApiService} from "../../service/game-api.service";
+
 
 @Component({
   selector: 'app-create-game',
@@ -22,7 +22,7 @@ export class CreateGameComponent {
   public gameForm = this._fb.group({
     title: new FormControl<String>('', [Validators.required]),
     minimumPlayers: new FormControl<number>(1, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]),
-    maximumPlayers: new FormControl<number>(1, [Validators.required, Validators.max(15), Validators.pattern(/^\d+$/)]),
+    maximumPlayers: new FormControl<number>(1, [Validators.required, Validators.min(1), Validators.max(15), Validators.pattern(/^\d+$/)]),
     tags: null as TagModel[] | null,
     genre: null as Genre | null
   });

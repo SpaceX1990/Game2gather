@@ -6,7 +6,7 @@ import {GameApiService} from "../service/game-api.service";
 import {TagService} from "../service/tag.service";
 import {GenreService} from "../service/genre.service";
 import {HttpClient} from "@angular/common/http";
-import {Tag} from "../models/tag.model";
+import {TagModel} from "../models/tag.model";
 import {Genre} from "../models/genre.model";
 import {GameModel} from "../models/game.model";
 import { TagModule } from 'primeng/tag';
@@ -18,8 +18,8 @@ import { TagModule } from 'primeng/tag';
 })
 export class GameDetailsComponent{
 
-  tagsOptions: Tag[] = [];
-  genresOptions: Genre[] = [];
+  tagsOptions: any[] | undefined = [];
+  genresOptions: string | undefined;
 
   public gameForm: FormGroup | undefined;
   public gameId: number | undefined;
@@ -32,8 +32,8 @@ export class GameDetailsComponent{
               private genreService: GenreService,
               private http: HttpClient,
               public tag: TagModule) {
-    this.tagsOptions = this.tagService.getAll(); // neue Methode für die individuellen Tags implementieren
-    // this.genresOptions = this.genreService.getAll();
+    this.tagsOptions = this.game?.tags;
+    this.genresOptions = this.game?.genre;
     this.gameId =parseInt(route.snapshot.paramMap.get('game-id')!);
     this.readGame();
   }

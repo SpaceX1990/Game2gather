@@ -1,10 +1,15 @@
-
 .carousel {
-  margin: 0 auto;
-  background-color: #b3e7ee;
+  border: #0b68ea;
 }
 
-.carousel_button {
-  align-content: end;
+.carousel_container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
 }
+
+.p-carousel-items-container {
+  justify-content: center;
+}
+
 

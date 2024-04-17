@@ -2,16 +2,20 @@
   <div class="carousel1">
     <p-carousel [value]="sessions" [numVisible]="2" [numScroll]="2" [responsiveOptions]="">
       <ng-template let-sessions pTemplate="item">
-        <div>
-          <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image"
-                   class="w-6 shadow-2"
-                   width="400"></p-image>
-        </div>
-        <div>
-          <h4 class="mb-1">{{ sessions?.sessionTitel }}</h4>
-          <h6 class="mt-0 mb-3">Max Player: {{ sessions?.maxPlayer }}</h6>
-          <div class="carousel_button">
-            <p-button label="Session löschen" (onClick)="showdeleteDialog()"></p-button>
+        <div style="display:flex; justify-content: center">
+          <div>
+            <div>
+              <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image"
+                       class="w-6 shadow-2"
+                       width="400"></p-image>
+            </div>
+            <div>
+              <h4 class="mb-1">{{ sessions?.sessionTitel }}</h4>
+              <h6 class="mt-0 mb-3">Max Player: {{ sessions?.maxPlayer }}</h6>
+              <div class="carousel_button">
+                <p-button label="Session löschen" (onClick)="showdeleteDialog()"></p-button>
+              </div>
+            </div>
           </div>
         </div>
       </ng-template>

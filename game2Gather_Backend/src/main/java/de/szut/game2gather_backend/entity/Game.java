@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -43,7 +42,8 @@ public class Game {
     @Nullable
     private byte[] imageBytes;
 
-    @Nullable
-    @OneToMany(mappedBy = "game")
-    private List<Comment> comments = new ArrayList<>();
+    //escaped is is not used yet and to keep app working
+    /*@ManyToMany
+    @JoinTable
+    private List<Comment> comments = new ArrayList<>();*/
 }

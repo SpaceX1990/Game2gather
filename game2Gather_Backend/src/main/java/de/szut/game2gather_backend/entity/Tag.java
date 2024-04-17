@@ -1,12 +1,13 @@
 package de.szut.game2gather_backend.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +20,4 @@ public class Tag {
 
     @NonNull
     private String label;
-
-    @ManyToMany(mappedBy = "tags")
-    private List<Game> games;
 }

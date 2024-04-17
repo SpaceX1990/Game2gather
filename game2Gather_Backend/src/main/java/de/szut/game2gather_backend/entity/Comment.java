@@ -28,9 +28,4 @@ public class Comment {
 
     @NonNull
     private String content;
-
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name="game_id", nullable=false)
-    private Game game;
 }

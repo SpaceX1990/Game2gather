@@ -1,31 +1,35 @@
 package de.szut.game2gather_backend.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="Comment")
-public class Comment {
+public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NonNull
-    private String author;
-
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime dateCreate;
+    private String sessionTitle;
 
     @NonNull
-    private String content;
+    private boolean active;
+
+    @NonNull
+    private String sessionVoteLink;
+
+    @Nullable
+    private int maxPlayer;
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "fk_user_Id")
+    private User user;
 }

@@ -5,3 +5,5 @@ DELETE FROM Game;
 DELETE FROM [User];
 
 DELETE FROM Session;
+
+DELETE FROM Vote;

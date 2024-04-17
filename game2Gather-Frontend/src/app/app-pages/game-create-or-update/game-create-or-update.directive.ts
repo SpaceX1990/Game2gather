@@ -1,5 +1,5 @@
 import {Directive, Injector} from '@angular/core';
-import {Tag} from "../../models/tag.model";
+import {TagModel} from "../../models/tag.model";
 import {Genre} from "../../models/genre.model";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -8,38 +8,49 @@ import {GenreService} from "../../service/genre.service";
 import {GameApiService} from "../../service/game-api.service";
 
 @Directive({
-  selector: '[appGameCreateOrUpdate]'
+    selector: '[appGameCreateOrUpdate]'
 })
 export abstract class GameCreateOrUpdateDirective {
 
-  tagsOptions: Tag[] = [];
-  genresOptions: Genre[] = [];
-  gameForm: FormGroup;
-  protected _fb: FormBuilder;
-  protected router: Router;
-  protected tagService: TagService;
-  protected genreService: GenreService;
-  protected gameApiService: GameApiService;
-  protected submitLabel = '';
+    tagsOptions: TagModel[] = [];
+    genresOptions: Genre[] = [];
+    gameForm: FormGroup;
+    protected _fb: FormBuilder;
+    protected router: Router;
+    protected tagService: TagService;
+    protected genreService: GenreService;
+    protected gameApiService: GameApiService;
+    protected submitLabel = '';
 
-  constructor(private injector: Injector) {
-    this._fb = injector.get(FormBuilder)
-    this.router = injector.get(Router)
-    this.tagService = injector.get(TagService)
-    this.genreService = injector.get(GenreService)
-    this.gameApiService = injector.get(GameApiService)
+    constructor(private injector: Injector) {
+        this._fb = injector.get(FormBuilder)
+        this.router = injector.get(Router)
+        this.tagService = injector.get(TagService)
+        this.genreService = injector.get(GenreService)
+        this.gameApiService = injector.get(GameApiService)
 
-    this.tagsOptions = this.tagService.getAll();
-    this.genresOptions = this.genreService.getAll();
-    this.gameForm = this._fb.group({
-      title: '',
-      minPlayer: 1,
-      maxPlayer: new FormControl<number>(1, [Validators.max(15)]),
-      tags: null as Tag[] | null,
-      genre: ''
-    })
-  }
+        this.genresOptions = this.genreService.getAll();
+        this.gameForm = this._fb.group({
+            title: '',
+            minPlayer: 1,
+            maxPlayer: new FormControl<number>(1, [Validators.max(15)]),
+            tags: null as TagModel[] | null,
+            genre: ''
+        })
 
-  onFormSubmit() {
-  }
+        this.getAllTags();
+    }
+
+    getAllTags() {
+        this.tagService.getAllTags().subscribe(result => {
+            this.tagsOptions = result;
+        });
+    }
+
+    compareFn(c1: any, c2: any): boolean {
+        return c1 && c2 &&( c1.id === c2.id || c2 === c1.id);
+    }
+
+    onFormSubmit() {
+    }
 }

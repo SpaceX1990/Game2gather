@@ -15,7 +15,7 @@
 
   <mat-form-field>
     <mat-label>Tags</mat-label>
-    <mat-select formControlName="tags" multiple>
+    <mat-select formControlName="tags" [compareWith]="compareFn" multiple>
       @for(tag of tagsOptions; track tag) {
         <mat-option [value]="tag">{{tag.label}}</mat-option>
       }

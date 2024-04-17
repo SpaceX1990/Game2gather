@@ -16,7 +16,7 @@ const routes: Routes = [mainpageRoute, spielesammlungRoute, sessionliste, create
 const invalidRoute: Route = {path: "**", redirectTo: "/mainpage"}
 
 @NgModule({
-  imports: [RouterModule.forRoot([...routes, invalidRoute])],
+  imports: [RouterModule.forRoot([...routes, ])],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

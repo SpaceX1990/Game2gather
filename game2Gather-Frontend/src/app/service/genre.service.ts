@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Tag} from "../models/tag.model";
+import {TagModel} from "../models/tag.model";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class GenreService {
 
   constructor() { }
 
-  getAll(): Tag[]{
+  getAll(): TagModel[]{
     return [
       {
         id: 1,

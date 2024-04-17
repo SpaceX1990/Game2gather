@@ -27,8 +27,10 @@ export class GameUpdateComponent extends GameCreateOrUpdateDirective {
       if (this.genresOptions.filter((genre) => genre.label === value.genre ).length === 0) {
         this.genresOptions.push({id: 1, label: value.genre});
       }
-
+      console.log(value.tags)
       this.gameForm.patchValue(value);
+
+      console.log(this.gameForm.get("tags")?.value)
     });
   }
 

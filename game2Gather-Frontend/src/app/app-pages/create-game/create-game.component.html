@@ -1,19 +1,21 @@
 
-<form [formGroup]="gameForm">
-  <mat-form-field>
-    <mat-label>Input</mat-label>
+<form [formGroup]="gameForm" class="form-container">
+  <mat-form-field class="form-field">
+    <mat-label>Title</mat-label>
     <input matInput formControlName="title">
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Input</mat-label>
-    <input matInput formControlName="minimumPlayers">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Input</mat-label>
-    <input matInput formControlName="maximumPlayers">
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Minimum Players:</mat-label>
+    <input type="number" matInput formControlName="minimumPlayers">
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="form-field">
+    <mat-label>Maximum Players:</mat-label>
+    <input type="number" matInput formControlName="maximumPlayers">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
     <mat-label>Tags</mat-label>
     <mat-select formControlName="tags" multiple>
       @for(tag of tagsOptions; track tag) {
@@ -22,17 +24,15 @@
     </mat-select>
 
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="form-field">
     <mat-label>Genre</mat-label>
     <mat-select formControlName="genre">
       @for(genre of genresOptions; track genre) {
-        <mat-option [value]="genre.id">{{genre.label}}</mat-option>
+        <mat-option [value]="genre.value">{{genre.label}}</mat-option>
         }
     </mat-select>
   </mat-form-field>
 </form>
-
-
 
 
 <button mat-raised-button color="primary" (click)="saveNewGame()">Save new game</button>

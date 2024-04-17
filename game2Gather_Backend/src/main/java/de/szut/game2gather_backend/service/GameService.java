@@ -16,6 +16,7 @@ public class GameService {
 
     private final GameRepository repository;
     private final TagService tagService;
+    private final GenreService genreService;
 
     public Optional<Game> read(int id) {
         return repository.findById(id);
@@ -28,13 +29,14 @@ public class GameService {
     public void delete(int id) {
         repository.deleteById(id);
     }
-    public Game create(@RequestBody CreateGameCommand createGameCommand) {
+    public Game create(CreateGameCommand createGameCommand) {
         Game game = new Game();
         game.setId(createGameCommand.getId());
         game.setMinPlayer(createGameCommand.getMinimumPlayers());
         game.setMaxPlayer(createGameCommand.getMaximumPlayers());
         game.setTitle(createGameCommand.getTitle());
         game.setTags(tagService.readAllWithIds(createGameCommand.getTags()));
+        game.setGenre(createGameCommand.getGenre());
         return repository.save(game);
     }
 }

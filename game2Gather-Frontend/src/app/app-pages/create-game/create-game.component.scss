@@ -1,0 +1,9 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Opcjonalne: dodaje odstęp między polami */
+}
+
+.form-field {
+  width: 15%; /* Opcjonalne: ustawia szerokość pól na 100% */
+}

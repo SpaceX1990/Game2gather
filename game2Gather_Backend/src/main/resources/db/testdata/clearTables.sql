@@ -1,3 +1,7 @@
 DELETE FROM Tag;
 
 DELETE FROM Game;
+
+DELETE FROM [User];
+
+DELETE FROM Session;

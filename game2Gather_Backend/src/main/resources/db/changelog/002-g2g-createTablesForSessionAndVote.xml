@@ -69,7 +69,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="fk_session_id" type="INT">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="fk_player_id" type="INT">
                 <constraints nullable="false"/>

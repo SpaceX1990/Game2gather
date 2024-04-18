@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Genre} from "../models/genre.model";
+import {GenreModel} from "../models/genre.model";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
@@ -10,8 +10,8 @@ export class GenreService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Genre[]>{
-    return this.http.get<Genre[]>("api/genre"); // pobieranie z backendu do frontendu
+  getAll(): Observable<GenreModel[]>{
+    return this.http.get<GenreModel[]>("api/genre");
   }
 
 }

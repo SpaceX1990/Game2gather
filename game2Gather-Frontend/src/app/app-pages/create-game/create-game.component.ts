@@ -3,7 +3,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angul
 import {Router} from "@angular/router";
 import {TagService} from "../../service/tag.service";
 import {TagModel} from "../../models/tag.model";
-import {Genre} from "../../models/genre.model";
+import {GenreModel} from "../../models/genre.model";
 import {GenreService} from "../../service/genre.service";
 import {HttpClient} from "@angular/common/http";
 import {GameApiService} from "../../service/game-api.service";
@@ -17,14 +17,14 @@ import {GameApiService} from "../../service/game-api.service";
 export class CreateGameComponent {
 
   tagsOptions: TagModel[] = [];
-  genresOptions: Genre[] = [];
+  genresOptions: GenreModel[] = [];
 
   public gameForm = this._fb.group({
     title: new FormControl<String>('', [Validators.required]),
     minimumPlayers: new FormControl<number>(1, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]),
     maximumPlayers: new FormControl<number>(1, [Validators.required, Validators.min(1), Validators.max(15), Validators.pattern(/^\d+$/)]),
     tags: null as TagModel[] | null,
-    genre: null as Genre | null
+    genre: null as GenreModel | null
   });
 
   constructor(private readonly _fb: FormBuilder,
@@ -51,4 +51,4 @@ export class CreateGameComponent {
   }
 }
 
-//TODO: bild hochladen, design
+

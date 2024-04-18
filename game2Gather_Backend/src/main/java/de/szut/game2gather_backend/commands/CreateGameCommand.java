@@ -12,6 +12,6 @@ public class CreateGameCommand {
     private int minimumPlayers;
     private int maximumPlayers;
     private List<Integer> tags;
-    private Genre genre; // z frontendu do backendu jako command ??   input CQRS
+    private Genre genre;
 
 }

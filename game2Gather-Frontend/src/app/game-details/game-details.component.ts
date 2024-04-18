@@ -18,8 +18,8 @@ import { TagModule } from 'primeng/tag';
 })
 export class GameDetailsComponent{
 
-  tagsOptions: any[] | undefined = [];
-  genresOptions: string | undefined;
+  // tagsOptions: any[] | undefined = [];
+  // genresOptions: string | undefined;
 
   public gameForm: FormGroup | undefined;
   public gameId: number | undefined;
@@ -32,8 +32,8 @@ export class GameDetailsComponent{
               private genreService: GenreService,
               private http: HttpClient,
               public tag: TagModule) {
-    this.tagsOptions = this.game?.tags;
-    this.genresOptions = this.game?.genre;
+    // this.tagsOptions = this.game?.tags;
+    // this.genresOptions = this.game?.genre;
     this.gameId =parseInt(route.snapshot.paramMap.get('game-id')!);
     this.readGame();
   }

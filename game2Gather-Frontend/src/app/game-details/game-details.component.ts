@@ -7,7 +7,6 @@ import {TagService} from "../service/tag.service";
 import {GenreService} from "../service/genre.service";
 import {HttpClient} from "@angular/common/http";
 import {TagModel} from "../models/tag.model";
-import {Genre} from "../models/genre.model";
 import {GameModel} from "../models/game.model";
 import { TagModule } from 'primeng/tag';
 

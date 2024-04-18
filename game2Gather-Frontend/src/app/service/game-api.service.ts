@@ -18,7 +18,7 @@ export class GameApiService {
     return this.http.delete("/api/game/delete/" + id);
   }
 
-  saveGame(game: GameModel): Observable<GameModel> {
+  saveGame(game: any): Observable<GameModel> {
     return this.http.post<GameModel>('/api/game',game);
   }
 

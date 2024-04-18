@@ -29,5 +29,4 @@ public class GameController {
     public Game create(@RequestBody CreateGameCommand createGameCommand) {
         return gameService.create(createGameCommand);
     }
- //nothing
 }

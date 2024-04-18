@@ -26,7 +26,7 @@ public enum Genre {
     FANTASY("Fantasy"),
     SCIENCE_FICTION("Science-Fiction"),
     HISTORISCHES_SPIEL("Historisches Spiel"),
-    RÄTSELSPIEL("Rätselspiel"),
+    RATESPIEL("Ratespiel"),
     SAMMELKARTENSPIEL("Sammelkartenspiel"),
     WORTSPIEL("Wortspiel"),
     KOOPERATIVES_SPIEL("Kooperatives Spiel"),

@@ -19,8 +19,8 @@ public class TagService {
         return repository.findAll();
     }
 
-    public Set<Tag> readAllWithIds(List<Integer> ids) {
-        return Set.copyOf(repository.findAllById(ids));
+    public List<Tag> readAllWithIds(List<Integer> ids) {
+        return repository.findAllById(ids);
     }
 
 

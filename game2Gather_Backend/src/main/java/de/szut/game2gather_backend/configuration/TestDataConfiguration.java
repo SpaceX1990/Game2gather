@@ -24,7 +24,12 @@ public class TestDataConfiguration {
     @PostConstruct
     private void generateTestData() {
         generateDatabaseData("db/testdata/clearTables.sql");
-        generateDatabaseData("db/testData/gamesData.sql");
+        generateDatabaseData("db/testdata/gamesData.sql");
+        generateDatabaseData("db/testdata/tagsData.sql");
+        generateDatabaseData("db/testdata/commentsData.sql");
+        generateDatabaseData("db/testdata/game_tagsData.sql");
+        generateDatabaseData("db/testdata/userData.sql");
+        generateDatabaseData("db/testdata/sessionData.sql");
     }
 
 

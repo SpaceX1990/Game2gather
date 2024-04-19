@@ -1,13 +1,16 @@
+<p-button>Neue Session erstellen</p-button>
+
 <div class="carousel_container">
   <div class="carousel1">
+    <h1 class="sessionlist_title">Neue Session</h1>
     <p-carousel [value]="sessions" [numVisible]="3" [numScroll]="3" [responsiveOptions]="">
       <ng-template let-sessions pTemplate="item">
         <div style="display:flex; justify-content: center">
-          <div>
+          <div class="carousel_border">
             <div>
               <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image"
                        class="w-6 shadow-2"
-                       width="300"></p-image>
+                       width="250"></p-image>
             </div>
             <div>
               <h4 class="mb-1">{{ sessions?.sessionTitel }}</h4>
@@ -23,14 +26,15 @@
   </div>
 
   <div class="carousel2">
+    <h1 class="sessionlist_title">Alte Session</h1>
     <p-carousel [value]="sessions" [numVisible]="3" [numScroll]="3" [responsiveOptions]="">
       <ng-template let-sessions pTemplate="item">
         <div style="display:flex; justify-content: center">
-          <div>
+          <div class="carousel_border">
             <div>
               <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image"
                        class="w-6 shadow-2"
-                       width="300"></p-image>
+                       width="250"></p-image>
             </div>
             <div>
               <h4 class="mb-1">{{ sessions?.sessionTitel }}</h4>

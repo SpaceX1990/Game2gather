@@ -3,8 +3,8 @@
 <div class="carousel_container">
   <div class="carousel1">
     <h1 class="sessionlist_title">Neue Session</h1>
-    <p-carousel [value]="sessions" [numVisible]="3" [numScroll]="3" [responsiveOptions]="">
-      <ng-template let-sessions pTemplate="item">
+    <p-carousel [value]="activeSessions" [numVisible]="3" [numScroll]="3" [responsiveOptions]="">
+      <ng-template let-activeSessions pTemplate="item">
         <div style="display:flex; justify-content: center">
           <div class="carousel_border">
             <div>
@@ -13,8 +13,8 @@
                        width="250"></p-image>
             </div>
             <div>
-              <h4 class="mb-1">{{ sessions?.sessionTitel }}</h4>
-              <h6 class="mt-0 mb-3">Max Player: {{ sessions?.maxPlayer }}</h6>
+              <h4 class="mb-1">{{ activeSessions?.sessionTitel }}</h4>
+              <h6 class="mt-0 mb-3">Max Player: {{ activeSessions?.maxPlayer }}</h6>
               <div class="carousel_button">
                 <p-button label="Session löschen" (onClick)="showdeleteDialog()"></p-button>
               </div>
@@ -24,10 +24,10 @@
       </ng-template>
     </p-carousel>
   </div>
-
+<!--
   <div class="carousel2">
     <h1 class="sessionlist_title">Alte Session</h1>
-    <p-carousel [value]="sessions" [numVisible]="3" [numScroll]="3" [responsiveOptions]="">
+    <p-carousel [value]="" [numVisible]="3" [numScroll]="3" [responsiveOptions]="">
       <ng-template let-sessions pTemplate="item">
         <div style="display:flex; justify-content: center">
           <div class="carousel_border">
@@ -47,5 +47,5 @@
         </div>
       </ng-template>
     </p-carousel>
-  </div>
+  </div>-->
 </div>

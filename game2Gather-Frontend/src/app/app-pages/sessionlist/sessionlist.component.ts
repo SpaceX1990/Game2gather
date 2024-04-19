@@ -1,27 +1,33 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SessionModel} from "../../models/SessionModel";
+import {SessionService} from "../../services/session.service";
 
 @Component({
   selector: 'app-sessionlist',
   templateUrl: './sessionlist.component.html',
   styleUrls: ['./sessionlist.component.scss']
 })
-export class SessionlistComponent {
+export class SessionlistComponent implements OnInit{
 
-  session: SessionModel | undefined;
+  activeSessions: SessionModel[] | any;
+  pastSessions: SessionModel[] | any;
 
-  sessions: SessionModel[] = [
-    {id: 12, sessionTitel: 'Catan', maxPlayer: 5},
-    {id: 13, sessionTitel: 'Siedler von Catan', maxPlayer: 5},
-    {id: 14, sessionTitel: 'Pandemic Legacy', maxPlayer: 5},
-    {id: 15, sessionTitel: 'Ticket to Ride', maxPlayer: 3},
-    {id: 16, sessionTitel: 'Carcassonne', maxPlayer: 1},
-    {id: 17, sessionTitel: 'Scrabble'},
-    {id: 18, sessionTitel: 'Codenames'},
-    {id: 19, sessionTitel: 'Risiko', maxPlayer: 4},
-    {id: 20, sessionTitel: 'Schach', maxPlayer: 2}
-  ];
+  constructor(private sessionService: SessionService) {
+  }
 
+  ngOnInit() {
+    this.getAllActiveSessions()
+  }
+
+  getAllActiveSessions() {
+    this.sessionService.getAllActiveSessios().subscribe(sessions => {
+      this.activeSessions = sessions
+    })
+  }
+
+  getAllPastSessions() {
+
+  }
 
   showdeleteDialog() {
 

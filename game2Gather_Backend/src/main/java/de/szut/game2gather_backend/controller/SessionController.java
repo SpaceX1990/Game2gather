@@ -19,5 +19,9 @@ public class SessionController {
     public List<Session> getAllActiveSessions() {
         return sessionService.getAllActiveSession();
     }
+    @GetMapping("/past")
+    public List<Session> getAllPastSessions() {
+        return sessionService.getAllPastSession();
+    }
 
 }

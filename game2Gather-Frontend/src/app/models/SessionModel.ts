@@ -1,8 +1,8 @@
 export interface SessionModel {
   id: number,
-  sessionTitel: string,
-  datePlayed?: string,
-  sessionVoteLink?: string,
-  maxPlayer?: number,
+  sessionTitle: string,
+  active: boolean,
+  sessionVoteLink: string,
+  maxPlayer: number,
   userId?: number
 }

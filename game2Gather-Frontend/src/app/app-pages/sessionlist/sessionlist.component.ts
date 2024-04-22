@@ -7,7 +7,7 @@ import {SessionService} from "../../services/session.service";
   templateUrl: './sessionlist.component.html',
   styleUrls: ['./sessionlist.component.scss']
 })
-export class SessionlistComponent implements OnInit{
+export class SessionlistComponent implements OnInit {
 
   activeSessions: SessionModel[] | any;
   pastSessions: SessionModel[] | any;
@@ -16,7 +16,8 @@ export class SessionlistComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.getAllActiveSessions()
+    this.getAllActiveSessions();
+    this.getAllPastSessions();
   }
 
   getAllActiveSessions() {
@@ -26,10 +27,9 @@ export class SessionlistComponent implements OnInit{
   }
 
   getAllPastSessions() {
-
+    this.sessionService.getAllPastSessios().subscribe(sessions => {
+      this.pastSessions = sessions;
+    })
   }
 
-  showdeleteDialog() {
-
-  }
 }

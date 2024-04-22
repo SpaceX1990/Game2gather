@@ -14,6 +14,9 @@ public class SessionService {
     private final SessionRepository sessionRepository;
 
     public List<Session> getAllActiveSession() {
-        return sessionRepository.findAllByActiveTrue();
+        return sessionRepository.findByActiveTrue();
+    }
+    public List<Session> getAllPastSession() {
+        return sessionRepository.findByActiveFalse();
     }
 }

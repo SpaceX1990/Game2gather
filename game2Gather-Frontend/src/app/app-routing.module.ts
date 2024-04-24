@@ -1,7 +1,7 @@
 import {Route, RouterModule, Routes} from '@angular/router';
 import {MainpageComponent} from "./app-pages/mainpage/mainpage.component";
 import {NgModule} from "@angular/core";
-import {GameDetailsComponent} from "./game-details/game-details.component";
+import {GameDetailsComponent} from "./app-pages/game-details/game-details.component";
 import {GameCollectionComponent} from "./app-pages/game-collection/game-collection.component";
 import {SessionlistComponent} from "./app-pages/sessionlist/sessionlist.component";
 import {CreateGameComponent} from "./app-pages/create-game/create-game.component";

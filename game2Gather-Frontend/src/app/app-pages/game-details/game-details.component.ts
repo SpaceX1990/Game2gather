@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {GameApiService} from "../service/game-api.service";
-import {TagService} from "../service/tag.service";
-import {GenreService} from "../service/genre.service";
+import {GameApiService} from "../../service/game-api.service";
+import {TagService} from "../../service/tag.service";
+import {GenreService} from "../../service/genre.service";
 import {HttpClient} from "@angular/common/http";
-import {TagModel} from "../models/tag.model";
-import {GameModel} from "../models/game.model";
+import {TagModel} from "../../models/tag.model";
+import {GameModel} from "../../models/game.model";
 import { TagModule } from 'primeng/tag';
 
 @Component({

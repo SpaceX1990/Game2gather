@@ -20,7 +20,7 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {MatCardModule} from "@angular/material/card";
 import {NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
-import { GameDetailsComponent } from './game-details/game-details.component';
+import { GameDetailsComponent } from './app-pages/game-details/game-details.component';
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {ConfirmDialogModule} from "primeng/confirmdialog";

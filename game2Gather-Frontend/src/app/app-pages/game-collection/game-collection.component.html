@@ -16,7 +16,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-card-title>
-          <p><span>{{ game.title }}</span>{{ game.genre }}</p>
+          <p><span>{{ game.title }}</span>{{ game.genre.label }}</p>
         </mat-card-title>
         <mat-card-subtitle>
           <p-chip *ngFor="let tag of game.tags">{{ tag.label }}</p-chip>

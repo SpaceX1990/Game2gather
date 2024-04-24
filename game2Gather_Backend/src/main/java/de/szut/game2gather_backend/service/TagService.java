@@ -1,6 +1,8 @@
 package de.szut.game2gather_backend.service;
 
 
+import de.szut.game2gather_backend.dto.GameDTO;
+import de.szut.game2gather_backend.dto.TagDTO;
 import de.szut.game2gather_backend.entity.Game;
 import de.szut.game2gather_backend.entity.Tag;
 import de.szut.game2gather_backend.repository.TagRepository;
@@ -16,14 +18,8 @@ import java.util.Set;
 public class TagService {
     private final TagRepository repository;
 
-    public List<Tag> readAll() {
-        return repository.findAll();
-    }
-
-    public List<Tag> readAllWithIds(List<Integer> ids) {
-        if (ids == null || ids.isEmpty()) {
-            return Collections.emptyList();
-        }
-        return repository.findAllById(ids);
+    public List<TagDTO> readAll() {
+        List<Tag> tags = repository.findAll();
+        return tags.stream().map(TagDTO::ofEntity).toList();
     }
 }

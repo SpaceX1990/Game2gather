@@ -19,7 +19,7 @@
     <mat-label>Tags</mat-label>
     <mat-select formControlName="tags" multiple>
       @for(tag of tagsOptions; track tag) {
-        <mat-option [value]="tag.id">{{tag.label}}</mat-option>
+        <mat-option [value]="tag">{{tag.label}}</mat-option>
       }
     </mat-select>
 
@@ -28,7 +28,7 @@
     <mat-label>Genre</mat-label>
     <mat-select formControlName="genre">
       @for(genre of genresOptions; track genre) {
-        <mat-option [value]="genre.value">{{genre.label}}</mat-option>
+        <mat-option [value]="genre">{{genre.label}}</mat-option>
         }
     </mat-select>
   </mat-form-field>
@@ -37,6 +37,7 @@
 
 <button mat-raised-button color="primary" (click)="saveNewGame()">Save new game</button>
 
+<!--TODO: remove this div-->
 <div>
   {{
   gameForm.getRawValue() | json

@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component} from '@angular/core';
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {TagService} from "../../service/tag.service";
 import {TagModel} from "../../models/tag.model";
@@ -15,6 +15,8 @@ import {GameApiService} from "../../service/game-api.service";
   styleUrl: './create-game.component.scss'
 })
 export class CreateGameComponent {
+
+  //TODO: check for validators for required fields before submitting
 
   tagsOptions: TagModel[] = [];
   genresOptions: GenreModel[] = [];
@@ -33,18 +35,18 @@ export class CreateGameComponent {
               private genreService: GenreService,
               private gameService: GameApiService,
               private http: HttpClient) {
-     this.tagService.getAll().subscribe(tags=>{
-       this.tagsOptions = tags;
-     });
+    this.tagService.getAll().subscribe(tags => {
+      this.tagsOptions = tags;
+    });
 
-     this.genreService.getAll().subscribe(genres =>{
-       this.genresOptions = genres;
-     });
+    this.genreService.getAll().subscribe(genres => {
+      this.genresOptions = genres;
+    });
 
   }
 
   saveNewGame() {
-    this.gameService.saveGame(this.gameForm.getRawValue()).subscribe(data =>{
+    this.gameService.saveGame(this.gameForm.getRawValue()).subscribe(data => {
 
       this.router.navigateByUrl('/spielesammlung');
     })

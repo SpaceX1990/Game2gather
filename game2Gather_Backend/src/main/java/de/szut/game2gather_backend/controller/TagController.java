@@ -1,6 +1,7 @@
 package de.szut.game2gather_backend.controller;
 
 
+import de.szut.game2gather_backend.dto.TagDTO;
 import de.szut.game2gather_backend.entity.Tag;
 import de.szut.game2gather_backend.service.TagService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class TagController {
 
 
     @GetMapping()
-    public List<Tag> getAllTags() {
+    public List<TagDTO> getAllTags() {
         return tagService.readAll();
     }
 

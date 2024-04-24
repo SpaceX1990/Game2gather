@@ -21,7 +21,6 @@ import {MatCardModule} from "@angular/material/card";
 import {NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
 import { GameDetailsComponent } from './game-details/game-details.component';
-import { GameFormComponent } from './game-form/game-form.component';
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
@@ -39,7 +38,6 @@ import {TagModule} from "primeng/tag";
     MainpageComponent,
     GameCollectionComponent,
     GameDetailsComponent,
-    GameFormComponent,
     CreateGameComponent,
   ],
     imports: [

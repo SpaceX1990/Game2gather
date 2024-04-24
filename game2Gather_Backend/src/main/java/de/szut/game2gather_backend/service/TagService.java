@@ -7,6 +7,7 @@ import de.szut.game2gather_backend.repository.TagRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -20,8 +21,9 @@ public class TagService {
     }
 
     public List<Tag> readAllWithIds(List<Integer> ids) {
+        if (ids == null || ids.isEmpty()) {
+            return Collections.emptyList();
+        }
         return repository.findAllById(ids);
     }
-
-
 }

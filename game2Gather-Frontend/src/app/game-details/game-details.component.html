@@ -41,7 +41,7 @@
       <div class="container_5">
         <mat-form-field appearance="fill">
           <mat-label>Tags</mat-label>
-          <input matInput formControlName="tags" readonly>
+          <input matInput readonly>
           <li *ngFor="let tag of game?.tags">
             <p-tag value="{{tag.label}}">
             </p-tag>

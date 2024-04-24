@@ -23,9 +23,10 @@ import {ChipModule} from "primeng/chip";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
 import { CreateGameComponent } from './app-pages/create-game/create-game.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,9 @@ import {MatSelectModule} from "@angular/material/select";
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    FileUploadModule,
+    FormsModule
   ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent]

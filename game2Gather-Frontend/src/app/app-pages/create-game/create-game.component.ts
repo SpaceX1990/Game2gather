@@ -7,26 +7,35 @@ import {GenreModel} from "../../models/genre.model";
 import {GenreService} from "../../service/genre.service";
 import {HttpClient} from "@angular/common/http";
 import {GameApiService} from "../../service/game-api.service";
+import {FileUploadEvent} from "primeng/fileupload";
 
+interface UploadEvent {
+  originalEvent: Event;
+  files: File[];
+}
 
 @Component({
   selector: 'app-create-game',
   templateUrl: './create-game.component.html',
   styleUrl: './create-game.component.scss'
 })
+
 export class CreateGameComponent {
 
   //TODO: check for validators for required fields before submitting
 
   tagsOptions: TagModel[] = [];
   genresOptions: GenreModel[] = [];
+  public images: Array<File> = [];
+
 
   public gameForm = this._fb.group({
     title: new FormControl<String>('', [Validators.required]),
     minimumPlayers: new FormControl<number>(1, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]),
     maximumPlayers: new FormControl<number>(1, [Validators.required, Validators.min(1), Validators.max(15), Validators.pattern(/^\d+$/)]),
     tags: null as TagModel[] | null,
-    genre: null as GenreModel | null
+    genre: null as GenreModel | null,
+    image: new FormControl(null )
   });
 
   constructor(private readonly _fb: FormBuilder,
@@ -50,6 +59,10 @@ export class CreateGameComponent {
 
       this.router.navigateByUrl('/spielesammlung');
     })
+  }
+
+  onUpload(event: FileUploadEvent) {
+    console.log(event);
   }
 }
 

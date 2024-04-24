@@ -1,11 +1,10 @@
 package de.szut.game2gather_backend.service;
 
-import de.szut.game2gather_backend.commands.CreateGameCommand;
+import de.szut.game2gather_backend.dto.CreateGameDTO;
 import de.szut.game2gather_backend.entity.Game;
 import de.szut.game2gather_backend.repository.GameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -24,14 +23,14 @@ public class GameService {
     public void delete(int id) {
         repository.deleteById(id);
     }
-    public Game create(CreateGameCommand createGameCommand) {
+    public Game create(CreateGameDTO createGameDTO) {
         Game game = new Game();
-        game.setId(createGameCommand.getId());
-        game.setMinPlayer(createGameCommand.getMinimumPlayers());
-        game.setMaxPlayer(createGameCommand.getMaximumPlayers());
-        game.setTitle(createGameCommand.getTitle());
-        game.setTags(tagService.readAllWithIds(createGameCommand.getTags()));
-        game.setGenre(createGameCommand.getGenre());
+        game.setId(createGameDTO.getId());
+        game.setMinPlayer(createGameDTO.getMinimumPlayers());
+        game.setMaxPlayer(createGameDTO.getMaximumPlayers());
+        game.setTitle(createGameDTO.getTitle());
+        game.setTags(tagService.readAllWithIds(createGameDTO.getTags()));
+        game.setGenre(createGameDTO.getGenre());
         return repository.save(game);
     }
 }

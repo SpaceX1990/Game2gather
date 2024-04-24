@@ -1,6 +1,6 @@
 package de.szut.game2gather_backend.controller;
 
-import de.szut.game2gather_backend.commands.CreateGameCommand;
+import de.szut.game2gather_backend.dto.CreateGameDTO;
 import de.szut.game2gather_backend.entity.Game;
 import de.szut.game2gather_backend.service.GameService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ public class GameController {
     }
 
     @PostMapping()
-    public Game create(@RequestBody CreateGameCommand createGameCommand) {
-        return gameService.create(createGameCommand);
+    public Game create(@RequestBody CreateGameDTO createGameDTO) {
+        return gameService.create(createGameDTO);
     }
 }

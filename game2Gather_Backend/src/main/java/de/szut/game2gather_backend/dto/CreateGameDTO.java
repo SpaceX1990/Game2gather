@@ -1,11 +1,11 @@
-package de.szut.game2gather_backend.commands;
+package de.szut.game2gather_backend.dto;
 import de.szut.game2gather_backend.entity.Genre;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class CreateGameCommand {
+public class CreateGameDTO {
 
     private int id;
     private String title;

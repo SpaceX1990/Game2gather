@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,4 +34,13 @@ public class Session {
     @ManyToOne
     @JoinColumn(name = "fk_user_Id")
     private User user;
+
+    @Nullable
+    @ManyToMany
+    @JoinTable(
+            name = "session_votes",
+            joinColumns = @JoinColumn(name = "session_id"),
+            inverseJoinColumns = @JoinColumn(name = "vote_id")
+    )
+    private List<Vote> votes;
 }

@@ -1,19 +1,27 @@
-.carousel {
-  border: #0b68ea;
-}
-
-.carousel_container {
+.carousel_content {
   display: flex;
   flex-direction: column;
+  margin: 80px;
+  gap: 60px;
 
-  .carousel_border{
+  .carousel-card_border{
     padding: 15px;
-    border: 4px solid cornflowerblue;
+    border: 4px solid #1e88e5;
     border-radius: 5px;
   }
 
-  .sessionlist_title {
-    margin: 50px;
+
+  .carouselItem {
+    border: 7px solid #c9d0d2;
+    border-radius: 10px;
+
+    .carouselItem-title {
+      margin: 30px;
+    }
+  }
+
+  .createSession_button button {
+    margin: 200px;
   }
 }
 

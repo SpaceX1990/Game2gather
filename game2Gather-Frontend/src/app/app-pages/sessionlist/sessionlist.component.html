@@ -1,12 +1,12 @@
-<p-button class="createSession_button">Neue Session erstellen</p-button>
+<button mat-raised-button color="primary" class="createSession_button">Neue Session erstellen</button>
 
-<div class="carousel_container">
-  <div class="carousel1">
-    <h1 class="sessionlist_title">Neue Session</h1>
+<div class="carousel_content">
+  <div class="carouselItem">
+    <h1 class="carouselItem-title">Neue Session</h1>
     <p-carousel [value]="activeSessions" [numVisible]="3" [numScroll]="3" [responsiveOptions]="">
       <ng-template let-activeSessions pTemplate="item">
         <div style="display:flex; justify-content: center">
-          <div class="carousel_border">
+          <div class="carousel-card_border">
             <div>
               <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image"
                        class="w-6 shadow-2"
@@ -16,7 +16,7 @@
               <h4 class="mb-1">{{ activeSessions?.sessionTitle }}</h4>
               <h6 class="mt-0 mb-3">Max Player: {{ activeSessions?.maxPlayer }}</h6>
               <div class="carousel_button">
-                <p-button label="Session löschen"></p-button>
+                <p-button label="Session löschen" severity="danger"></p-button>
               </div>
             </div>
           </div>
@@ -24,12 +24,12 @@
       </ng-template>
     </p-carousel>
   </div>
-  <div class="carousel2">
-    <h1 class="sessionlist_title">Alte Session</h1>
+  <div class="carouselItem">
+    <h1 class="carouselItem-title">Alte Session</h1>
     <p-carousel [value]="pastSessions" [numVisible]="3" [numScroll]="3" [responsiveOptions]="">
       <ng-template let-pastSessions pTemplate="item">
         <div style="display:flex; justify-content: center">
-          <div class="carousel_border">
+          <div class="carousel-card_border">
             <div>
               <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image"
                        class="w-6 shadow-2"
@@ -39,7 +39,7 @@
               <h4 class="mb-1">{{ pastSessions?.sessionTitle }}</h4>
               <h6 class="mt-0 mb-3">Max Player: {{ pastSessions?.maxPlayer }}</h6>
               <div class="carousel_button">
-                <p-button label="Session löschen"></p-button>
+                <p-button label="Session löschen" severity="danger"></p-button>
               </div>
             </div>
           </div>

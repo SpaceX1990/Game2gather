@@ -12,7 +12,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {SidebarModule} from "primeng/sidebar";
 import {BurgermenuComponent} from './standalone-components/sidenav/burgermenu.component';
 import {ButtonModule} from "primeng/button";
-import {MatButton, MatFabButton} from "@angular/material/button";
+import {MatButton, MatButtonModule, MatFabButton} from "@angular/material/button";
 import {ToolbarModule} from "primeng/toolbar";
 import {InputTextModule} from "primeng/inputtext";
 import {ChipsModule} from "primeng/chips";
@@ -22,6 +22,10 @@ import {NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
+import { CreateGameComponent } from './app-pages/create-game/create-game.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -29,6 +33,7 @@ import {ConfirmationService} from "primeng/api";
     SessionlistComponent,
     MainpageComponent,
     GameCollectionComponent,
+    CreateGameComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,8 +53,12 @@ import {ConfirmationService} from "primeng/api";
     InputNumberModule,
     MatCardModule,
     NgOptimizedImage,
+    ConfirmDialogModule,
     ChipModule,
-    ConfirmDialogModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule
   ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent]

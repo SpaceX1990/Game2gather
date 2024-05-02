@@ -10,44 +10,7 @@ import {ConfirmationService} from "primeng/api";
 })
 export class GameCollectionComponent implements OnInit{
   protected isSidebarVisible: boolean = false;
-  protected gameCollection: GameModel[] = [
-    /*{
-      id: 1,
-      title: "testTitle1"
-      , genre: "testGenre1"
-      , tags: ["string", "baum", "meh"],
-      minPlayer: 1,
-      maxPlayer: 3
-    },{
-      id: 2,
-      title: "testTitle1"
-      , genre: "testGenre1"
-      , tags: ["string", "baum", "meh"],
-      minPlayer: 1,
-      maxPlayer: 3
-    },{
-      id: 3,
-      title: "Ich mag Bäume"
-      , genre: "Baum"
-      , tags: ["tag1", "tag2", "tag3"],
-      minPlayer: 4,
-      maxPlayer: 10
-    },{
-      id: 3,
-      title: "Ich mag Bäume"
-      , genre: "Baum"
-      , tags: ["tag1", "tag2", "tag3"],
-      minPlayer: 4,
-      maxPlayer: 10
-    },{
-      id: 3,
-      title: "Ich mag Bäume"
-      , genre: "Baum"
-      , tags: ["tag1", "tag2", "tag3"],
-      minPlayer: 4,
-      maxPlayer: 10
-    }*/
-  ]
+  protected gameCollection: GameModel[] = []
 
   constructor(private gameApiService: GameApiService, private confirmationService: ConfirmationService) {
   }

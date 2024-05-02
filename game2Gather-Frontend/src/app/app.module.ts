@@ -22,6 +22,8 @@ import {NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
+import {CarouselModule} from "primeng/carousel";
+import {ImageModule} from "primeng/image";
 import { CreateGameComponent } from './app-pages/create-game/create-game.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
@@ -55,6 +57,8 @@ import {MatSelectModule} from "@angular/material/select";
     NgOptimizedImage,
     ConfirmDialogModule,
     ChipModule,
+    CarouselModule,
+    ImageModule,
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,

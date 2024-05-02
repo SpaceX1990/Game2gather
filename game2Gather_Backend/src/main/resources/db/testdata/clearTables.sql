@@ -19,3 +19,5 @@ DELETE FROM Genre;
 DELETE FROM Vote;
 
 DELETE FROM Session;
+
+DELETE FROM Vote;

@@ -30,4 +30,5 @@ export class GameApiService {
   updateGame(game: GameModel): Observable<GameModel> {
     return this.http.put<GameModel>("/api/game", game);
   }
+
 }

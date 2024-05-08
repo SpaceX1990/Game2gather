@@ -1,47 +1,39 @@
+<div class="form-page">
+  <form [formGroup]="gameForm" class="form-container">
+    <mat-form-field class="form-field">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
 
-<form [formGroup]="gameForm" class="form-container">
-  <mat-form-field class="form-field">
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title">
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Minimum Players:</mat-label>
+      <input type="number" matInput formControlName="minPlayer">
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="form-field">
-    <mat-label>Minimum Players:</mat-label>
-    <input type="number" matInput formControlName="minPlayer">
-  </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Maximum Players:</mat-label>
+      <input type="number" matInput formControlName="maxPlayer">
+    </mat-form-field>
 
-  <mat-form-field class="form-field">
-    <mat-label>Maximum Players:</mat-label>
-    <input type="number" matInput formControlName="maxPlayer">
-  </mat-form-field>
-
-  <mat-form-field class="form-field">
-    <mat-label>Tags</mat-label>
-    <mat-select formControlName="tags" [compareWith]="compareFn" multiple>
-      @for(tag of tagsOptions; track tag) {
-        <mat-option [value]="tag">{{tag.label}}</mat-option>
-      }
-    </mat-select>
-
-  </mat-form-field>
-  <mat-form-field class="form-field">
-    <mat-label>Genre</mat-label>
-    <mat-select formControlName="genre">
-      @for(genre of genresOptions; track genre) {
-        <mat-option [value]="genre">{{genre.label}}</mat-option>
+    <mat-form-field class="form-field">
+      <mat-label>Tags</mat-label>
+      <mat-select formControlName="tags" [compareWith]="compareFn" multiple>
+        @for (tag of tagsOptions; track tag) {
+          <mat-option [value]="tag">{{ tag.label }}</mat-option>
         }
-    </mat-select>
-  </mat-form-field>
-</form>
+      </mat-select>
+
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Genre</mat-label>
+      <mat-select formControlName="genre" [compareWith]="compareFn">
+        @for (genre of genresOptions; track genre) {
+          <mat-option [value]="genre">{{ genre.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </form>
 
 
-<button mat-raised-button color="primary" (click)="onFormSubmit()">{{submitLabel}}</button>
-
-<!--TODO: remove this div-->
-<div>
-  {{
-  gameForm.getRawValue() | json
-  }}
+  <button mat-raised-button color="primary" [disabled]="!gameForm.valid" (click)="onFormSubmit()">{{ submitLabel }}</button>
 </div>
-
-

@@ -1,0 +1,11 @@
+div.form-page{
+  position: relative;
+  width: 75%;
+  margin: auto;
+
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

@@ -24,10 +24,6 @@ export class GameUpdateComponent extends GameCreateOrUpdateDirective {
     this.gameApiService.getGame(this.gameId).subscribe(value => {
 
       //only temporary till testadta for genre exists
-      if (this.genresOptions.filter((genre) => genre.label === value.genre ).length === 0) {
-        this.genresOptions.push({id: 1, label: value.genre});
-      }
-      console.log(value.tags)
       this.gameForm.patchValue(value);
 
       console.log(this.gameForm.get("tags")?.value)
@@ -37,7 +33,10 @@ export class GameUpdateComponent extends GameCreateOrUpdateDirective {
   override onFormSubmit() {
     let updatedGame: GameModel = this.gameForm.value;
     updatedGame.id = this.gameId;
-    this.gameApiService.updateGame(updatedGame).subscribe();
+    if (this.gameForm.valid) {
+      this.gameApiService.updateGame(updatedGame).subscribe(() => {
+        this.routeToOverview();
+      });
+    }
   }
-
 }

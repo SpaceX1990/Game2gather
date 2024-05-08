@@ -19,4 +19,8 @@ public class SessionService {
     public List<Session> getAllPastSession() {
         return sessionRepository.findByActiveFalse();
     }
+
+    public void delete(int id) {
+        sessionRepository.deleteById(id);
+    }
 }

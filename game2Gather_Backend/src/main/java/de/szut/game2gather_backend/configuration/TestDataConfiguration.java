@@ -30,9 +30,11 @@ public class TestDataConfiguration {
         generateDatabaseData("db/testdata/game_tagsData.sql");
         generateDatabaseData("db/testdata/gameUserData.sql");
         generateDatabaseData("db/testdata/sessionData.sql");
-        generateDatabaseData("db/testdata/voteData.sql");
         generateDatabaseData("db/testdata/genreData.sql");
         generateDatabaseData("db/testdata/game_genreData.sql");
+/*
+        generateDatabaseData("db/testdata/voteData.sql");
+*/
     }
 
 

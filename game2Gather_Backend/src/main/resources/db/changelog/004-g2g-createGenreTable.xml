@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.7.xsd">
+
+    <changeSet id="createGenreTable" author="lam">
+        <createTable tableName="Genre">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="label" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="createGameGenreTable" author="lam">
+        <createTable tableName="game_genre">
+            <column name="game_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="genre_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="game_genre" baseColumnNames="game_id"
+                                 constraintName="FK_game_genre_Game"
+                                 referencedTableName="Game" referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
+        <addForeignKeyConstraint baseTableName="game_genre" baseColumnNames="genre_id"
+                                 constraintName="FK_game_genre_Genre"
+                                 referencedTableName="Genre" referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="removeGenreFromGameTable" author="lam">
+        <dropColumn tableName="game" columnName="genre"/>
+    </changeSet>
+</databaseChangeLog>

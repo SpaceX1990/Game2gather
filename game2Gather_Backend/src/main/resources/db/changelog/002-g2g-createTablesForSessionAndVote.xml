@@ -74,7 +74,9 @@
             <column name="fk_player_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="fk_game_id" type="INT" defaultValue="NULL"/>
+            <column name="fk_game_id" type="INT" defaultValue="NULL">
+            <constraints nullable="true"/>
+            </column>
             <column name="dateOption" type="DATETIME" defaultValue="NULL"/>
             <column name="foodOption" type="NVARCHAR(255)" defaultValue="NULL"/>
             <column name="vote_value" type="NVARCHAR(255)">

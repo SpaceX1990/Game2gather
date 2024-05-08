@@ -22,11 +22,7 @@ export class GameUpdateComponent extends GameCreateOrUpdateDirective {
 
   private getGameToUpdate() {
     this.gameApiService.getGame(this.gameId).subscribe(value => {
-
-      //only temporary till testadta for genre exists
       this.gameForm.patchValue(value);
-
-      console.log(this.gameForm.get("tags")?.value)
     });
   }
 

@@ -12,8 +12,6 @@ import {GameApiService} from "../../service/game-api.service";
 })
 export abstract class GameCreateOrUpdateDirective {
 
-  //TODO: check for validators for required fields before submitting
-
   tagsOptions: TagModel[] = [];
   genresOptions: GenreModel[] = [];
   gameForm: FormGroup;
@@ -30,13 +28,12 @@ export abstract class GameCreateOrUpdateDirective {
     this.tagService = injector.get(TagService)
     this.genreService = injector.get(GenreService)
     this.gameApiService = injector.get(GameApiService)
-//TODO: validators
     this.gameForm = this._fb.group({
-      title: new FormControl(null, [Validators.required, Validators.minLength(1)]),
-      minPlayer: new FormControl<number>(1, [Validators.required,Validators.min(1),Validators.min(15)]),
-      maxPlayer: new FormControl<number>(1, [Validators.max(15)]),
+      title: new FormControl<String>("", [Validators.required]),
+      minPlayer: new FormControl<number>(1, [Validators.required]),
+      maxPlayer: new FormControl<number>(4, [Validators.required]),
       tags: null as TagModel[] | null,
-      genre: null
+      genre: null as GenreModel | null
     })
 
     this.tagService.getAll().subscribe(tags => {

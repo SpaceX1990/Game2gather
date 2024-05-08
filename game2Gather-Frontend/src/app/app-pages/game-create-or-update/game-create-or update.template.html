@@ -2,17 +2,17 @@
   <form [formGroup]="gameForm" class="form-container">
     <mat-form-field class="form-field">
       <mat-label>Title</mat-label>
-      <input matInput formControlName="title">
+      <input matInput formControlName="title" [required]="true">
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="form-field">
       <mat-label>Minimum Players:</mat-label>
-      <input type="number" matInput formControlName="minPlayer">
+      <input type="number" min="1" [max]="gameForm.get('maxPlayer')?.value || 15" matInput formControlName="minPlayer">
     </mat-form-field>
 
     <mat-form-field class="form-field">
       <mat-label>Maximum Players:</mat-label>
-      <input type="number" matInput formControlName="maxPlayer">
+      <input type="number" [min]="gameForm.get('minPlayer')?.value || 1" matInput formControlName="maxPlayer">
     </mat-form-field>
 
     <mat-form-field class="form-field">
@@ -33,7 +33,6 @@
       </mat-select>
     </mat-form-field>
   </form>
-
-
-  <button mat-raised-button color="primary" [disabled]="!gameForm.valid" (click)="onFormSubmit()">{{ submitLabel }}</button>
+  <button mat-raised-button color="primary" [disabled]="!gameForm.valid" (click)="onFormSubmit()">{{ submitLabel }}
+  </button>
 </div>

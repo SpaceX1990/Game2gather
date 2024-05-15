@@ -4,6 +4,9 @@ import de.szut.game2gather_backend.entity.Game;
 import de.szut.game2gather_backend.entity.Session;
 import de.szut.game2gather_backend.service.SessionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,13 +18,20 @@ public class SessionController {
 
     private final SessionService sessionService;
 
+    @GetMapping("/active")
+    public List<Session> getAllActiveSessions() {
+        return sessionService.getAllActiveSession();
     @GetMapping()
     public List<Session> getAll() {
         return sessionService.readAll();
     }
+    @GetMapping("/past")
+    public List<Session> getAllPastSessions() {
+        return sessionService.getAllPastSession();
 
     @DeleteMapping("/delete/{id}")
     public void deleteSession(@PathVariable int id) {
         sessionService.delete(id);
     }
+
 }

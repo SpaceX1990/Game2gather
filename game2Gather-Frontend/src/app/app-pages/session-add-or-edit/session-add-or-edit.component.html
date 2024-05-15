@@ -1,0 +1,24 @@
+<div class="template-description__aboveForm">
+  <p>{{ htmlTemplateName }}</p>
+</div>
+
+<form class="session-form" [formGroup]="sessionForm" *ngIf="sessionForm">
+<label for="title" class="label-requirements">Titel</label>
+  <input id="title" pInputText type="text" formControlName="title">
+
+  <label for="gameOptions" class="label-requirements">Wähle die Spiele aus:"</label>
+  <p-multiSelect
+    [options]="gameList"
+    formControlName="gameOptions"
+    optionLabel="gameOptions"
+    placeholder="Spiele auswählen"/>
+
+
+  <input pInputText formControlName="newFood" (keydown.enter)="addFood()">
+  <p-chips [(ngModel)]="foodOptions"></p-chips>
+
+  <label for="maxPlayer" class="label-requirements">Maximale Spieleranzahl</label>
+  <input id="maxPlayer" pInputText type="text" formControlName="maxPlayer">
+
+  <button type="submit">Session erstellen</button>
+</form>

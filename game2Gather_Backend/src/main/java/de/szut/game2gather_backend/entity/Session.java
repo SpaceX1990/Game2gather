@@ -36,11 +36,27 @@ public class Session {
     private User user;
 
     @Nullable
-    @ManyToMany
+    @OneToMany
     @JoinTable(
-            name = "session_votes",
+            name = "GameVote",
             joinColumns = @JoinColumn(name = "session_id"),
-            inverseJoinColumns = @JoinColumn(name = "vote_id")
-    )
-    private List<Vote> votes;
+            inverseJoinColumns = @JoinColumn(name = "game_vote_id"))
+    private List<GameVote> gameVotes;
+
+    @Nullable
+    @OneToMany
+            /*TODO: @JoinTable(
+                    name = "session_votes",
+                    joinColumns = @JoinColumn(name = "session_id"),
+                    inverseJoinColumns = @JoinColumn(name = "game_vote_id")
+            )*/
+    private List<FoodVote> foodVotes;
+    @Nullable
+    @OneToMany
+            /*TODO: @JoinTable(
+                    name = "session_votes",
+                    joinColumns = @JoinColumn(name = "session_id"),
+                    inverseJoinColumns = @JoinColumn(name = "game_vote_id")
+            )*/
+    private List<DateVote> dateVotes;
 }

@@ -1,7 +1,5 @@
 DELETE FROM Tag;
 
-DELETE FROM Vote;
-
 DELETE FROM Comment;
 
 DELETE FROM game_genre;
@@ -14,7 +12,7 @@ DELETE FROM Tag;
 
 DELETE FROM Genre;
 
-DELETE FROM Vote;
+DELETE FROM GameVote;
 
 DELETE FROM Session;
 

@@ -1,5 +1,6 @@
 package de.szut.game2gather_backend.controller;
 
+import de.szut.game2gather_backend.dto.SessionDTO;
 import de.szut.game2gather_backend.entity.Session;
 import de.szut.game2gather_backend.service.SessionService;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +21,8 @@ public class SessionController {
     }
 
     @GetMapping()
-    public List<Session> getAll() {
-        return /*sessionService.readAll()*/ null;
+    public List<SessionDTO> getAll() {
+        return sessionService.readAll();
     }
 
     @GetMapping("/past")
@@ -31,7 +32,6 @@ public class SessionController {
 
     @DeleteMapping("/delete/{id}")
     public void deleteSession(@PathVariable int id) {
-        /*sessionService.delete(id)*/;
+        sessionService.delete(id);
     }
-
 }

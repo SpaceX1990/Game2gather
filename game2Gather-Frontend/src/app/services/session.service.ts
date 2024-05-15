@@ -18,4 +18,7 @@ export class SessionService {
     return this.http.get<SessionModel[]>("/api/session/past");
   }
 
+  deleteSession(id: number | undefined): Observable<SessionModel> {
+    return this.http.delete<SessionModel>('/api/session/delete/' + id);
+  }
 }

@@ -3,9 +3,7 @@ package de.szut.game2gather_backend.controller;
 import de.szut.game2gather_backend.entity.Session;
 import de.szut.game2gather_backend.service.SessionService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +22,8 @@ public class SessionController {
         return sessionService.getAllPastSession();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteGame(@PathVariable int id) {
+        sessionService.delete(id);
+    }
 }

@@ -63,23 +63,15 @@
                                  onDelete="CASCADE"/>
     </changeSet>
 
-    <changeSet id="create gameVote table" author="dua, lam">
-        <createTable tableName="GameVote">
+    <changeSet id="create gamevote table" author="dua, lam">
+        <createTable tableName="Gamevote">
             <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="fk_session_id" type="INT">
-                <constraints nullable="true" />
-<!--                referencedTableName="Session" referencedColumnNames="id" foreignKeyName="fk_session_vote"-->
+            <column name="voteoption" type="INT" defaultValue="NULL">
+            <constraints nullable="true" referencedTableName="Game" referencedColumnNames="id" foreignKeyName="fk_gamevote"/>
             </column>
-            <column name="fk_player_id" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="voteOption" type="INT" defaultValue="NULL">
-            <constraints nullable="true" referencedTableName="Game" referencedColumnNames="id" foreignKeyName="fk_game_vote"/>
-                <!--referencedTableName="Game" referencedColumnNames="id" foreignKeyName="fk_game_vote"-->
-            </column>
-            <column name="vote_value" type="NVARCHAR(255)">
+            <column name="votevalue" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -93,5 +85,4 @@
                                  referencedTableName="Game" referencedColumnNames="id"
                                  constraintName="fk_game_vote"/>-->
     </changeSet>
-
 </databaseChangeLog>

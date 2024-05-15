@@ -38,9 +38,9 @@ public class Session {
     @Nullable
     @OneToMany
     @JoinTable(
-            name = "GameVote",
+            name = "session_gamevotes",
             joinColumns = @JoinColumn(name = "session_id"),
-            inverseJoinColumns = @JoinColumn(name = "game_vote_id"))
+            inverseJoinColumns = @JoinColumn(name = "gamevote_id"))
     private List<GameVote> gameVotes;
 
     @Nullable

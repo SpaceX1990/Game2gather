@@ -102,9 +102,11 @@ VALUES (1, 2),
        (8, 4),
        (9, 1);
 
-INSERT INTO Player (username)
-VALUES ('max'),
-       ('Susi'),
-       ('Foxy'),
-       ('n1111ce'),
-       ('icke')
+SET IDENTITY_INSERT Player ON
+INSERT INTO Player (id,username)
+VALUES (1,'max'),
+       (2,'Susi'),
+       (3,'Foxy'),
+       (4,'n1111ce'),
+       (5,'icke')
+SET IDENTITY_INSERT Player OFF

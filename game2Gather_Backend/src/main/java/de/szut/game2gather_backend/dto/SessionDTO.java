@@ -15,8 +15,8 @@ public class SessionDTO {
     private Integer maxPlayer;
     private User user;
     private GameVote gameVote;
-    private DateVote dateVote;
-    private FoodVote foodVote;
+    private DateVote dateVotes;
+    private FoodVote foodVotes;
 
     public static SessionDTO ofEntity(Session session) {
         return SessionDTO.builder()
@@ -24,6 +24,10 @@ public class SessionDTO {
                 .sessionTitle(session.getSessionTitle())
                 .active(session.isActive())
                 .maxPlayer(session.getMaxPlayer())
+                .gameVote(session.getGameVote())
+
+                .dateVotes(builder().dateVotes)
+                .foodVotes(builder().foodVotes)
                 .build();
     }
 

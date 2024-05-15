@@ -62,27 +62,4 @@
                                  referencedTableName="User" referencedColumnNames="id"
                                  onDelete="CASCADE"/>
     </changeSet>
-
-    <changeSet id="create gamevote table" author="dua, lam">
-        <createTable tableName="Gamevote">
-            <column name="id" type="INT" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="voteoption" type="INT" defaultValue="NULL">
-            <constraints nullable="true" referencedTableName="Game" referencedColumnNames="id" foreignKeyName="fk_gamevote"/>
-            </column>
-            <column name="votevalue" type="NVARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-       <!-- <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_session_id"
-                                 referencedTableName="Session" referencedColumnNames="id"
-                                 constraintName="fk_session_vote"/>
-        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_player_id"
-                                 referencedTableName="User" referencedColumnNames="id"
-                                 constraintName="fk_player_vote"/>
-        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_game_id"
-                                 referencedTableName="Game" referencedColumnNames="id"
-                                 constraintName="fk_game_vote"/>-->
-    </changeSet>
 </databaseChangeLog>

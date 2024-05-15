@@ -21,9 +21,8 @@ public class SessionService {
         return sessionRepository.findByActiveFalse();
     }
 
-    public List<SessionDTO> readAll() {
-    List<Session> sessions = sessionRepository.findAll();
-    return sessions.stream().map(SessionDTO::ofEntity).toList();
+    public List<Session> readAll() {
+    return  sessionRepository.findAll();
     }
 
     public void delete(int id) {

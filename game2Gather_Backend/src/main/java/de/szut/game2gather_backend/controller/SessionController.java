@@ -15,13 +15,15 @@ public class SessionController {
 
     private final SessionService sessionService;
 
+    //TODO: use DTOs
+
     @GetMapping("/active")
     public List<Session> getAllActiveSessions() {
         return sessionService.getAllActiveSession();
     }
 
     @GetMapping()
-    public List<SessionDTO> getAll() {
+    public List<Session> getAll() {
         return sessionService.readAll();
     }
 

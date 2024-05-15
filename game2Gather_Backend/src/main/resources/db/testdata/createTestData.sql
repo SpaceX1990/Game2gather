@@ -60,11 +60,11 @@ VALUES
 SET IDENTITY_INSERT Genre OFF
 
 SET IDENTITY_INSERT Tag ON
-INSERT INTO Tag (id, label)
-VALUES (1,'Brettspiel'),
-       (2,'Strategie'),
-       (3,'Familie'),
-       (4,'Wortspiel');
+INSERT INTO Tag (label)
+VALUES ('Brettspiel'),
+       ('Strategie'),
+       ('Familie'),
+       ('Wortspiel');
 SET IDENTITY_INSERT Tag OFF
 
 SET IDENTITY_INSERT Comment ON

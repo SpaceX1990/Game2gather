@@ -1,5 +1,4 @@
 
-
 .collection {
   margin: 0 1em 0 1em;
 
@@ -45,12 +44,13 @@
         }
       }
 
-      mat-card-subtitle{
+      mat-card-subtitle {
         display: flex;
         gap: 0.3em;
+        min-height: 21px;
       }
 
-      mat-card-actions{
+      mat-card-actions {
         display: flex;
         justify-content: center;
         gap: 2em;

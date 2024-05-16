@@ -18,10 +18,8 @@ public class TagController {
 
     private final TagService tagService;
 
-
     @GetMapping()
     public List<TagDTO> getAllTags() {
         return tagService.readAll();
     }
-
 }

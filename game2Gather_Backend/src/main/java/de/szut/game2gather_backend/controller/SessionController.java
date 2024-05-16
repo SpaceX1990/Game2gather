@@ -22,6 +22,7 @@ public class SessionController {
         return sessionService.getAllActiveSession();
     }
 
+
     @GetMapping()
     public List<Session> getAll() {
         return sessionService.readAll();

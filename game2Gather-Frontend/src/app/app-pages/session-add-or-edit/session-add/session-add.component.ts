@@ -1,6 +1,6 @@
 import {Component, Injector} from '@angular/core';
 import {SessionAddOrEditDirective} from "../session-add-or-edit.directive";
-import {SessionModel} from "../../../models/sessionModel";
+import {SessionModel} from "../../../models/session.model";
 import {FormBuilder} from "@angular/forms";
 
 @Component({

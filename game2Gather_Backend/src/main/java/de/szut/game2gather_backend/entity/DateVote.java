@@ -1,26 +1,35 @@
 package de.szut.game2gather_backend.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
-@Entity
-@Table(name = "DateVote")
+@Entity(name = "Datevote")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class DateVote {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long voteId;
+    private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_session_id")
-    private Session session;
+    private LocalDateTime voteoption;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_player_id")
-    private Player player;
+    @OneToMany
+    @JoinTable(
+            name = "datevote_votes",
+            joinColumns = @JoinColumn(name = "datevote_id"),
+            inverseJoinColumns = @JoinColumn(name = "vote_id")
+    )
+    List<Vote> votes;
 
-    private Date voteOption;
-
-    private VoteEnum votevalue;
-
+    @JoinColumn(name = "session_id")
+    private int session_id;
 }

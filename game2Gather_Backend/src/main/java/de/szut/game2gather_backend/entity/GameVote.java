@@ -1,9 +1,7 @@
 package de.szut.game2gather_backend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -11,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class GameVote {
 
     @Id
@@ -30,6 +29,11 @@ public class GameVote {
             joinColumns = @JoinColumn(name = "gamevote_id"),
             inverseJoinColumns = @JoinColumn(name = "vote_id")
     )
+    @NonNull
     List<Vote> votes;
+
+
+    @JoinColumn(name = "session_id")
+    private int session_id;
 
 }

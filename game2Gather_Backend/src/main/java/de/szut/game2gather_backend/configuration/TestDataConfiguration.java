@@ -26,7 +26,7 @@ public class TestDataConfiguration {
         generateDatabaseData("db/testdata/clearTables.sql");
         generateDatabaseData("db/testdata/createTestData.sql");
         generateDatabaseData("db/testdata/sessionData.sql");
-        generateDatabaseData("db/testdata/gameVoteData.sql");
+        generateDatabaseData("db/testdata/voteData.sql");
    }
 
 

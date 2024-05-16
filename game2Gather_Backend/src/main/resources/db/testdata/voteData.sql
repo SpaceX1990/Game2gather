@@ -1,11 +1,33 @@
 SET
 IDENTITY_INSERT Gamevote ON;
-INSERT INTO Gamevote (id)
-VALUES (1),
-       (2),
-       (3);
+INSERT INTO Gamevote (id, session_id)
+VALUES (1, 1),
+       (2, 1),
+       (3, 2),
+       (4, 2);
 SET
 IDENTITY_INSERT Gamevote OFF;
+
+SET
+IDENTITY_INSERT Datevote ON;
+INSERT INTO Datevote (id, session_id, voteoption)
+VALUES (1, 1, '2019-09-01 00:00:04'),
+       (2, 1, '2020-09-01 00:00:03'),
+       (3, 2, '2020-09-03 00:00:02'),
+       (4, 2, '2020-10-01 00:00:01');
+SET
+IDENTITY_INSERT Datevote OFF;
+
+SET
+IDENTITY_INSERT Foodvote ON;
+INSERT INTO Foodvote (id, session_id, voteoption)
+VALUES (1, 1, 'Toastbrot'),
+       (2, 1, 'Baumkuchen'),
+       (3, 2, 'Salagne'),
+       (4, 2, 'Gugelhupf'),
+       (5, 1, 'Frischkäse');
+SET
+IDENTITY_INSERT Foodvote OFF;
 
 SET
 IDENTITY_INSERT Vote ON;
@@ -48,11 +70,6 @@ VALUES (1, 'POSITIVE'),
 SET
 IDENTITY_INSERT Vote OFF;
 
-INSERT INTO session_gamevotes (gamevote_id, session_id)
-VALUES (1, 1),
-       (2, 1),
-       (3, 2);
-
 INSERT INTO vote_player (vote_id, player_id)
 VALUES (1, 1),
        (2, 2),
@@ -93,7 +110,8 @@ VALUES (1, 1),
 Insert Into gamevotes_game(gamevote_id, game_id)
 VALUES (1, 1),
        (2, 2),
-       (3, 3);
+       (3, 3),
+       (4, 4);
 
 INSERT INTO gamevote_votes (vote_id, gamevote_id)
 VALUES (1, 1),
@@ -117,6 +135,41 @@ VALUES (1, 1),
        (44, 3),
        (45, 2),
        (46, 1),
+       (47, 2),
+       (48, 3),
+       (49, 3),
+       (50, 1),
+       (51, 2),
+       (52, 3),
+       (53, 1),
+       (54, 1),
+       (55, 2),
+       (56, 3),
+       (57, 2),
+       (58, 1),
+       (59, 2),
+       (60, 3);
+
+INSERT INTO datevote_votes (vote_id, datevote_id)
+VALUES (1, 1),
+       (2, 1),
+       (3, 1),
+       (4, 2),
+       (5, 2),
+       (6, 2),
+       (7, 2),
+       (8, 3),
+       (9, 1),
+       (10, 2),
+       (11, 3),
+       (12, 3),
+       (13, 1),
+       (14, 2),
+       (15, 3),
+       (16, 1);
+
+INSERT INTO foodvote_votes (vote_id, foodvote_id)
+VALUES (46, 1),
        (47, 2),
        (48, 3),
        (49, 3),

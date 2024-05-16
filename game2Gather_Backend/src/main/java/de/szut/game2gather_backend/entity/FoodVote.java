@@ -1,24 +1,34 @@
 package de.szut.game2gather_backend.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "FoodVote")
+import java.util.List;
+
+@Entity(name = "Foodvote")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class FoodVote {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long voteId;
+    private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_session_id")
-    private Session session;
+    private String voteoption;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_player_id")
-    private Player player;
+    @OneToMany
+    @JoinTable(
+            name = "foodvote_votes",
+            joinColumns = @JoinColumn(name = "foodvote_id"),
+            inverseJoinColumns = @JoinColumn(name = "vote_id")
+    )
+    List<Vote> votes;
 
-    private String voteOption;
-
-    private VoteEnum votevalue;
-
+    @JoinColumn(name = "session_id")
+    private int session_id;
 }

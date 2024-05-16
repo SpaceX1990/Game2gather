@@ -1,9 +1,8 @@
-export interface SessionModel{
-  id?: number,
-  title: string,
-  game: number,
+export interface SessionModel {
+  id: number,
+  sessionTitle: string,
+  active: boolean,
+  sessionVoteLink: string,
   maxPlayer: number,
-  genre: string,
-  tags: TagModel[],
-  image?: any
+  userId?: number
 }

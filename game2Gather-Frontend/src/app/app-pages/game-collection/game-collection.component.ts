@@ -10,7 +10,9 @@ import {ConfirmationService} from "primeng/api";
 })
 export class GameCollectionComponent implements OnInit{
   protected isSidebarVisible: boolean = false;
-  protected gameCollection: GameModel[] = []
+  protected gameCollection: GameModel[] = [
+
+  ]
 
   constructor(private gameApiService: GameApiService, private confirmationService: ConfirmationService) {
   }

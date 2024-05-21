@@ -21,4 +21,8 @@ export class SessionService {
   deleteSession(id: number | undefined): Observable<SessionModel> {
     return this.http.delete<SessionModel>('/api/session/delete/' + id);
   }
+
+  saveSession(newSession: SessionModel) {
+    return this.http.post<SessionModel>('/api/session', newSession)
+  }
 }

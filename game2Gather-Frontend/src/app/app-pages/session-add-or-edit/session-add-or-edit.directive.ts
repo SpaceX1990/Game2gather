@@ -3,8 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {SessionService} from "../../service/session.service";
 import {Router} from "@angular/router";
 import {GameModel} from "../../models/game.model";
-import {GameService} from "../../service/game.service";
-import {Observable} from "rxjs";
+import {GameApiService} from "../../service/game-api.service";
 
 @Directive({
   selector: '[appSessionAddOrEdit]',
@@ -15,26 +14,28 @@ export abstract class SessionAddOrEditDirective {
   protected sessionForm!: FormGroup;
   protected isSubmit: boolean = false;
   protected sessionService: SessionService;
-  protected gameService: GameService;
+  protected gameService: GameApiService;
   protected router: Router;
   protected formbuilder: FormBuilder;
-  protected foodOptions: string[] = [];
-  protected dateOptions: Date[] = [];
   protected gameList: GameModel[] = [];
 
 
   protected constructor(private injector: Injector) {
     this.sessionService = injector.get(SessionService);
-    this.gameService = injector.get(GameService);
+    this.gameService = injector.get(GameApiService);
     this.router = injector.get(Router);
     this.formbuilder = injector.get(FormBuilder);
     this.getGames();
   }
 
   getGames() {
-    this.gameService.getAllGames().subscribe(result => {
+    this.gameService.getAllGames().subscribe((result: GameModel[]) => {
       this.gameList = result;
     });
+  }
+
+  onFormSubmit() {
+
   }
 
   onCancelClick() {

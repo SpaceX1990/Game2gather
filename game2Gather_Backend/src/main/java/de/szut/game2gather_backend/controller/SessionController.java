@@ -1,6 +1,7 @@
 package de.szut.game2gather_backend.controller;
 
 import de.szut.game2gather_backend.dto.SessionDTO;
+import de.szut.game2gather_backend.entity.Session;
 import de.szut.game2gather_backend.service.SessionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,6 @@ public class SessionController {
     public List<SessionDTO> getAllActiveSessions() {
         return sessionService.getAllActiveSession();
     }
-
 
     @GetMapping()
     public List<SessionDTO> getAll() {
@@ -39,4 +39,7 @@ public class SessionController {
     public SessionDTO createSession(@RequestBody SessionDTO sessionDTO) {
         return sessionService.create(sessionDTO);
     }
+/*
+    @PostMapping
+    public SessionDTO createSession(@RequestBody Session session) {return sessionService.create(session);}*/
 }

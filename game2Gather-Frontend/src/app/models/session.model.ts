@@ -1,8 +1,10 @@
 export interface SessionModel {
-  id: number,
-  sessionTitle: string,
-  active: boolean,
-  sessionVoteLink: string,
-  maxPlayer: number,
-  userId?: number
+  id: number;
+  sessionTitle: string;
+  active: boolean;
+  maxPlayer: number;
+  userId: number;
+  gameOptions: any[];
+  foodOptions: string[];
+  dateOptions: Date[];
 }

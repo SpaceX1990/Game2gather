@@ -36,8 +36,8 @@ export class SessionlistComponent implements OnInit {
   deleteSession(session: SessionModel | undefined) {
     this.confirmationsService.confirm({
       dismissableMask: true,
-      message:`Soll die Session ${session?.sessionTitle} wirklich gelöscht werden?`,
-      header:"Session löschen",
+      message: `Soll die Session ${session?.sessionTitle} wirklich gelöscht werden?`,
+      header: "Session löschen",
       acceptIcon: "none",
       acceptLabel: "Löschen",
       acceptButtonStyleClass: "p-button-danger",

@@ -5,8 +5,8 @@ import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-session-add',
-  templateUrl: './session-add-or-edit.component.html',
-  styleUrl: './session-add-or-edit.component.scss'
+  templateUrl: '../session-add-or-edit.component.html',
+  styleUrls: ['../session-add-or-edit.component.scss']
 })
 export class SessionAddComponent extends SessionAddOrEditDirective {
 
@@ -24,16 +24,16 @@ export class SessionAddComponent extends SessionAddOrEditDirective {
       active: true,
       maxPlayer: [''],
       userId: null,
-      gameOptions: [''],
-      newFood: [''],
-      dateOption: [''],
+      gameOptions: [[]],
+      foodOptions: [[]],
+      dateOptions: [[]],
     })
   }
 
-  onFormSubmit() {
+  override onFormSubmit() {
     if (this.sessionForm.valid) {
       const newSession: SessionModel = this.sessionForm.value;
-      this.sessionService.addSession(newSession).subscribe({
+      this.sessionService.saveSession(newSession).subscribe({
         next: () => {
           this.isSubmit = true;
           this.router.navigate(['sessionliste']);
@@ -41,12 +41,4 @@ export class SessionAddComponent extends SessionAddOrEditDirective {
       });
     }
   }
-
-  addFood() {
-    const newFoodValue = this.sessionForm.get('newFood')!.value;
-    const currentFoodOptions = this.sessionForm.get('newFood')!.value || [];
-    currentFoodOptions.push(newFoodValue);
-    this.sessionForm.get('newFood')!.setValue(currentFoodOptions);
-  }
 }
-

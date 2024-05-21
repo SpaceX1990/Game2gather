@@ -22,7 +22,7 @@ public class Session {
     @NonNull
     private boolean active;
 
-    @NonNull
+    @Nullable
     private String sessionVoteLink;
 
     @Nullable

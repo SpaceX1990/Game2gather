@@ -1,24 +1,40 @@
 <div class="template-description__aboveForm">
-  <p>{{ htmlTemplateName }}</p>
+  <h2>{{ htmlTemplateName }}</h2>
 </div>
 
-<form class="session-form" [formGroup]="sessionForm" *ngIf="sessionForm">
-<label for="title" class="label-requirements">Titel</label>
-  <input id="title" pInputText type="text" formControlName="title">
+<form class="session-form" [formGroup]="sessionForm" (ngSubmit)="onFormSubmit()">
+  <div class="form-group">
+    <label for="sessionTitle">Session Titel:</label>
+    <input id="sessionTitle" pInputText type="text" formControlName="sessionTitle" placeholder="Titel eingeben" />
+  </div>
 
-  <label for="gameOptions" class="label-requirements">Wähle die Spiele aus:"</label>
-  <p-multiSelect
-    [options]="gameList"
-    formControlName="gameOptions"
-    optionLabel="gameOptions"
-    placeholder="Spiele auswählen"/>
+  <div class="form-group">
+    <label for="gameOptions">Spiele auswählen:</label>
+    <p-multiSelect
+      [options]="gameList"
+      formControlName="gameOptions"
+      optionLabel="title"
+      placeholder="Spiele auswählen"
+    ></p-multiSelect>
+  </div>
 
+  <div class="form-group">
+    <label for="maxPlayer">Maximale Spieleranzahl:</label>
+    <input id="maxPlayer" pInputText type="number" formControlName="maxPlayer" placeholder="Maximale Spieleranzahl eingeben" />
+  </div>
 
-  <input pInputText formControlName="newFood" (keydown.enter)="addFood()">
-  <p-chips [(ngModel)]="foodOptions"></p-chips>
+  <div class="form-group">
+    <label for="foodOptions">Essensoptionen:</label>
+    <p-chips formControlName="foodOptions" separator="," placeholder="Essensoptionen eingeben"></p-chips>
+  </div>
 
-  <label for="maxPlayer" class="label-requirements">Maximale Spieleranzahl</label>
-  <input id="maxPlayer" pInputText type="text" formControlName="maxPlayer">
+  <div class="form-group">
+    <label for="dateOptions">Datumsoptionen:</label>
+    <p-calendar formControlName="dateOptions" dateFormat="dd.mm.yy" selectionMode="multiple" [showButtonBar]="true" [showTime]="true"></p-calendar>
+  </div>
 
-  <button type="submit">Session erstellen</button>
+  <div class="form-actions">
+    <button type="submit" pButton label="Session erstellen"></button>
+    <button type="button" pButton label="Abbrechen" class="ui-button-secondary" (click)="onCancelClick()"></button>
+  </div>
 </form>

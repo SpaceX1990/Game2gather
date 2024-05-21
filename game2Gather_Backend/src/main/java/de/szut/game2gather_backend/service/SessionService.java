@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +37,8 @@ public class SessionService {
 
 
     public SessionDTO create(SessionDTO sessionDTO) {
+        String voteLink = generateRandomLink();
+        sessionDTO.setSessionVoteLink(voteLink);
         var savedSession = sessionRepository.save(sessionDTO.toEntity());
 
         if (savedSession.getFoodVotes() != null) {
@@ -61,6 +64,10 @@ public class SessionService {
         }
 
         return SessionDTO.ofEntity(savedSession);
+    }
+
+    private String generateRandomLink() {
+        return "http://game2gather.com/vote/" + UUID.randomUUID();
     }
 
     private void saveVotesForVoteOption(List<Vote> gameVote) {

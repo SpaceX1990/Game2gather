@@ -9,10 +9,10 @@
   </div>
 
   <div class="form-group">
-    <label for="gameOptions">Spiele auswählen:</label>
+    <label for="gameVotes">Spiele auswählen:</label>
     <p-multiSelect
       [options]="gameList"
-      formControlName="gameOptions"
+      formControlName="gameVotes"
       optionLabel="title"
       placeholder="Spiele auswählen"
     ></p-multiSelect>
@@ -24,13 +24,13 @@
   </div>
 
   <div class="form-group">
-    <label for="foodOptions">Essensoptionen:</label>
-    <p-chips formControlName="foodOptions" separator="," placeholder="Essensoptionen eingeben"></p-chips>
+    <label for="foodVotes">Essensoptionen:</label>
+    <p-chips formControlName="foodVotes" separator="," placeholder="Essensoptionen eingeben"></p-chips>
   </div>
 
   <div class="form-group">
-    <label for="dateOptions">Datumsoptionen:</label>
-    <p-calendar formControlName="dateOptions" dateFormat="dd.mm.yy" selectionMode="multiple" [showButtonBar]="true" [showTime]="true"></p-calendar>
+    <label for="dateVotes">Datumsoptionen:</label>
+    <p-calendar formControlName="dateVotes" dateFormat="dd.mm.yy" selectionMode="multiple" [showButtonBar]="true" [showTime]="true"></p-calendar>
   </div>
 
   <div class="form-actions">
@@ -38,3 +38,8 @@
     <button type="button" pButton label="Abbrechen" class="ui-button-secondary" (click)="onCancelClick()"></button>
   </div>
 </form>
+
+<div class="form-group">
+  <label for="sessionVoteLink">Abstimmungslink:</label>
+  <input id="sessionVoteLink" pInputText type="text" formControlName="sessionVoteLink" [readonly]="true" />
+</div>

@@ -24,15 +24,16 @@ export class SessionAddComponent extends SessionAddOrEditDirective {
       active: true,
       maxPlayer: [''],
       userId: null,
-      gameOptions: [[]],
-      foodOptions: [[]],
-      dateOptions: [[]],
+      gameVotes: [[]],
+      foodVotes: [[]],
+      dateVotes: [[]],
     })
   }
 
   override onFormSubmit() {
     if (this.sessionForm.valid) {
       const newSession: SessionModel = this.sessionForm.value;
+      newSession.userId = 1;
       this.sessionService.saveSession(newSession).subscribe({
         next: () => {
           this.isSubmit = true;

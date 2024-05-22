@@ -75,7 +75,7 @@
         <createTable tableName="gamevotes_game">
             <column name="gamevote_id" type="INT">
                 <constraints nullable="false" foreignKeyName="FK_gamevotes_game_GameVote"
-                             referencedTableName="Gamevote" referencedColumnNames="id"/>
+                             referencedTableName="Gamevote" referencedColumnNames="id" deleteCascade="true"/>
             </column>
             <column name="game_id" type="INT">
                 <constraints nullable="false" foreignKeyName="FK_gamevotes_game_Game"

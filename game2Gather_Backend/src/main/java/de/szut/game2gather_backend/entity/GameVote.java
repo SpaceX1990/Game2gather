@@ -1,5 +1,6 @@
 package de.szut.game2gather_backend.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,7 +30,7 @@ public class GameVote {
             joinColumns = @JoinColumn(name = "gamevote_id"),
             inverseJoinColumns = @JoinColumn(name = "vote_id")
     )
-    @NonNull
+    @Nullable
     List<Vote> votes;
 
 

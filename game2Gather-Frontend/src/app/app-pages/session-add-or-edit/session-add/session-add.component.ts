@@ -1,7 +1,8 @@
 import {Component, Injector} from '@angular/core';
 import {SessionAddOrEditDirective} from "../session-add-or-edit.directive";
 import {SessionModel} from "../../../models/session.model";
-import {FormBuilder} from "@angular/forms";
+import {GameModel} from "../../../models/game.model";
+import {Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-session-add',
@@ -12,7 +13,7 @@ export class SessionAddComponent extends SessionAddOrEditDirective {
 
   override htmlTemplateName = "Neue Session anlegen";
 
-  constructor(private formBuilder: FormBuilder, private newInjector: Injector) {
+  constructor(private newInjector: Injector) {
     super(newInjector);
     this.createSessionForm();
   }
@@ -20,9 +21,9 @@ export class SessionAddComponent extends SessionAddOrEditDirective {
   createSessionForm() {
     this.sessionForm = this.formBuilder.group({
       id: [''],
-      sessionTitle: [''],
+      sessionTitle: ['', Validators.required],
       active: true,
-      maxPlayer: [''],
+      maxPlayer: ['', Validators.required],
       userId: null,
       gameVotes: [[]],
       foodVotes: [[]],
@@ -32,7 +33,19 @@ export class SessionAddComponent extends SessionAddOrEditDirective {
 
   override onFormSubmit() {
     if (this.sessionForm.valid) {
-      const newSession: SessionModel = this.sessionForm.value;
+      let newSession: SessionModel = this.sessionForm.value;
+      const games = this.sessionForm.get("gameVotes")?.value || [];
+      const foods = this.sessionForm.get("foodVotes")?.value || [];
+      const dates = this.sessionForm.get("dateVotes")?.value || [];
+      newSession.gameVotes = games.map((game: GameModel) => ({
+        voteoption: game
+      }));
+      newSession.foodVotes = foods.map((food: string) => ({
+        voteoption: food
+      }))
+      newSession.dateVotes = dates.map((date: Date) => ({
+        voteoption: date
+      }))
       newSession.userId = 1;
       this.sessionService.saveSession(newSession).subscribe({
         next: () => {

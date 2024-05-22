@@ -13,7 +13,9 @@ import java.util.List;
 public class FoodVoteDTO {
     @Nullable
     private int id;
+    @Nullable
     private String voteoption;
+    @Nullable
     private List<Vote> votes;
 
     public static FoodVoteDTO toDTO(FoodVote foodVote) {

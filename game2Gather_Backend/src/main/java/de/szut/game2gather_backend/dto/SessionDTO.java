@@ -17,7 +17,7 @@ public class SessionDTO {
     private boolean active;
     private String sessionVoteLink;
     private Integer maxPlayer;
-    private User user;
+    private int userId;
     private List<GameVoteDTO> gameVotes;
     private List<DateVoteDTO> dateVotes;
     private List<FoodVoteDTO> foodVotes;
@@ -28,7 +28,7 @@ public class SessionDTO {
                 .sessionTitle(session.getSessionTitle())
                 .active(session.isActive())
                 .sessionVoteLink(session.getSessionVoteLink())
-                .user(session.getUser())
+                .userId(session.getUserId())
                 .maxPlayer(session.getMaxPlayer())
                 .gameVotes(session.getGameVotes() != null ? session.getGameVotes().stream().map(GameVoteDTO::toDTO).toList() : null)
                 .dateVotes(session.getDateVotes() != null ? session.getDateVotes().stream().map(DateVoteDTO::toDTO).toList() : null)
@@ -43,11 +43,11 @@ public class SessionDTO {
                 .sessionTitle(sessionTitle)
                 .active(active)
                 .sessionVoteLink(sessionVoteLink)
-                .user(user)
+                .userId(userId)
                 .maxPlayer(maxPlayer)
-                .gameVotes(gameVotes.stream().map(vote -> vote.toEntity(id)).toList())
-                .dateVotes(dateVotes.stream().map(vote -> vote.toEntity(id)).toList())
-                .foodVotes(foodVotes.stream().map(vote -> vote.toEntity(id)).toList())
+                .gameVotes(gameVotes != null ? gameVotes.stream().map(vote -> vote.toEntity(id)).toList() : null )
+                .dateVotes(dateVotes != null ? dateVotes.stream().map(vote -> vote.toEntity(id)).toList() : null)
+                .foodVotes(foodVotes != null ? foodVotes.stream().map(vote -> vote.toEntity(id)).toList() : null)
                 .build();
     }
 

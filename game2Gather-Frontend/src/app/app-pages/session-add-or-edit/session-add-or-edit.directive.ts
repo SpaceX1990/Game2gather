@@ -16,7 +16,7 @@ export abstract class SessionAddOrEditDirective {
   protected sessionService: SessionService;
   protected gameService: GameApiService;
   protected router: Router;
-  protected formbuilder: FormBuilder;
+  protected formBuilder: FormBuilder;
   protected gameList: GameModel[] = [];
 
 
@@ -24,8 +24,18 @@ export abstract class SessionAddOrEditDirective {
     this.sessionService = injector.get(SessionService);
     this.gameService = injector.get(GameApiService);
     this.router = injector.get(Router);
-    this.formbuilder = injector.get(FormBuilder);
+    this.formBuilder = injector.get(FormBuilder);
     this.getGames();
+    this.sessionForm = this.formBuilder.group({
+      id: [''],
+      sessionTitle: [''],
+      active: true,
+      maxPlayer: [''],
+      userId: null,
+      gameVotes: [[]],
+      foodVotes: [[]],
+      dateVotes: [[]],
+    })
   }
 
   getGames() {

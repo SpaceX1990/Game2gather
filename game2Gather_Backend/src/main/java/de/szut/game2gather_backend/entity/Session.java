@@ -28,9 +28,13 @@ public class Session {
     @Nullable
     private int maxPlayer;
 
+    @NonNull
+    @Column(name = "fk_user_Id")
+    private int userId;
+
     @Nullable
     @ManyToOne
-    @JoinColumn(name = "fk_user_Id")
+    @JoinColumn(insertable = false, updatable = false , name = "fk_user_Id")
     private User user;
 
     @Nullable

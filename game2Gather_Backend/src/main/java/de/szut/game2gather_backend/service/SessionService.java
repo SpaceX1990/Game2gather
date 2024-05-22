@@ -44,22 +44,28 @@ public class SessionService {
         if (savedSession.getFoodVotes() != null) {
             for (var foodVote : savedSession.getFoodVotes()) {
                 foodVote.setSession_id(savedSession.getId());
+                if (foodVote.getVotes() != null) {
+                    saveVotesForVoteOption(foodVote.getVotes());
+                }
                 foodVoteRepository.save(foodVote);
-                saveVotesForVoteOption(foodVote.getVotes());
             }
         }
         if (savedSession.getGameVotes() != null) {
             for (var gameVote : savedSession.getGameVotes()) {
                 gameVote.setSession_id(savedSession.getId());
+                if (gameVote.getVotes() != null) {
+                    saveVotesForVoteOption(gameVote.getVotes());
+                }
                 gameVoteRepository.save(gameVote);
-                saveVotesForVoteOption(gameVote.getVotes());
             }
         }
         if (savedSession.getDateVotes() != null) {
-            for (var gameVote : savedSession.getDateVotes()) {
-                gameVote.setSession_id(savedSession.getId());
-                dateVoteRepository.save(gameVote);
-                saveVotesForVoteOption(gameVote.getVotes());
+            for (var dateVote : savedSession.getDateVotes()) {
+                dateVote.setSession_id(savedSession.getId());
+                if (dateVote.getVotes() != null) {
+                    saveVotesForVoteOption(dateVote.getVotes());
+                }
+                dateVoteRepository.save(dateVote);
             }
         }
 

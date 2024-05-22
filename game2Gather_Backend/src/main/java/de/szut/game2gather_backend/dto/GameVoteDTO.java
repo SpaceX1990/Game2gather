@@ -15,7 +15,7 @@ import java.util.List;
 public class GameVoteDTO {
     @Nullable
     private int id;
-    @NonNull
+    @Nullable
     private Game voteoption;
     private List<Vote> votes;
 

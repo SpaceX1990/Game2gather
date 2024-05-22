@@ -5,34 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
-@Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "Vote")
+@Data
 public class Vote {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "fk_session_id")
-    private Session session;
-
-    @ManyToOne
-    @JoinColumn(name = "fk_player_id")
+    @JoinTable(
+            name = "vote_player",
+            joinColumns = @JoinColumn(name = "vote_id"),
+            inverseJoinColumns = @JoinColumn(name = "player_id"))
     private Player player;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_game_id")
-    private Game game;
-
-    private Date dateOption;
-
-    private String foodOption;
-
+    @Enumerated(EnumType.STRING)
     private VoteEnum votevalue;
-
 }

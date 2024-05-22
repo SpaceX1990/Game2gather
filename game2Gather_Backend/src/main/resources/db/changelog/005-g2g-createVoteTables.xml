@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.7.xsd">
+
+    <changeSet id="create gamevote table" author="dua, lam">
+        <createTable tableName="Gamevote">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="session_id" type="INT">
+                <constraints foreignKeyName="fk_gamevote_session_id" referencedTableName="Session" referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create datevote table" author="lam">
+        <createTable tableName="Datevote">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="voteoption" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="session_id" type="INT">
+                <constraints foreignKeyName="fk_datevote_session_id" referencedTableName="Session" referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create foodvote table" author="lam">
+        <createTable tableName="Foodvote">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="voteoption" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="session_id" type="INT">
+                <constraints foreignKeyName="fk_foodvote_session_id" referencedTableName="Session" referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create vote table" author="dua, lam">
+        <createTable tableName="Vote">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="votevalue" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="createVotePlayerTable" author="lam">
+        <createTable tableName="vote_player">
+            <column name="vote_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_vote_player_Vote"
+                             referencedTableName="Vote" referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+            <column name="player_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_Vote_player_Player"
+                             referencedTableName="Player" referencedColumnNames="id" deleteCascade="true"
+                />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="createGameVotesGameTable" author="lam">
+        <createTable tableName="gamevotes_game">
+            <column name="gamevote_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_gamevotes_game_GameVote"
+                             referencedTableName="Gamevote" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="game_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_gamevotes_game_Game"
+                             referencedTableName="Game" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="createGameVotesVoteTable" author="lam">
+        <createTable tableName="gamevote_votes">
+            <column name="gamevote_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_gamevote_votes_GameVote"
+                             referencedTableName="Gamevote" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="vote_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_gamevote_votes_Vote"
+                             referencedTableName="Vote" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="createDateVotesVoteTable" author="lam">
+        <createTable tableName="datevote_votes">
+            <column name="datevote_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_datevote_votes_GameVote"
+                             referencedTableName="Datevote" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="vote_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_datevote_votes_Vote"
+                             referencedTableName="Vote" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="createFoodVotesVoteTable" author="lam">
+        <createTable tableName="foodvote_votes">
+            <column name="foodvote_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_foodvote_votes_GameVote"
+                             referencedTableName="Foodvote" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="vote_id" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_foodvote_votes_Vote"
+                             referencedTableName="Vote" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

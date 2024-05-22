@@ -1,26 +1,29 @@
-DELETE FROM Tag;
-
-DELETE FROM Vote;
-
 DELETE FROM Comment;
+
+DELETE FROM Game;
 
 DELETE FROM game_genre;
 
 DELETE FROM game_tags;
 
-DELETE FROM Player;
+DELETE FROM game_User;
 
-DELETE FROM Tag;
+DELETE FROM Gamevote;
+
+DELETE FROM vote_player;
+
+DELETE FROM gamevotes_game;
+
+DELETE FROM gamevote_votes;
 
 DELETE FROM Genre;
 
-DELETE FROM Vote;
+DELETE FROM Player;
 
 DELETE FROM Session;
 
-DELETE FROM game_User;
+DELETE FROM Tag;
 
-DELETE FROM Game;
+DELETE FROM Vote;
 
-
-
+DELETE FROM vote_player;

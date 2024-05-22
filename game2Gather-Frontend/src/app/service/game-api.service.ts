@@ -16,7 +16,7 @@ export class GameApiService {
   }
 
   readGame(id: number | undefined) :Observable<GameModel> {
-    return this.http.get<GameModel>("/api/game/read/" + id)
+    return this.http.get<GameModel>("/api/game/" + id)
   }
 
   deleteGame(id: number | undefined) {

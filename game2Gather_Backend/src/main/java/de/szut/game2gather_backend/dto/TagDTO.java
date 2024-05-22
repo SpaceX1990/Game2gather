@@ -1,7 +1,7 @@
 package de.szut.game2gather_backend.dto;
 
 
-import de.szut.game2gather_backend.entity.Genre;
+import de.szut.game2gather_backend.entity.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,19 +9,19 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 @Builder
-public class GenreDTO {
+public class TagDTO {
     private Integer id;
     private String label;
 
-    public static GenreDTO ofEntity(final Genre genre) {
-        return GenreDTO.builder()
+    public static TagDTO ofEntity(Tag genre) {
+        return TagDTO.builder()
                 .id(genre.getId())
                 .label(genre.getLabel())
                 .build();
     }
 
-    public Genre toEntity() {
-        return Genre.builder()
+    public Tag toEntity() {
+        return Tag.builder()
                 .id(id)
                 .label(label)
                 .build();

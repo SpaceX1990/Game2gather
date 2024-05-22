@@ -25,10 +25,13 @@ import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
-import { CreateGameComponent } from './app-pages/create-game/create-game.component';
+import {CarouselModule} from "primeng/carousel";
+import {ImageModule} from "primeng/image";
+import { GameCreateComponent } from './app-pages/game-create-or-update/game-create/game-create.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
+import {GameUpdateComponent} from "./app-pages/game-create-or-update/game-update/game-update.component";
 import {TagModule} from "primeng/tag";
 
 @NgModule({
@@ -37,39 +40,40 @@ import {TagModule} from "primeng/tag";
     SessionlistComponent,
     MainpageComponent,
     GameCollectionComponent,
+    GameUpdateComponent,
+    GameCreateComponent,
     GameDetailsComponent,
-    CreateGameComponent,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        RouterOutlet,
-        AppRoutingModule,
-        MatSidenavModule,
-        SidebarModule,
-        BurgermenuComponent,
-        ButtonModule,
-        MatFabButton,
-        MatButton,
-        ToolbarModule,
-        InputTextModule,
-        ChipsModule,
-        InputNumberModule,
-        MatCardModule,
-        NgOptimizedImage,
-        ChipModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatInput,
-        ConfirmDialogModule,
-        ChipModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        TagModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    RouterOutlet,
+    AppRoutingModule,
+    MatSidenavModule,
+    SidebarModule,
+    BurgermenuComponent,
+    ButtonModule,
+    MatFabButton,
+    MatButton,
+    ToolbarModule,
+    InputTextModule,
+    ChipsModule,
+    InputNumberModule,
+    MatCardModule,
+    NgOptimizedImage,
+    ConfirmDialogModule,
+    ChipModule,
+    CarouselModule,
+    ImageModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatFormField,
+    MatInput,
+    TagModule
+  ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent]
 })

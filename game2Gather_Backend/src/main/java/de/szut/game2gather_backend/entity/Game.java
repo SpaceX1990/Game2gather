@@ -2,10 +2,7 @@ package de.szut.game2gather_backend.entity;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,8 +35,14 @@ public class Game {
     private List<Tag> tags;
 
     @Nullable
-    @Enumerated(EnumType.STRING)
+    @ManyToOne()
+    @JoinTable(
+            name = "game_genre",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
     private Genre genre;
+
     @Nullable
     private byte[] imageBytes;
 

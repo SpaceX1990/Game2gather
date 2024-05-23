@@ -1,0 +1,42 @@
+<div class="template-description__aboveForm">
+  <h2>{{ htmlTemplateName }}</h2>
+</div>
+
+<form class="session-form" [formGroup]="sessionForm" (ngSubmit)="onFormSubmit()">
+  <div class="form-group">
+    <label for="sessionTitle">Session Titel:</label>
+    <input id="sessionTitle" class="fullwidthInputs" pInputText type="text" formControlName="sessionTitle" placeholder="Titel eingeben"/>
+  </div>
+
+  <div class="form-group">
+    <label for="gameVotes">Spiele auswählen:</label>
+    <p-multiSelect styleClass="fullwidthInputs"
+                   [options]="gameList"
+                   formControlName="gameVotes"
+                   optionLabel="title"
+                   placeholder="Spiele auswählen"
+    ></p-multiSelect>
+  </div>
+
+  <div class="form-group">
+    <label for="maxPlayer">Maximale Spieleranzahl:</label>
+    <input id="maxPlayer" class="fullwidthInputs" pInputText type="number" formControlName="maxPlayer"
+           placeholder="Maximale Spieleranzahl eingeben"/>
+  </div>
+
+  <div class="form-group">
+    <label for="foodVotes">Essensoptionen:</label>
+    <p-chips styleClass="fullwidthInputs" formControlName="foodVotes" separator="," placeholder="Essensoptionen eingeben"></p-chips>
+  </div>
+
+  <div class="form-group">
+    <label for="dateVotes">Datumsoptionen:</label>
+    <p-calendar styleClass="fullwidthInputs" formControlName="dateVotes" dateFormat="dd.mm.yy" selectionMode="multiple" [showButtonBar]="true"
+                [showTime]="true"></p-calendar>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" pButton label="Session erstellen"></button>
+    <button type="button" pButton label="Abbrechen" class="ui-button-secondary" (click)="onCancelClick()"></button>
+  </div>
+</form>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {SessionModel} from "../../models/SessionModel";
-import {SessionService} from "../../services/session.service";
+import {SessionService} from "../../service/session.service";
 import {ConfirmationService} from "primeng/api";
+import {SessionModel} from "../../models/session.model";
 
 @Component({
   selector: 'app-sessionlist',
@@ -10,8 +10,8 @@ import {ConfirmationService} from "primeng/api";
 })
 export class SessionlistComponent implements OnInit {
 
-  activeSessions: SessionModel[] | any;
-  pastSessions: SessionModel[] | any;
+  activeSessions: SessionModel[] = [];
+  pastSessions: SessionModel[] = [];
 
   constructor(private sessionService: SessionService, private confirmationsService: ConfirmationService) {
   }
@@ -36,8 +36,8 @@ export class SessionlistComponent implements OnInit {
   deleteSession(session: SessionModel | undefined) {
     this.confirmationsService.confirm({
       dismissableMask: true,
-      message:`Soll die Session ${session?.sessionTitle} wirklich gelöscht werden?`,
-      header:"Session löschen",
+      message: `Soll die Session ${session?.sessionTitle} wirklich gelöscht werden?`,
+      header: "Session löschen",
       acceptIcon: "none",
       acceptLabel: "Löschen",
       acceptButtonStyleClass: "p-button-danger",

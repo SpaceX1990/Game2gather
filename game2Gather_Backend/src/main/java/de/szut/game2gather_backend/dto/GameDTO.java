@@ -14,8 +14,8 @@ public class GameDTO {
 
     private int id;
     private String title;
-    private int minimumPlayers;
-    private Integer maximumPlayers;
+    private int minPlayer;
+    private Integer maxPlayer;
     private List<Tag> tags;
     private Genre genre;
 
@@ -24,8 +24,8 @@ public class GameDTO {
                 .id(game.getId())
                 .title(game.getTitle())
                 .genre(game.getGenre())
-                .maximumPlayers(game.getMaxPlayer())
-                .minimumPlayers(game.getMinPlayer())
+                .maxPlayer(game.getMaxPlayer())
+                .minPlayer(game.getMinPlayer())
                 .tags(game.getTags() != null ? game.getTags() : null)
                 .build();
     }
@@ -35,8 +35,8 @@ public class GameDTO {
                 .id(id)
                 .title(title)
                 .genre(genre)
-                .maxPlayer(maximumPlayers)
-                .minPlayer(minimumPlayers)
+                .maxPlayer(maxPlayer)
+                .minPlayer(minPlayer)
                 .tags(tags != null ? tags : null)
                 .build();
     }

@@ -2,7 +2,6 @@ package de.szut.game2gather_backend.controller;
 
 
 import de.szut.game2gather_backend.dto.GenreDTO;
-import de.szut.game2gather_backend.entity.Genre;
 import de.szut.game2gather_backend.service.GenreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -5,32 +5,34 @@
 <form class="session-form" [formGroup]="sessionForm" (ngSubmit)="onFormSubmit()">
   <div class="form-group">
     <label for="sessionTitle">Session Titel:</label>
-    <input id="sessionTitle" pInputText type="text" formControlName="sessionTitle" placeholder="Titel eingeben" />
+    <input id="sessionTitle" class="fullwidthInputs" pInputText type="text" formControlName="sessionTitle" placeholder="Titel eingeben"/>
   </div>
 
   <div class="form-group">
     <label for="gameVotes">Spiele auswählen:</label>
-    <p-multiSelect
-      [options]="gameList"
-      formControlName="gameVotes"
-      optionLabel="title"
-      placeholder="Spiele auswählen"
+    <p-multiSelect styleClass="fullwidthInputs"
+                   [options]="gameList"
+                   formControlName="gameVotes"
+                   optionLabel="title"
+                   placeholder="Spiele auswählen"
     ></p-multiSelect>
   </div>
 
   <div class="form-group">
     <label for="maxPlayer">Maximale Spieleranzahl:</label>
-    <input id="maxPlayer" pInputText type="number" formControlName="maxPlayer" placeholder="Maximale Spieleranzahl eingeben" />
+    <input id="maxPlayer" class="fullwidthInputs" pInputText type="number" formControlName="maxPlayer"
+           placeholder="Maximale Spieleranzahl eingeben"/>
   </div>
 
   <div class="form-group">
     <label for="foodVotes">Essensoptionen:</label>
-    <p-chips formControlName="foodVotes" separator="," placeholder="Essensoptionen eingeben"></p-chips>
+    <p-chips styleClass="fullwidthInputs" formControlName="foodVotes" separator="," placeholder="Essensoptionen eingeben"></p-chips>
   </div>
 
   <div class="form-group">
     <label for="dateVotes">Datumsoptionen:</label>
-    <p-calendar formControlName="dateVotes" dateFormat="dd.mm.yy" selectionMode="multiple" [showButtonBar]="true" [showTime]="true"></p-calendar>
+    <p-calendar styleClass="fullwidthInputs" formControlName="dateVotes" dateFormat="dd.mm.yy" selectionMode="multiple" [showButtonBar]="true"
+                [showTime]="true"></p-calendar>
   </div>
 
   <div class="form-actions">
@@ -41,5 +43,5 @@
 
 <div class="form-group">
   <label for="sessionVoteLink">Abstimmungslink:</label>
-  <input id="sessionVoteLink" pInputText type="text" formControlName="sessionVoteLink" [readonly]="true" />
+  <input id="sessionVoteLink" pInputText type="text" formControlName="sessionVoteLink" [readonly]="true"/>
 </div>

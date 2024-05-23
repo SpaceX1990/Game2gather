@@ -19,6 +19,15 @@ public class GameDTO {
     private List<Tag> tags;
     private Genre genre;
 
+    public GameDTO(int id, String title, int minPlayer, Integer maxPlayer, List<Tag> tags, Genre genre) {
+        this.id = id;
+        this.title = title;
+        this.minPlayer = minPlayer;
+        this.maxPlayer = maxPlayer;
+        this.tags = tags;
+        this.genre = genre;
+    }
+
     public static GameDTO ofEntity(Game game) {
         return GameDTO.builder()
                 .id(game.getId())

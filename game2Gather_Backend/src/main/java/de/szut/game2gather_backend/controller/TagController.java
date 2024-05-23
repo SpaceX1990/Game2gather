@@ -1,8 +1,6 @@
 package de.szut.game2gather_backend.controller;
 
-
 import de.szut.game2gather_backend.dto.TagDTO;
-import de.szut.game2gather_backend.entity.Tag;
 import de.szut.game2gather_backend.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

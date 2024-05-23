@@ -1,12 +1,15 @@
 package de.szut.game2gather_backend.service;
 
 import de.szut.game2gather_backend.dto.SessionDTO;
+import de.szut.game2gather_backend.entity.Session;
 import de.szut.game2gather_backend.entity.Vote;
 import de.szut.game2gather_backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -18,6 +21,8 @@ public class SessionService {
     private final FoodVoteRepository foodVoteRepository;
     private final DateVoteRepository dateVoteRepository;
     private final VoteRepository voteRepository;
+
+    @GetMapping
 
     public List<SessionDTO> getAllActiveSession() {
         return sessionRepository.findByActiveTrue().stream().map(SessionDTO::ofEntity).toList();
@@ -35,6 +40,9 @@ public class SessionService {
         sessionRepository.deleteById(id);
     }
 
+    public Optional<Session> getById(int id) {
+        return sessionRepository.findById(id);
+    }
 
     public SessionDTO create(SessionDTO sessionDTO) {
         String voteLink = generateRandomLink();
@@ -72,12 +80,13 @@ public class SessionService {
         return SessionDTO.ofEntity(savedSession);
     }
 
-    private String generateRandomLink() {
+    public String generateRandomLink() {
         return "http://game2gather.com/vote/" + UUID.randomUUID();
     }
 
-    private void saveVotesForVoteOption(List<Vote> gameVote) {
+    public void saveVotesForVoteOption(List<Vote> gameVote) {
         voteRepository.saveAll(gameVote);
     }
+
 
 }

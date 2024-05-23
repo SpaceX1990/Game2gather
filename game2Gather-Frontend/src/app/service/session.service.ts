@@ -14,6 +14,7 @@ export class SessionService {
   getAllActiveSessios(): Observable<SessionModel[]> {
     return this.http.get<SessionModel[]>("/api/session/active");
   }
+
   getAllPastSessios(): Observable<SessionModel[]> {
     return this.http.get<SessionModel[]>("/api/session/past");
   }
@@ -24,5 +25,13 @@ export class SessionService {
 
   saveSession(newSession: SessionModel) {
     return this.http.post<SessionModel>('/api/session', newSession)
+  }
+
+  getSession(id: string) {
+    return this.http.get<SessionModel>('/api/session/' + id);
+  }
+
+  updateSession(sessionToUpdate: SessionModel) {
+    return this.http.put<SessionModel>('/api/session/', sessionToUpdate);
   }
 }

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/session")
@@ -14,6 +15,11 @@ import java.util.List;
 public class SessionController {
 
     private final SessionService sessionService;
+
+    @GetMapping("/{id}")
+    public Optional<Session> getSession(@PathVariable int id) {
+        return sessionService.getById(id);
+    }
 
     @GetMapping("/active")
     public List<SessionDTO> getAllActiveSessions() {
@@ -39,7 +45,4 @@ public class SessionController {
     public SessionDTO createSession(@RequestBody SessionDTO sessionDTO) {
         return sessionService.create(sessionDTO);
     }
-/*
-    @PostMapping
-    public SessionDTO createSession(@RequestBody Session session) {return sessionService.create(session);}*/
 }

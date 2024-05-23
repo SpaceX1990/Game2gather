@@ -6,6 +6,7 @@ import {SessionlistComponent} from "./app-pages/sessionlist/sessionlist.componen
 import {GameCreateComponent} from "./app-pages/game-create-or-update/game-create/game-create.component";
 import {GameUpdateComponent} from "./app-pages/game-create-or-update/game-update/game-update.component";
 import {SessionAddComponent} from "./app-pages/session-add-or-edit/session-add/session-add.component";
+import {SessionEditComponent} from "./app-pages/session-add-or-edit/session-edit/session-edit.component";
 
 const mainpageRoute: Route = {path: "mainpage", component: MainpageComponent}
 const spielesammlungRoute: Route = {path: "spielesammlung", component: GameCollectionComponent}
@@ -13,8 +14,9 @@ const sessionliste: Route = {path: "sessionliste", component: SessionlistCompone
 const createGameRoute: Route = {path: "creategame", component: GameCreateComponent}
 const updateGameRoute: Route = {path: "editgame/:id", component: GameUpdateComponent}
 const createSessionRoute: Route = {path:"createsession", component: SessionAddComponent}
+const updateSessionRoute: Route = {path:"sessionliste/editsession/:id", component: SessionEditComponent}
 
-const routes: Routes = [mainpageRoute, spielesammlungRoute, sessionliste, createGameRoute, updateGameRoute, createSessionRoute];
+const routes: Routes = [mainpageRoute, spielesammlungRoute, sessionliste, createGameRoute, updateGameRoute, createSessionRoute, updateSessionRoute];
 const invalidRoute: Route = {path: "**", redirectTo: "/mainpage"}
 
 @NgModule({

@@ -14,7 +14,7 @@
             </div>
             <div>
               <h4 class="mb-1">{{ activeSessions?.sessionTitle }}</h4>
-              <h6 class="mt-0 mb-3">Max Player: {{ activeSessions?.maxPlayer }}</h6>
+              <h6 class="mt-0 mb-3">Maximale Spieleranzahl: {{ activeSessions?.maxPlayer }}</h6>
               <div class="carousel_button">
                 <p-button label="Session löschen" severity="danger" (click)="deleteSession(activeSessions)"></p-button>
               </div>
@@ -37,7 +37,7 @@
             </div>
             <div>
               <h4 class="mb-1">{{ pastSessions?.sessionTitle }}</h4>
-              <h6 class="mt-0 mb-3">Max Player: {{ pastSessions?.maxPlayer }}</h6>
+              <h6 class="mt-0 mb-3">Maximale Spieleranzahl: {{ pastSessions?.maxPlayer }}</h6>
               <div class="carousel_button">
                 <p-button label="Session löschen" severity="danger" (click)="deleteSession(pastSessions)"></p-button>
               </div>

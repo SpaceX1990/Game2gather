@@ -1,10 +1,12 @@
 <div class="container">
-  <div *ngIf="loggedIn">
-    <button mat-raised-button color="primary" routerLink="/sessionliste" class="styled-button">Zur Sessionliste</button>
-    <button mat-raised-button color="primary" routerLink="/spielesammlung" class="styled-button">Zur Spielesammlung</button>
+  <div *ngIf="loggedIn" class="center-content">
+    <p class="welcome-text">Verwalte deine Sessions und Spielesammlungen</p>
+    <img src="assets/images/Game2Gather_Sessions.jpg" alt="Center Image" class="center-image">
+    <button mat-raised-button color="primary" routerLink="/sessionliste" class="styled-button session">Zur Sessionliste</button>
+    <button mat-raised-button color="primary" routerLink="/spielesammlung" class="styled-button session">Zur Spielesammlung</button>
   </div>
   <div *ngIf="!loggedIn" class="center-content">
-    <p class="welcome-text">Willkommen bei Game2Gather. Logge dich jetzt ein um loszulegen.</p>
+    <p class="welcome-text">Willkommen bei Game2Gather</p>
     <img src="assets/images/Game2Gather_Logo.png" alt="Center Image" class="center-image">
     <button mat-raised-button color="primary" (click)="logIN()" class="styled-button">Einloggen</button>
     <button mat-raised-button color="primary" class="styled-button">Registrieren</button>

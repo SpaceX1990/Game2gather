@@ -9,19 +9,23 @@
 }
 
 .center-image {
-  width: 500px; /* Ustawia szerokość obrazka na 500px */
-  height: auto; /* Utrzymuje proporcje obrazka */
-  margin-bottom: 20px; /* Odstęp między obrazkiem a tekstem */
+  width: 500px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .welcome-text {
-  font-family: 'Arial', sans-serif; /* Zmienia czcionkę na Arial */
-  font-size: 24px; /* Ustawia rozmiar czcionki */
-  color: #308BF7; /* Ustawia kolor tekstu na primary color */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Dodaje delikatny cień do tekstu */
-  margin-bottom: 20px; /* Dodaje odstęp poniżej tekstu */
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  color: #308BF7;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .styled-button {
   margin-bottom: 10px;
+}
+
+.session {
+  margin: 10px;
 }

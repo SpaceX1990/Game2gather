@@ -29,7 +29,6 @@ export class BurgermenuComponent {
   protected navBarPageList: MenuItem[] = [{
     items: [
       {routerLink: "/mainpage", label: "Home", command: () => this.toggleSidebar()},
-      {routerLink: "/", label: "aktuelle Session", command: () => this.toggleSidebar()},
       {routerLink: "/sessionliste", label: "alle Sessions", command: () => this.toggleSidebar()},
       {routerLink: "/spielesammlung", label: "alle Spiele", command: () => this.toggleSidebar()},
       {routerLink: "/", label: "Logout", command: () => this.toggleSidebar()}

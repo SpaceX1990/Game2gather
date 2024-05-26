@@ -1,59 +1,74 @@
-import {Component, Injector} from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {SessionAddOrEditDirective} from "../session-add-or-edit.directive";
 import {SessionModel} from "../../../models/session.model";
-import {GameModel} from "../../../models/game.model";
-import {ActivatedRoute} from "@angular/router";
+import {Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-session-add',
+  selector: 'app-session-edit',
   templateUrl: '../session-add-or-edit.component.html',
   styleUrls: ['../session-add-or-edit.component.scss']
 })
-export class SessionEditComponent extends SessionAddOrEditDirective {
+export class SessionEditComponent extends SessionAddOrEditDirective implements OnInit {
 
   override htmlTemplateName = "Session bearbeiten";
 
-  constructor(
-    private newInjector: Injector,
-    private route: ActivatedRoute
-  ) {
+  constructor(private newInjector: Injector, private route: ActivatedRoute) {
     super(newInjector);
-    this.getSessionForm();
+    this.createSessionForm();
   }
 
-  getSessionForm(): void {
-    const id: string = this.route.snapshot.paramMap.get('id')!;
-    this.sessionService.getSession(id).subscribe(session => {
-      this.sessionForm = this.formBuilder.group({
-        id: [session.id],
-        sessionTitle: [session.sessionTitle],
-        active: [session.active],
-        maxPlayer: [session.maxPlayer],
-        userId: [session.userId],
-        gameVotes: [session.gameVotes],
-        foodVotes: [session.foodVotes],
-        dateVotes: [session.dateVotes]
-      })
-    })
+  ngOnInit() {
+    const sessionId = this.route.snapshot.paramMap.get('id');
+    if (sessionId) {
+      this.loadSession(sessionId);
+    }
+  }
+
+  createSessionForm() {
+    this.sessionForm = this.formBuilder.group({
+      id: [''],
+      sessionTitle: ['', Validators.required],
+      active: true,
+      maxPlayer: ['', Validators.required],
+      userId: null,
+      gameVotes: [[]],
+      foodVotes: [[]],
+      dateVotes: [[]],
+    });
+  }
+
+  loadSession(id: string) {
+    this.sessionService.getSessionById(id).subscribe((session: SessionModel) => {
+      const gameVotes = session.gameVotes.map(vote => vote.voteoption);
+      const foodVotes = session.foodVotes.map(vote => vote.voteoption);
+      const dateVotes = session.dateVotes.map(vote => new Date(vote.voteoption));
+
+      this.sessionForm.patchValue({
+        id: session.id,
+        sessionTitle: session.sessionTitle,
+        active: session.active,
+        maxPlayer: session.maxPlayer,
+        userId: session.userId,
+        gameVotes: gameVotes,
+        foodVotes: foodVotes,
+        dateVotes: dateVotes,
+      });
+    });
   }
 
   override onFormSubmit() {
     if (this.sessionForm.valid) {
-      let sessionToUpdate: SessionModel = this.sessionForm.value;
+      let updatedSession: SessionModel = this.sessionForm.value;
       const games = this.sessionForm.get("gameVotes")?.value || [];
       const foods = this.sessionForm.get("foodVotes")?.value || [];
       const dates = this.sessionForm.get("dateVotes")?.value || [];
-      sessionToUpdate.gameVotes = games.map((game: GameModel) => ({
-        voteoption: game
-      }));
-      sessionToUpdate.foodVotes = foods.map((food: string) => ({
-        voteoption: food
-      }))
-      sessionToUpdate.dateVotes = dates.map((date: Date) => ({
-        voteoption: date
-      }))
-      sessionToUpdate.userId = 1;
-      this.sessionService.updateSession(sessionToUpdate).subscribe({
+      updatedSession.gameVotes = games.map((game: any) => ({voteoption: game}));
+      updatedSession.foodVotes = foods.map((food: any) => ({voteoption: food}));
+      updatedSession.dateVotes = dates.map((date: any) => ({voteoption: date}));
+      updatedSession.userId = 1;
+
+      this.sessionService.updateSession(updatedSession).subscribe({
         next: () => {
           this.isSubmit = true;
           this.router.navigate(['sessionliste']);

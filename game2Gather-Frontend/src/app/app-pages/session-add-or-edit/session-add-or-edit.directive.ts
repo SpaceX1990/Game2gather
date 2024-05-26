@@ -1,9 +1,9 @@
-import {Directive, Injector} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {SessionService} from "../../service/session.service";
-import {Router} from "@angular/router";
-import {GameModel} from "../../models/game.model";
-import {GameApiService} from "../../service/game-api.service";
+import { FormBuilder, FormGroup} from '@angular/forms';
+import { SessionService } from '../../service/session.service';
+import { Router } from '@angular/router';
+import { GameModel } from '../../models/game.model';
+import { GameApiService } from '../../service/game-api.service';
+import { Injector, Directive} from '@angular/core';
 
 @Directive({
   selector: '[appSessionAddOrEdit]',
@@ -44,11 +44,9 @@ export abstract class SessionAddOrEditDirective {
     });
   }
 
-  onFormSubmit() {
-
-  }
+  onFormSubmit() {}
 
   onCancelClick() {
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
 }

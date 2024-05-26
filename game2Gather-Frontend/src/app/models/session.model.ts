@@ -11,4 +11,5 @@ export interface SessionModel {
   gameVotes: GameVoteModel[];
   foodVotes: FoodVoteModel[];
   dateVotes: DateVoteModel[];
+  sessionVoteLink: string;
 }

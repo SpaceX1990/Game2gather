@@ -10,7 +10,7 @@
 
   <div class="form-group">
     <label for="gameVotes">Spiele auswählen:</label>
-    <p-multiSelect styleClass="fullwidthInputs"
+    <p-multiSelect id="gameVotes" styleClass="fullwidthInputs"
                    [options]="gameList"
                    formControlName="gameVotes"
                    optionLabel="title"
@@ -26,12 +26,12 @@
 
   <div class="form-group">
     <label for="foodVotes">Essensoptionen:</label>
-    <p-chips styleClass="fullwidthInputs" formControlName="foodVotes" separator="," placeholder="Essensoptionen eingeben"></p-chips>
+    <p-chips id="foodVotes" styleClass="fullwidthInputs" formControlName="foodVotes" separator="," placeholder="Essensoptionen eingeben"></p-chips>
   </div>
 
   <div class="form-group">
     <label for="dateVotes">Datumsoptionen:</label>
-    <p-calendar styleClass="fullwidthInputs" formControlName="dateVotes" dateFormat="dd.mm.yy" selectionMode="multiple" [showButtonBar]="true"
+    <p-calendar id="dateVotes" styleClass="fullwidthInputs" formControlName="dateVotes" dateFormat="dd.mm.yy" selectionMode="multiple" [showButtonBar]="true"
                 [showTime]="true"></p-calendar>
   </div>
 

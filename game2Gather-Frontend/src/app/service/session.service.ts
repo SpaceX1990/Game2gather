@@ -27,7 +27,7 @@ export class SessionService {
     return this.http.post<SessionModel>('/api/session', newSession)
   }
 
-  getSession(id: string) {
+  getSessionById(id: string) {
     return this.http.get<SessionModel>('/api/session/' + id);
   }
 

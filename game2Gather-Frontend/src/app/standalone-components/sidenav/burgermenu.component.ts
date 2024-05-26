@@ -28,11 +28,10 @@ export class BurgermenuComponent {
 
   protected navBarPageList: MenuItem[] = [{
     items: [
-      {routerLink: "/mainpage", label: "Home", command: () => this.toggleSidebar()},
-      {routerLink: "/", label: "aktuelle Session", command: () => this.toggleSidebar()},
-      {routerLink: "/sessionliste", label: "alle Sessions", command: () => this.toggleSidebar()},
-      {routerLink: "/spielesammlung", label: "alle Spiele", command: () => this.toggleSidebar()},
-      {routerLink: "/", label: "Logout", command: () => this.toggleSidebar()}
+      {routerLink: "/mainpage", label: "Startseite", command: () => this.toggleSidebar()},
+      {routerLink: "/sessionliste", label: "Alle Sessions", command: () => this.toggleSidebar()},
+      {routerLink: "/spielesammlung", label: "Alle Spiele", command: () => this.toggleSidebar()},
+      {routerLink: "/", label: "Ausloggen", command: () => this.toggleSidebar()}
     ]
   }]
 

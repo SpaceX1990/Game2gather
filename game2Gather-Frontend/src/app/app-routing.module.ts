@@ -15,9 +15,9 @@ const createGameRoute: Route = {path: "creategame", component: GameCreateCompone
 const updateGameRoute: Route = {path: "editgame/:id", component: GameUpdateComponent}
 const createSessionRoute: Route = {path:"createsession", component: SessionAddComponent}
 const updateSessionRoute: Route = {path:"sessionliste/editsession/:id", component: SessionEditComponent}
-
-const routes: Routes = [mainpageRoute, spielesammlungRoute, sessionliste, createGameRoute, updateGameRoute, createSessionRoute, updateSessionRoute];
 const invalidRoute: Route = {path: "**", redirectTo: "/mainpage"}
+
+const routes: Routes = [mainpageRoute, spielesammlungRoute, sessionliste, createGameRoute, updateGameRoute, createSessionRoute, invalidRoute];
 
 @NgModule({
   imports: [RouterModule.forRoot([...routes, ])],

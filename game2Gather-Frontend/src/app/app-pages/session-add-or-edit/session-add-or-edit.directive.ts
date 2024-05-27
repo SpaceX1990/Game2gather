@@ -11,6 +11,8 @@ import { Injector, Directive} from '@angular/core';
 export abstract class SessionAddOrEditDirective {
 
   protected htmlTemplateName: string = "";
+  protected submitLabel: string = "";
+
   protected sessionForm!: FormGroup;
   protected isSubmit: boolean = false;
   protected sessionService: SessionService;
@@ -45,6 +47,9 @@ export abstract class SessionAddOrEditDirective {
   }
 
   onFormSubmit() {}
+  routeToOverview() {
+    this.router.navigateByUrl('/sessionliste');
+  }
 
   onCancelClick() {
     this.router.navigate(['']);

@@ -21,6 +21,7 @@ export abstract class GameCreateOrUpdateDirective {
   protected genreService: GenreService;
   protected gameApiService: GameApiService;
   protected submitLabel = '';
+  protected htmlTemplateName: string = "";
 
   constructor(private injector: Injector) {
     this._fb = injector.get(FormBuilder)

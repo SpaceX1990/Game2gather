@@ -36,7 +36,7 @@
   </div>
 
   <div class="form-actions">
-    <button type="button" pButton label="Abbrechen" class="ui-button-secondary" (click)="onCancelClick()"></button>
-    <button type="submit" pButton label="Session erstellen" class="create-button"></button>
+    <button mat-raised-button color="primary" [disabled]="!sessionForm.valid" (click)="onFormSubmit()">{{submitLabel}}</button>
+    <button mat-raised-button color="warn" (click)="routeToOverview()">Abbrechen</button>
   </div>
 </form>

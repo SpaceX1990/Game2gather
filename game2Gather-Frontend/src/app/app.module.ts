@@ -33,6 +33,7 @@ import {SessionAddComponent} from "./app-pages/session-add-or-edit/session-add/s
 import {MultiSelectModule} from "primeng/multiselect";
 import {CalendarModule} from "primeng/calendar";
 import {SessionEditComponent} from "./app-pages/session-add-or-edit/session-edit/session-edit.component";
+import {DropdownModule} from "primeng/dropdown";
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import {SessionEditComponent} from "./app-pages/session-add-or-edit/session-edit
     FormsModule,
     CalendarModule,
     CommonModule,
-    ],
+    DropdownModule,
+  ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent],
   exports: [SessionAddComponent]

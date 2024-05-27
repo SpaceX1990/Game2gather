@@ -8,7 +8,8 @@ import {GameCreateOrUpdateDirective} from "../game-create-or-update.directive";
 })
 export class GameCreateComponent extends GameCreateOrUpdateDirective {
 
-  override submitLabel = 'Neues Spiel speichern';
+  override submitLabel = 'Spiel erstellen';
+  override htmlTemplateName = "Neues Spiel anlegen"
 
   override onFormSubmit() {
     if (this.gameForm.valid) {

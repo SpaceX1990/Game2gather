@@ -26,9 +26,8 @@ export class SessionEditComponent extends SessionAddOrEditDirective implements O
   loadSession(id: string) {
     this.sessionService.getSessionById(id).subscribe((session: SessionModel) => {
       this.htmlTemplateName = `Session "${session.sessionTitle}" bearbeiten`;
-      const gameVotes = session.gameVotes.map(vote => vote.voteoption);
-      const foodVotes = session.foodVotes.map(vote => vote.voteoption);
-      const dateVotes = session.dateVotes.map(vote => new Date(vote.voteoption));
+
+      let gameVotes = session.gameVotes.map(vote => vote.voteoption).map(selectedGame => this.gameList.find(game => game.id === selectedGame.id));
 
       this.sessionForm.patchValue({
         id: session.id,
@@ -37,8 +36,8 @@ export class SessionEditComponent extends SessionAddOrEditDirective implements O
         maxPlayer: session.maxPlayer,
         userId: session.userId,
         gameVotes: gameVotes,
-        foodVotes: foodVotes,
-        dateVotes: dateVotes,
+        foodVotes: session.foodVotes.map(vote => vote.voteoption),
+        dateVotes: session.dateVotes.map(vote => new Date(vote.voteoption)),
       });
     });
   }

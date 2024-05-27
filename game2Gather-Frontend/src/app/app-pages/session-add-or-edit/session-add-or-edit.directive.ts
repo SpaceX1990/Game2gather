@@ -1,9 +1,9 @@
-import { FormBuilder, FormGroup} from '@angular/forms';
-import { SessionService } from '../../service/session.service';
-import { Router } from '@angular/router';
-import { GameModel } from '../../models/game.model';
-import { GameApiService } from '../../service/game-api.service';
-import { Injector, Directive} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {SessionService} from '../../service/session.service';
+import {Router} from '@angular/router';
+import {GameModel} from '../../models/game.model';
+import {GameApiService} from '../../service/game-api.service';
+import {Directive, Injector} from '@angular/core';
 
 @Directive({
   selector: '[appSessionAddOrEdit]',
@@ -30,9 +30,9 @@ export abstract class SessionAddOrEditDirective {
     this.getGames();
     this.sessionForm = this.formBuilder.group({
       id: [''],
-      sessionTitle: [''],
+      sessionTitle: ['', Validators.required],
       active: true,
-      maxPlayer: [''],
+      maxPlayer: ['', Validators.required],
       userId: null,
       gameVotes: [[]],
       foodVotes: [[]],
@@ -46,7 +46,9 @@ export abstract class SessionAddOrEditDirective {
     });
   }
 
-  onFormSubmit() {}
+  onFormSubmit() {
+  }
+
   routeToOverview() {
     this.router.navigateByUrl('/sessionliste');
   }

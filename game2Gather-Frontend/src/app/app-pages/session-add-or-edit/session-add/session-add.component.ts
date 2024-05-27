@@ -2,7 +2,6 @@ import {Component, Injector} from '@angular/core';
 import {SessionAddOrEditDirective} from "../session-add-or-edit.directive";
 import {SessionModel} from "../../../models/session.model";
 import {GameModel} from "../../../models/game.model";
-import {Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-session-add',
@@ -16,20 +15,6 @@ export class SessionAddComponent extends SessionAddOrEditDirective {
 
   constructor(private newInjector: Injector) {
     super(newInjector);
-    this.createSessionForm();
-  }
-
-  createSessionForm() {
-    this.sessionForm = this.formBuilder.group({
-      id: [''],
-      sessionTitle: ['', Validators.required],
-      active: true,
-      maxPlayer: ['', Validators.required],
-      userId: null,
-      gameVotes: [[]],
-      foodVotes: [[]],
-      dateVotes: [[]],
-    })
   }
 
   override onFormSubmit() {

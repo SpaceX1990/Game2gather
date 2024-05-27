@@ -22,8 +22,8 @@ export class GameUpdateComponent extends GameCreateOrUpdateDirective {
 
   private getGameToUpdate() {
     this.gameApiService.getGame(this.gameId).subscribe(value => {
-      this.gameForm.patchValue(value);
       this.htmlTemplateName = `Spiel "${value.title}" bearbeiten`
+      this.gameForm.patchValue(value);
     });
   }
 

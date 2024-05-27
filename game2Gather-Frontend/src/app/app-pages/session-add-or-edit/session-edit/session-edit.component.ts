@@ -2,7 +2,6 @@ import {Component, Injector, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {SessionAddOrEditDirective} from "../session-add-or-edit.directive";
 import {SessionModel} from "../../../models/session.model";
-import {Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-session-edit',
@@ -11,11 +10,10 @@ import {Validators} from "@angular/forms";
 })
 export class SessionEditComponent extends SessionAddOrEditDirective implements OnInit {
 
-  override htmlTemplateName = "Session bearbeiten";
+  override submitLabel = "Session aktualisieren"
 
   constructor(private newInjector: Injector, private route: ActivatedRoute) {
     super(newInjector);
-    this.createSessionForm();
   }
 
   ngOnInit() {
@@ -25,21 +23,9 @@ export class SessionEditComponent extends SessionAddOrEditDirective implements O
     }
   }
 
-  createSessionForm() {
-    this.sessionForm = this.formBuilder.group({
-      id: [''],
-      sessionTitle: ['', Validators.required],
-      active: true,
-      maxPlayer: ['', Validators.required],
-      userId: null,
-      gameVotes: [[]],
-      foodVotes: [[]],
-      dateVotes: [[]],
-    });
-  }
-
   loadSession(id: string) {
     this.sessionService.getSessionById(id).subscribe((session: SessionModel) => {
+      this.htmlTemplateName = `Session "${session.sessionTitle}" bearbeiten`;
       const gameVotes = session.gameVotes.map(vote => vote.voteoption);
       const foodVotes = session.foodVotes.map(vote => vote.voteoption);
       const dateVotes = session.dateVotes.map(vote => new Date(vote.voteoption));

@@ -12,6 +12,7 @@ import {Validators} from "@angular/forms";
 export class SessionAddComponent extends SessionAddOrEditDirective {
 
   override htmlTemplateName = "Neue Session anlegen";
+  override submitLabel = "Session erstellen";
 
   constructor(private newInjector: Injector) {
     super(newInjector);

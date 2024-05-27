@@ -4,11 +4,12 @@ import {Router} from '@angular/router';
 import {GameModel} from '../../models/game.model';
 import {GameApiService} from '../../service/game-api.service';
 import {Directive, Injector} from '@angular/core';
+import {Observable, of} from "rxjs";
 
 @Directive({
   selector: '[appSessionAddOrEdit]',
 })
-export abstract class SessionAddOrEditDirective {
+export abstract class SessionAddOrEditDirective{
 
   protected htmlTemplateName: string = "";
   protected submitLabel: string = "";
@@ -19,7 +20,7 @@ export abstract class SessionAddOrEditDirective {
   protected gameService: GameApiService;
   protected router: Router;
   protected formBuilder: FormBuilder;
-  protected gameList: GameModel[] = [];
+  protected gameList: Observable<GameModel[]> = of([]);
 
 
   protected constructor(private injector: Injector) {
@@ -27,7 +28,7 @@ export abstract class SessionAddOrEditDirective {
     this.gameService = injector.get(GameApiService);
     this.router = injector.get(Router);
     this.formBuilder = injector.get(FormBuilder);
-    this.getGames();
+    this.gameList = this.gameService.getAllGames();
     this.sessionForm = this.formBuilder.group({
       id: [''],
       sessionTitle: ['', Validators.required],
@@ -40,12 +41,6 @@ export abstract class SessionAddOrEditDirective {
     })
   }
 
-  getGames() {
-    this.gameService.getAllGames().subscribe((result: GameModel[]) => {
-      this.gameList = result;
-    });
-  }
-
   onFormSubmit() {
   }
 
@@ -53,7 +48,4 @@ export abstract class SessionAddOrEditDirective {
     this.router.navigateByUrl('/sessionliste');
   }
 
-  onCancelClick() {
-    this.router.navigate(['']);
-  }
 }

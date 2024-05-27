@@ -19,7 +19,7 @@ public class GameDTO {
     private List<Tag> tags;
     private Genre genre;
 
-    public static GameDTO ofEntity(Game game) {
+    public static GameDTO ofModel(Game game) {
         return GameDTO.builder()
                 .id(game.getId())
                 .title(game.getTitle())
@@ -30,7 +30,7 @@ public class GameDTO {
                 .build();
     }
 
-    public Game toEntity() {
+    public Game toModel() {
         return Game.builder()
                 .id(id)
                 .title(title)

@@ -32,6 +32,6 @@ export class SessionService {
   }
 
   updateSession(sessionToUpdate: SessionModel) {
-    return this.http.put<SessionModel>('/api/session/', sessionToUpdate);
+    return this.http.put<SessionModel>('/api/session', sessionToUpdate);
   }
 }

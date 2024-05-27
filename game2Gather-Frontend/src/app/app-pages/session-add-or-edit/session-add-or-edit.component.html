@@ -2,7 +2,7 @@
   <h2>{{ htmlTemplateName }}</h2>
 </div>
 
-<form class="session-form" [formGroup]="sessionForm">
+<form class="session-form" [formGroup]="sessionForm" >
   <div class="form-group">
     <label for="sessionTitle">Session Titel:</label>
     <input id="sessionTitle" class="fullwidthInputs" pInputText type="text" formControlName="sessionTitle"
@@ -12,7 +12,7 @@
   <div class="form-group">
     <label for="gameVotes">Spiele auswählen:</label>
     <p-multiSelect id="gameVotes" styleClass="fullwidthInputs"
-                   [options]="gameList"
+                   [options]="(gameList | async) || undefined"
                    formControlName="gameVotes"
                    placeholder="Spieleoption auswählen">
       <ng-template let-selectedItems pTemplate="selectedItems">
@@ -31,7 +31,7 @@
 
   <div class="form-group">
     <label for="maxPlayer">Maximale Spieleranzahl:</label>
-    <input id="maxPlayer" class="fullwidthInputs" pInputText type="number" formControlName="maxPlayer"
+    <p-inputNumber [showButtons]="true" id="maxPlayer" class="fullwidthInputs" styleClass="fullwidthInputs" type="number" formControlName="maxPlayer"
            placeholder="Maximale Spieleranzahl eingeben"/>
   </div>
 
@@ -44,7 +44,7 @@
   <div class="form-group">
     <label for="dateVotes">Datumsoptionen:</label>
     <p-calendar id="dateVotes" styleClass="fullwidthInputs" formControlName="dateVotes" dateFormat="dd.mm.yy"
-                selectionMode="multiple" [showButtonBar]="true"
+                selectionMode="multiple" [showButtonBar]="true" placeholder="Datumsoptionen auswählen"
                 [showTime]="true"></p-calendar>
   </div>
 

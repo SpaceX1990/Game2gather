@@ -6,7 +6,6 @@ import de.szut.game2gather_backend.entity.Vote;
 import jakarta.annotation.Nullable;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NonNull;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class GameVoteDTO {
     private Game voteoption;
     private List<Vote> votes;
 
-    public static GameVoteDTO toDTO(GameVote gameVote) {
+    public static GameVoteDTO ofModel(GameVote gameVote) {
         return GameVoteDTO.builder()
                 .id(gameVote.getId())
                 .voteoption(gameVote.getVoteoption())
@@ -27,7 +26,7 @@ public class GameVoteDTO {
                 .build();
     }
 
-    public GameVote toEntity(int sessionId) {
+    public GameVote toModel(int sessionId) {
         return GameVote.builder()
                 .id(id)
                 .session_id(sessionId)

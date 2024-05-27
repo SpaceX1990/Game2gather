@@ -13,14 +13,14 @@ public class GenreDTO {
     private Integer id;
     private String label;
 
-    public static GenreDTO ofEntity(final Genre genre) {
+    public static GenreDTO ofModel(final Genre genre) {
         return GenreDTO.builder()
                 .id(genre.getId())
                 .label(genre.getLabel())
                 .build();
     }
 
-    public Genre toEntity() {
+    public Genre toModel() {
         return Genre.builder()
                 .id(id)
                 .label(label)

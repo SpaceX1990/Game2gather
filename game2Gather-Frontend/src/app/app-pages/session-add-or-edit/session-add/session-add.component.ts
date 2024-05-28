@@ -29,9 +29,12 @@ export class SessionAddComponent extends SessionAddOrEditDirective {
       newSession.foodVotes = foods.map((food: string) => ({
         voteoption: food
       }))
-      newSession.dateVotes = dates.map((date: Date) => ({
-        voteoption: date
-      }))
+      newSession.dateVotes = dates.map((date: Date) => {
+        date.setHours(date.getHours() + (-date.getTimezoneOffset() / 60));
+        return ({
+          voteoption: date
+        })
+      })
       newSession.userId = 1;
       this.sessionService.saveSession(newSession).subscribe({
         next: () => {

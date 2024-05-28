@@ -5,6 +5,7 @@ import {SessionModel} from "../../../models/session.model";
 import {GameModel} from "../../../models/game.model";
 import {GameVoteModel} from "../../../models/gameVote.model";
 import {FoodVoteModel} from "../../../models/foodVote.model";
+import {DateVoteModel} from "../../../models/dateVote.model";
 
 @Component({
   selector: 'app-session-edit',
@@ -58,13 +59,22 @@ export class SessionEditComponent extends SessionAddOrEditDirective {
         })];
 
       updatedSession.foodVotes =  [
-        //map preselected foods to existing gameFoodModel else to empty voteobject
-        ...foods.map((selectedFoods: string): FoodVoteModel => {
+        //map preselected foods to existing dateVoteModel else to empty voteobject
+        ...foods.map((selectedFood: string): FoodVoteModel => {
           return this.sessionToUpdate.foodVotes
-            .find(vote => vote.voteoption === selectedFoods) || {voteoption: selectedFoods};
+            .find(vote => vote.voteoption === selectedFood) || {voteoption: selectedFood};
         })];
-      
-      updatedSession.dateVotes = dates.map((date: any) => ({voteoption: date}));
+
+      updatedSession.dateVotes =  [
+        //map preselected dates to existing dateVoteModel else to empty voteobject
+        ...dates.map((selectedDate: Date): DateVoteModel => {
+          //handle timezone offset
+          selectedDate.setHours(selectedDate.getHours()+ (- selectedDate.getTimezoneOffset()/60));
+          return this.sessionToUpdate.dateVotes
+            .find(vote => {
+              return vote.voteoption === selectedDate}) || {voteoption: selectedDate};
+        })];
+
       updatedSession.userId = 1;
       updatedSession.sessionVoteLink = this.sessionToUpdate.sessionVoteLink;
 

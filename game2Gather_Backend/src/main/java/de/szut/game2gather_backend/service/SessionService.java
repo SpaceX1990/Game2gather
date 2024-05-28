@@ -24,15 +24,15 @@ public class SessionService {
     @GetMapping
 
     public List<SessionDTO> getAllActiveSession() {
-        return sessionRepository.findByActiveTrue().stream().map(SessionDTO::ofModel).toList();
+        return sessionRepository.findByActiveTrue().stream().map(SessionDTO::fromModel).toList();
     }
 
     public List<SessionDTO> getAllPastSession() {
-        return sessionRepository.findByActiveFalse().stream().map(SessionDTO::ofModel).toList();
+        return sessionRepository.findByActiveFalse().stream().map(SessionDTO::fromModel).toList();
     }
 
     public List<SessionDTO> readAll() {
-        return sessionRepository.findAll().stream().map(SessionDTO::ofModel).toList();
+        return sessionRepository.findAll().stream().map(SessionDTO::fromModel).toList();
     }
 
     public void delete(int id) {
@@ -58,7 +58,7 @@ public class SessionService {
             dateVoteService.saveVotesForSessionID(savedSession.getDateVotes(), savedSession.getId());
         }
 
-        return SessionDTO.ofModel(savedSession);
+        return SessionDTO.fromModel(savedSession);
     }
 
     //manage VoteObjects in Database on update
@@ -95,7 +95,7 @@ public class SessionService {
                 );
             }
 
-            return SessionDTO.ofModel(sessionRepository.save(updatedSession));
+            return SessionDTO.fromModel(sessionRepository.save(updatedSession));
         } else {
             throw new RuntimeException("Session not found");
         }

@@ -22,7 +22,7 @@ public class SessionDTO {
     private List<DateVoteDTO> dateVotes;
     private List<FoodVoteDTO> foodVotes;
 
-    public static SessionDTO ofModel(Session session) {
+    public static SessionDTO fromModel(Session session) {
         return SessionDTO.builder()
                 .id(session.getId())
                 .sessionTitle(session.getSessionTitle())
@@ -30,7 +30,7 @@ public class SessionDTO {
                 .sessionVoteLink(session.getSessionVoteLink())
                 .userId(session.getUserId())
                 .maxPlayer(session.getMaxPlayer())
-                .gameVotes(session.getGameVotes() != null ? session.getGameVotes().stream().map(GameVoteDTO::ofModel).toList() : null)
+                .gameVotes(session.getGameVotes() != null ? session.getGameVotes().stream().map(GameVoteDTO::fromModel).toList() : null)
                 .dateVotes(session.getDateVotes() != null ? session.getDateVotes().stream().map(DateVoteDTO::fromModel).toList() : null)
                 .foodVotes(session.getFoodVotes() != null ? session.getFoodVotes().stream().map(FoodVoteDTO::fromModel).toList() : null)
                 .build();

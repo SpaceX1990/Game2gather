@@ -19,7 +19,7 @@ public class GameDTO {
     private List<Tag> tags;
     private Genre genre;
 
-    public static GameDTO ofModel(Game game) {
+    public static GameDTO fromModel(Game game) {
         return GameDTO.builder()
                 .id(game.getId())
                 .title(game.getTitle())

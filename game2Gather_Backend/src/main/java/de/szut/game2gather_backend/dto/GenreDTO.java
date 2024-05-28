@@ -13,7 +13,7 @@ public class GenreDTO {
     private Integer id;
     private String label;
 
-    public static GenreDTO ofModel(final Genre genre) {
+    public static GenreDTO fromModel(final Genre genre) {
         return GenreDTO.builder()
                 .id(genre.getId())
                 .label(genre.getLabel())

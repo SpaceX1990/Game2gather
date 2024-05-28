@@ -20,7 +20,7 @@ public class TagDTO {
                 .build();
     }
 
-    public Tag ofModel() {
+    public Tag fromModel() {
         return Tag.builder()
                 .id(id)
                 .label(label)

@@ -18,7 +18,7 @@ public class GameVoteDTO {
     private Game voteoption;
     private List<Vote> votes;
 
-    public static GameVoteDTO ofModel(GameVote gameVote) {
+    public static GameVoteDTO fromModel(GameVote gameVote) {
         return GameVoteDTO.builder()
                 .id(gameVote.getId())
                 .voteoption(gameVote.getVoteoption())

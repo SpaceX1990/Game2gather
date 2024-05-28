@@ -17,6 +17,6 @@ public class GenreService {
 
     public List<GenreDTO> readAll() {
         List<Genre> genres = repository.findAll();
-        return genres.stream().map(GenreDTO::ofModel).toList();
+        return genres.stream().map(GenreDTO::fromModel).toList();
     }
 }

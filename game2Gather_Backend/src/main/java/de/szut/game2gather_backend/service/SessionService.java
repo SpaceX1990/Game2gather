@@ -86,23 +86,30 @@ public class SessionService {
         }
         return gameVoteRepository.save(gameVote);
     }
-//TODO: Vote Updates; Votes need to be deleted on removal on update
+
+    //TODO: Vote Updates;
     public SessionDTO update(SessionDTO sessionDTO) {
         var initialSession = sessionRepository.findById(sessionDTO.getId());
         var updatedSession = sessionDTO.toModel();
+
         if (initialSession.isPresent()) {
-            var gameVotes = updatedSession.getGameVotes();
+            //get Votes to compare and persist from initial and updated session
+            var updatedSessionGameVotes = updatedSession.getGameVotes();
+            var initialSessionGameVotes = initialSession.get().getGameVotes();
             var foodVotes = updatedSession.getFoodVotes();
             var dateVotes = updatedSession.getDateVotes();
 
             //manage gameVoteObjects in Database on update
-            if (!Objects.deepEquals(gameVotes, initialSession.get().getGameVotes())) {
-                //save newly addded gamevoteObjects
-                if (gameVotes != null) {
+            if (!Objects.equals(updatedSessionGameVotes, initialSessionGameVotes)) {
+                var updatedSessionGameVotesIsEmptyOrNull = updatedSessionGameVotes == null || updatedSessionGameVotes.isEmpty();
+                var initialSessionGameVotesIsEmptyOrNull = initialSessionGameVotes == null || initialSessionGameVotes.isEmpty();
+                //if updated session gameVotes exists and aren't null
+                if (!updatedSessionGameVotesIsEmptyOrNull) {
                     var updateGameVotes = new ArrayList<GameVote>();
-                    for (GameVote vote : gameVotes) {
+                    //iterate through votes of updatedSession
+                    for (GameVote vote : updatedSessionGameVotes) {
                         var gameVote = gameVoteRepository.findById(vote.getId());
-                        //if vote isnt saved, save vote and write saved vote into session
+                        //if vote isnt saved, save vote and write saved vote into session, else write already saved vote into session
                         if (gameVote.isEmpty()) {
                             updateGameVotes.add(saveGameVote(updatedSession, vote));
                         } else {
@@ -111,11 +118,21 @@ public class SessionService {
                     }
                     updatedSession.setGameVotes(updateGameVotes);
                 }
-
+                //delete all gameVotes that don't exist in updated Session but in saved Session, if gameVotes in Session already exist
+                if (!initialSessionGameVotesIsEmptyOrNull) {
+                    //iterate through votes of updatedSession
+                    for (GameVote vote : initialSessionGameVotes) {
+                        //delete vote that exists in initial Session if it doesn't exist on updated session
+                        if (updatedSessionGameVotesIsEmptyOrNull || !updatedSessionGameVotes.stream().map(GameVote::getId).toList().contains(vote.getId())) {
+                            gameVoteRepository.delete(vote);
+                        }
+                    }
+                }
             }
+            return SessionDTO.ofModel(sessionRepository.save(updatedSession));
+        } else {
+            throw new RuntimeException("Session not found");
         }
-
-        return SessionDTO.ofModel(sessionRepository.save(updatedSession));
     }
 
     public String generateRandomLink() {

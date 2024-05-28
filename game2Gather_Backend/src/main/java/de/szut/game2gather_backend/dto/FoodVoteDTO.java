@@ -18,7 +18,7 @@ public class FoodVoteDTO {
     @Nullable
     private List<Vote> votes;
 
-    public static FoodVoteDTO toDTO(FoodVote foodVote) {
+    public static FoodVoteDTO fromModel(FoodVote foodVote) {
         return FoodVoteDTO.builder()
                 .id(foodVote.getId())
                 .voteoption(foodVote.getVoteoption())
@@ -26,7 +26,7 @@ public class FoodVoteDTO {
                 .build();
     }
 
-    public FoodVote toEntity(int sessionId) {
+    public FoodVote toModel(int sessionId) {
         return FoodVote.builder()
                 .id(id)
                 .session_id(sessionId)

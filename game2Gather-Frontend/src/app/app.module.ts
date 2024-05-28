@@ -36,6 +36,8 @@ import {SessionAddComponent} from "./app-pages/session-add-or-edit/session-add/s
 import {MultiSelectModule} from "primeng/multiselect";
 import {CalendarModule} from "primeng/calendar";
 import {TagModule} from "primeng/tag";
+import {SessionEditComponent} from "./app-pages/session-add-or-edit/session-edit/session-edit.component";
+import {DropdownModule} from "primeng/dropdown";
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import {TagModule} from "primeng/tag";
     GameUpdateComponent,
     GameCreateComponent,
     GameDetailsComponent,
-    SessionAddComponent
+    SessionAddComponent,
+    SessionEditComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,8 @@ import {TagModule} from "primeng/tag";
     MatSelectModule,
     MatFormField,
     MatInput,
-    TagModule
+    TagModule,
+    DropdownModule,
   ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent],

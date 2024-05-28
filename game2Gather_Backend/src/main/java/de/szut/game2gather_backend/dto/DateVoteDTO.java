@@ -17,7 +17,7 @@ public class DateVoteDTO {
     private LocalDateTime voteoption;
     private List<Vote> votes;
 
-    public static DateVoteDTO toDTO(DateVote dateVote) {
+    public static DateVoteDTO fromModel(DateVote dateVote) {
         return DateVoteDTO.builder()
                 .id(dateVote.getId())
                 .voteoption(dateVote.getVoteoption())
@@ -25,7 +25,7 @@ public class DateVoteDTO {
                 .build();
     }
 
-    public DateVote toEntity(int sessionId) {
+    public DateVote toModel(int sessionId) {
         return DateVote.builder()
                 .id(id)
                 .session_id(sessionId)

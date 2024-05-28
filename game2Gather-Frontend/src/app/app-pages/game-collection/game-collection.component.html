@@ -5,14 +5,14 @@
       <input type="text" pInputText placeholder="name filter">
       <input type="text" pInputText placeholder="genre filter">
       <p-chips placeholder="tag filter"/>
-      <p-inputNumber mode="decimal" [showButtons]="true" placeholder="min player"/>
-      <p-inputNumber mode="decimal" [showButtons]="true" placeholder="max player"/>
+      <p-inputNumber mode="decimal" [showButtons]="true" placeholder="min Spieler"/>
+      <p-inputNumber mode="decimal" [showButtons]="true" placeholder="max Spieler"/>
     </p-toolbar>
   </div>
   <div class="collection_content">
     <mat-card *ngFor="let game of gameCollection">
       <mat-card-header [routerLink]="['/gamedetails/' + game.id]">
-        <img *ngIf="!game.image" mat-card-image src="../../../assets/images/dummy_600x400.png" alt="placeholder image"/>
+        <img *ngIf="!game.image" mat-card-image src="../../../assets/images/Game2Gather_Game_Logo.png" alt="placeholder image"/>
       </mat-card-header>
       <mat-card-content>
         <mat-card-title>

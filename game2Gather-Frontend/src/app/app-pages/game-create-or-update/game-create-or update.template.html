@@ -1,17 +1,17 @@
 <div class="form-page">
   <form [formGroup]="gameForm" class="form-container">
     <mat-form-field class="form-field">
-      <mat-label>Title</mat-label>
+      <mat-label>Titel</mat-label>
       <input matInput formControlName="title" [required]="true">
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="form-field">
-      <mat-label>Minimum Players:</mat-label>
+      <mat-label>Minimale Spieleranzahl:</mat-label>
       <input type="number" min="1" [max]="gameForm.get('maxPlayer')?.value || 15" matInput formControlName="minPlayer">
     </mat-form-field>
 
     <mat-form-field class="form-field">
-      <mat-label>Maximum Players:</mat-label>
+      <mat-label>Maximale Spieleranzahl:</mat-label>
       <input type="number" [min]="gameForm.get('minPlayer')?.value || 1" matInput formControlName="maxPlayer">
     </mat-form-field>
 

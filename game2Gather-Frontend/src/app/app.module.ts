@@ -20,6 +20,9 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {MatCardModule} from "@angular/material/card";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
+import { GameDetailsComponent } from './app-pages/game-details/game-details.component';
+import {MatFormField} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
 import {CarouselModule} from "primeng/carousel";
@@ -32,6 +35,7 @@ import {GameUpdateComponent} from "./app-pages/game-create-or-update/game-update
 import {SessionAddComponent} from "./app-pages/session-add-or-edit/session-add/session-add.component";
 import {MultiSelectModule} from "primeng/multiselect";
 import {CalendarModule} from "primeng/calendar";
+import {TagModule} from "primeng/tag";
 
 @NgModule({
   declarations: [
@@ -41,6 +45,7 @@ import {CalendarModule} from "primeng/calendar";
     GameCollectionComponent,
     GameUpdateComponent,
     GameCreateComponent,
+    GameDetailsComponent,
     SessionAddComponent
   ],
   imports: [
@@ -73,7 +78,11 @@ import {CalendarModule} from "primeng/calendar";
     FormsModule,
     CalendarModule,
     CommonModule,
-    ],
+    MatSelectModule,
+    MatFormField,
+    MatInput,
+    TagModule
+  ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent],
   exports: [SessionAddComponent]

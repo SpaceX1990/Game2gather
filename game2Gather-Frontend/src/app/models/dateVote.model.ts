@@ -1,9 +1,9 @@
-import {VoteModel} from "./vote.model";
+import {UserVoteModel} from "./userVote.model";
 
 
 export interface DateVoteModel {
   id?: number,
   voteoption: Date,
-  votes?: VoteModel[],
+  votes?: UserVoteModel[],
   session_id?: number
 }

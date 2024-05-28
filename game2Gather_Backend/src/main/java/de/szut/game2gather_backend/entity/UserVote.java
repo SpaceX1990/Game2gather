@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Vote {
+public class UserVote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +23,5 @@ public class Vote {
     private Player player;
 
     @Enumerated(EnumType.STRING)
-    private VoteEnum votevalue;
+    private VoteValueEnum votevalue;
 }

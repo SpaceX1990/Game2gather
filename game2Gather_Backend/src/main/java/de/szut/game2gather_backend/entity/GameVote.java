@@ -31,7 +31,7 @@ public class GameVote {
             inverseJoinColumns = @JoinColumn(name = "vote_id")
     )
     @Nullable
-    List<Vote> votes;
+    List<UserVote> userVotes;
 
 
     @JoinColumn(name = "session_id")

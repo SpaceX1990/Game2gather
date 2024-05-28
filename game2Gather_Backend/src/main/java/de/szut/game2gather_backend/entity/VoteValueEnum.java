@@ -1,6 +1,6 @@
 package de.szut.game2gather_backend.entity;
 
-public enum VoteEnum {
+public enum VoteValueEnum {
     POSITIVE,
     NEUTRAL,
     NEGATIVE

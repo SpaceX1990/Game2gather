@@ -31,7 +31,7 @@ public class FoodVoteService {
     }
 
     private void deleteUpdatedSessionVotes(List<FoodVote> initialSessionFoodVotes, List<FoodVote> updatedSessionVotes, boolean updatedSessionVotesIsEmptyOrNull) {
-        //iterate through votes of updatedSession
+        //iterate through userVotes of updatedSession
         for (FoodVote vote : initialSessionFoodVotes) {
             //delete vote that exists in initial Session if it doesn't exist on updated session
             if (updatedSessionVotesIsEmptyOrNull || !updatedSessionVotes.stream().map(FoodVote::getId).toList().contains(vote.getId())) {
@@ -42,7 +42,7 @@ public class FoodVoteService {
 
     private List<FoodVote> saveAndGetUpdatedVotesForSessionID(int sessionID, List<FoodVote> updatedSessionVotes) {
         var updateVotes = new ArrayList<FoodVote>();
-        //iterate through votes of updatedSession
+        //iterate through userVotes of updatedSession
         for (FoodVote vote : updatedSessionVotes) {
             var foodVote = foodVoteRepository.findById(vote.getId());
             //if vote isn't saved, save vote and write saved vote into session, else write already saved vote into session
@@ -57,8 +57,8 @@ public class FoodVoteService {
 
     private FoodVote saveVote(int sessionId, FoodVote foodVote) {
         foodVote.setSession_id(sessionId);
-        if (foodVote.getVotes() != null) {
-           voteService.saveVotesForVoteOption(foodVote.getVotes());
+        if (foodVote.getUserVotes() != null) {
+           voteService.saveVotesForVoteOption(foodVote.getUserVotes());
         }
         return foodVoteRepository.save(foodVote);
     }

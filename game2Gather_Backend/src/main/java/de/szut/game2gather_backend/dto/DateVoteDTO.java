@@ -1,7 +1,7 @@
 package de.szut.game2gather_backend.dto;
 
 import de.szut.game2gather_backend.entity.DateVote;
-import de.szut.game2gather_backend.entity.Vote;
+import de.szut.game2gather_backend.entity.UserVote;
 import jakarta.annotation.Nullable;
 import lombok.Builder;
 import lombok.Data;
@@ -15,13 +15,13 @@ public class DateVoteDTO {
     @Nullable
     private int id;
     private LocalDateTime voteoption;
-    private List<Vote> votes;
+    private List<UserVote> userVotes;
 
     public static DateVoteDTO fromModel(DateVote dateVote) {
         return DateVoteDTO.builder()
                 .id(dateVote.getId())
                 .voteoption(dateVote.getVoteoption())
-                .votes(dateVote.getVotes())
+                .userVotes(dateVote.getUserVotes())
                 .build();
     }
 
@@ -29,7 +29,7 @@ public class DateVoteDTO {
         return DateVote.builder()
                 .id(id)
                 .session_id(sessionId)
-                .votes(votes)
+                .userVotes(userVotes)
                 .voteoption(voteoption)
                 .build();
     }

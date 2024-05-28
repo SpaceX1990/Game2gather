@@ -32,7 +32,7 @@ public class GameVoteService {
 
 
     private void deleteUpdatedSessionVotes(List<GameVote> initialSessionVotes, List<GameVote> updatedSessionVotes, boolean updatedSessionVotesIsEmptyOrNull) {
-        //iterate through votes of updatedSession
+        //iterate through userVotes of updatedSession
         for (GameVote vote : initialSessionVotes) {
             //delete vote that exists in initial Session if it doesn't exist on updated session
             if (updatedSessionVotesIsEmptyOrNull || !updatedSessionVotes.stream().map(GameVote::getId).toList().contains(vote.getId())) {
@@ -43,7 +43,7 @@ public class GameVoteService {
 
     private List<GameVote> saveAndGetUpdatedVotesForSessionID(int sessionID, List<GameVote> updatedSessionVotes) {
         var updateVotes = new ArrayList<GameVote>();
-        //iterate through votes of updatedSession
+        //iterate through userVotes of updatedSession
         for (GameVote vote : updatedSessionVotes) {
             var gameVote = gameVoteRepository.findById(vote.getId());
             //if vote isn't saved, save vote and write saved vote into session, else write already saved vote into session
@@ -58,8 +58,8 @@ public class GameVoteService {
 
     public GameVote saveVote(int sessionId, GameVote vote) {
         vote.setSession_id(sessionId);
-        if (vote.getVotes() != null) {
-            voteService.saveVotesForVoteOption(vote.getVotes());
+        if (vote.getUserVotes() != null) {
+            voteService.saveVotesForVoteOption(vote.getUserVotes());
         }
         return gameVoteRepository.save(vote);
     }

@@ -59,7 +59,7 @@ export class SessionEditComponent extends SessionAddOrEditDirective {
         })];
 
       updatedSession.foodVotes =  [
-        //map preselected foods to existing dateVoteModel else to empty voteobject
+        //map preselected foods to existing foodVoteModel else to empty voteobject
         ...foods.map((selectedFood: string): FoodVoteModel => {
           return this.sessionToUpdate.foodVotes
             .find(vote => vote.voteoption === selectedFood) || {voteoption: selectedFood};

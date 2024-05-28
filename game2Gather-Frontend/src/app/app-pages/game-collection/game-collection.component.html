@@ -10,11 +10,11 @@
     </p-toolbar>
   </div>
   <div class="collection_content">
-    <mat-card *ngFor="let game of gameCollection" [routerLink]="['/gamedetails/' + game.id]">
+    <mat-card *ngFor="let game of gameCollection">
       <mat-card-header>
         <img *ngIf="!game.image" mat-card-image src="../../../assets/images/Game2Gather_Game_Logo.png" alt="placeholder image"/>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content [routerLink]="['/gamedetails/' + game.id]">
         <mat-card-title>
           <p><span>{{ game.title }}</span>{{game.genre? game.genre.label : ""}}</p>
         </mat-card-title>
@@ -23,8 +23,8 @@
         </mat-card-subtitle>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" routerLink="/editgame/{{game.id}}">Spiel bearbeiten</button>
         <button mat-raised-button color="warn" (click)="deleteGame(game)">Spiel löschen</button>
+        <button mat-raised-button color="primary" routerLink="/editgame/{{game.id}}">Spiel bearbeiten</button>
       </mat-card-actions>
     </mat-card>
   </div>

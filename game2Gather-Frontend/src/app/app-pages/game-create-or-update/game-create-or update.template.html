@@ -47,9 +47,9 @@
     </p-dropdown>
   </div>
   <div class="form-actions">
+    <button mat-raised-button color="warn" (click)="routeToOverview()">Abbrechen</button>
     <button mat-raised-button color="primary" [disabled]="!gameForm.valid" (click)="onFormSubmit()">{{ submitLabel }}
     </button>
-    <button mat-raised-button color="warn" (click)="routeToOverview()">Abbrechen</button>
   </div>
 </form>
 

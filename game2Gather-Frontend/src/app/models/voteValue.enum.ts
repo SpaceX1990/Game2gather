@@ -1,4 +1,4 @@
-export enum VoteEnum {
+export enum VoteValueEnum {
   POSITIVE,
   NEUTRAL,
   NEGATIVE

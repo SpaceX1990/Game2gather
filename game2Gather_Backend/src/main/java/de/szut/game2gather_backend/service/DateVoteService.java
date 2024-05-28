@@ -31,7 +31,7 @@ public class DateVoteService {
     }
 
     private void deleteUpdatedSessionVotes(List<DateVote> initialSessionVotes, List<DateVote> updatedSessionVotes, boolean updatedSessionVotesIsEmptyOrNull) {
-        //iterate through votes of updatedSession
+        //iterate through userVotes of updatedSession
         for (DateVote vote : initialSessionVotes) {
             //delete vote that exists in initial Session if it doesn't exist on updated session
             if (updatedSessionVotesIsEmptyOrNull || !updatedSessionVotes.stream().map(DateVote::getId).toList().contains(vote.getId())) {
@@ -42,7 +42,7 @@ public class DateVoteService {
 
     private List<DateVote> saveAndGetUpdatedVotesForSessionID(int sessionID, List<DateVote> updatedSessionVotes) {
         var updateVotes = new ArrayList<DateVote>();
-        //iterate through votes of updatedSession
+        //iterate through userVotes of updatedSession
         for (DateVote vote : updatedSessionVotes) {
             var dateVote = dateVoteRepository.findById(vote.getId());
             //if vote isn't saved, save vote and write saved vote into session, else write already saved vote into session
@@ -57,8 +57,8 @@ public class DateVoteService {
 
     public DateVote saveVote(int sessionID, DateVote vote) {
         vote.setSession_id(sessionID);
-        if (vote.getVotes() != null) {
-            voteService.saveVotesForVoteOption(vote.getVotes());
+        if (vote.getUserVotes() != null) {
+            voteService.saveVotesForVoteOption(vote.getUserVotes());
         }
         return dateVoteRepository.save(vote);
     }

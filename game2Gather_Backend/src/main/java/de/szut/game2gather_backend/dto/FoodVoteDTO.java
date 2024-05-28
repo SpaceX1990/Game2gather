@@ -1,7 +1,7 @@
 package de.szut.game2gather_backend.dto;
 
 import de.szut.game2gather_backend.entity.FoodVote;
-import de.szut.game2gather_backend.entity.Vote;
+import de.szut.game2gather_backend.entity.UserVote;
 import jakarta.annotation.Nullable;
 import lombok.Builder;
 import lombok.Data;
@@ -16,13 +16,13 @@ public class FoodVoteDTO {
     @Nullable
     private String voteoption;
     @Nullable
-    private List<Vote> votes;
+    private List<UserVote> userVotes;
 
     public static FoodVoteDTO fromModel(FoodVote foodVote) {
         return FoodVoteDTO.builder()
                 .id(foodVote.getId())
                 .voteoption(foodVote.getVoteoption())
-                .votes(foodVote.getVotes())
+                .userVotes(foodVote.getUserVotes())
                 .build();
     }
 
@@ -30,7 +30,7 @@ public class FoodVoteDTO {
         return FoodVote.builder()
                 .id(id)
                 .session_id(sessionId)
-                .votes(votes)
+                .userVotes(userVotes)
                 .voteoption(voteoption)
                 .build();
     }

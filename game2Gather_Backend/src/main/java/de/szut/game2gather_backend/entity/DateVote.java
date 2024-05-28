@@ -28,7 +28,7 @@ public class DateVote {
             joinColumns = @JoinColumn(name = "datevote_id"),
             inverseJoinColumns = @JoinColumn(name = "vote_id")
     )
-    List<Vote> votes;
+    List<UserVote> userVotes;
 
     @JoinColumn(name = "session_id")
     private int session_id;

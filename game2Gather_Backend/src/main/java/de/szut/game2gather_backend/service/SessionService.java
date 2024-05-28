@@ -63,8 +63,8 @@ public class SessionService {
 
     //manage VoteObjects in Database on update
     public SessionDTO update(SessionDTO sessionDTO) {
-        var initialSession = sessionRepository.findById(sessionDTO.getId());
         var updatedSession = sessionDTO.toModel();
+        var initialSession = sessionRepository.findById(updatedSession.getId());
 
         if (initialSession.isPresent()) {
 

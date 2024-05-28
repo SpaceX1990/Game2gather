@@ -1,6 +1,8 @@
 package de.szut.game2gather_backend.service;
 
+import de.szut.game2gather_backend.dto.GameVoteDTO;
 import de.szut.game2gather_backend.entity.GameVote;
+import de.szut.game2gather_backend.entity.UserVote;
 import de.szut.game2gather_backend.repository.GameVoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -67,6 +69,21 @@ public class GameVoteService {
     public void saveVotesForSessionID(List<GameVote> votes, int sessionId) {
         for (var vote : votes) {
             saveVote(sessionId, vote);
+        }
+    }
+
+    public GameVoteDTO updateUserVotes(GameVoteDTO vote) {
+        var savedVote = gameVoteRepository.findById(vote.getId());
+        if (savedVote.isPresent() && !savedVote.get().getUserVotes().equals(vote.getUserVotes())) {
+            var voteModel = vote.toModel();
+            if (voteModel.getUserVotes() != null) {
+                for (UserVote userVote : voteModel.getUserVotes()) {
+                    voteService.saveVote(userVote);
+                }
+            }
+            return GameVoteDTO.fromModel(gameVoteRepository.save(voteModel));
+        } else {
+            throw new RuntimeException("GameVote not found or no changes");
         }
     }
 

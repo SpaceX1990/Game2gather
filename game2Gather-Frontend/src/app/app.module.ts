@@ -39,6 +39,9 @@ import {TagModule} from "primeng/tag";
 import {SessionEditComponent} from "./app-pages/session-add-or-edit/session-edit/session-edit.component";
 import {DropdownModule} from "primeng/dropdown";
 import { SessionDetailsComponent } from './app-pages/session-details/session-details.component';
+import {TableModule} from "primeng/table";
+import {SelectButtonModule} from "primeng/selectbutton";
+import {DividerModule} from "primeng/divider";
 
 @NgModule({
   declarations: [
@@ -88,6 +91,9 @@ import { SessionDetailsComponent } from './app-pages/session-details/session-det
     MatInput,
     TagModule,
     DropdownModule,
+    TableModule,
+    SelectButtonModule,
+    DividerModule,
   ],
   providers:[ConfirmationService],
   bootstrap: [AppComponent],

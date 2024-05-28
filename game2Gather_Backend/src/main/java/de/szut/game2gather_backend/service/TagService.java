@@ -16,6 +16,6 @@ public class TagService {
 
     public List<TagDTO> readAll() {
         List<Tag> tags = repository.findAll();
-        return tags.stream().map(TagDTO::toModel).toList();
+        return tags.stream().map(TagDTO::fromModel).toList();
     }
 }

@@ -40,6 +40,43 @@
     </div>
   </div>
   <div class="form-actions">
+    <button mat-raised-button color="primary" (click)="routeToOverview()">Session Bearbeiten</button>
+  </div>
+  <p-divider type="solid"/>
+  <div class="form-field">
+    <label for="gameVote">Spiele Abstimmung:</label>
+    <div id="gameVote">
+      <p-table *ngIf="session" [value]="session.players">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Spieler</th>
+            <th *ngFor="let gameVote of session.gameVotes">
+              {{ gameVote.voteoption.title }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-player>
+          <tr>
+            <td>{{ player.username }}</td>
+            <td  [formGroup]="gameVotesVotes" *ngFor="let gameVote of session.gameVotes">
+              <p-selectButton [formControlName]="'player' + player.id + 'game' + gameVote.voteoption.id" [options]="voteValueOptions"
+                              optionLabel="icon"
+                              optionValue="value"
+                              (onOptionClick)="voteGame(player,gameVote,$event)">
+                <ng-template let-item pTemplate>
+                  <i [class]="item.icon"></i>
+                </ng-template>
+              </p-selectButton>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <button>Spieler hinzufügen</button>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class="form-actions">
     <button mat-raised-button color="primary" (click)="routeToOverview()">Ok</button>
   </div>
 </form>

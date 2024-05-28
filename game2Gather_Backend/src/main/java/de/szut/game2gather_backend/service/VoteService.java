@@ -11,9 +11,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VoteService {
 
-    private VoteRepository voteRepository;
+    private final VoteRepository voteRepository;
 
     public void saveVotesForVoteOption(List<UserVote> gameUserVote) {
         voteRepository.saveAll(gameUserVote);
+    }
+
+    public void saveVote(UserVote userVote) {
+        var savedVote = voteRepository.findById(userVote.getId());
+        if (savedVote.isEmpty() || !savedVote.get().equals(userVote)) {
+            voteRepository.save(userVote);
+        }
     }
 }

@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
-.fullwidthInputs, p-inputnumber.fullwidthInputs{
-
-  display : flex;
+.fullwidthInputs, p-inputnumber.fullwidthInputs {
+  display: flex;
   width: 100%;
-  ul{
+
+  ul {
     width: 100%
   }
+}
+
+.no-focus:focus, .no-hover:hover{
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
+  border-color: rgb(206, 212, 218);
 }

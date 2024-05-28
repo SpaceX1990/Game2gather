@@ -1,36 +1,35 @@
-<div class="form-page">
-  <form [formGroup]="gameForm" *ngIf="gameForm" class="form-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input matInput formControlName="title" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Minimum Players:</mat-label>
-      <input matInput formControlName="minPlayer" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Maximum Players:</mat-label>
-      <input matInput formControlName="maxPlayer" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="form-field">
-      <mat-label>Tags</mat-label>
-      <input matInput readonly>
-      <li *ngFor="let tag of game?.tags">
-        <p-tag value="{{tag.label}}"></p-tag>
-      </li>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="form-field">
-      <mat-label>Genre</mat-label>
-      <input matInput formControlName="genre" readonly>
-    </mat-form-field>
-
-    <div class="button_space">
-      <button mat-flat-button color="primary" (click)="routeToOverview()">OK</button>
-    </div>
-
-  </form>
+<div class="title-text">
+  <h2>Spiel "{{ game?.title }}" Details</h2>
 </div>
+<form [formGroup]="gameForm" *ngIf="gameForm" class="game-form">
+  <div class="form-field">
+    <label for="title">Titel</label>
+    <input pInputText id="title" class="fullwidthInputs no-focus no-hover" formControlName="title" readonly>
+  </div>
+
+  <div class="form-field">
+    <label for="minPlayer">Minimale Spieleranzahl:</label>
+    <input pInputText id="minPlayer" class="fullwidthInputs no-focus no-hover" formControlName="minPlayer" readonly>
+  </div>
+
+  <div class="form-field">
+    <label for="maxPlayer">Maximale Spieleranzahl:</label>
+    <input pInputText id="maxPlayer" class="fullwidthInputs no-focus no-hover" formControlName="maxPlayer" readonly>
+  </div>
+
+  <div class="form-field">
+    <label for="tags">Tags</label>
+    <div id="tags" pInputText style="display: flex; gap: 1%;">
+      <p-chip *ngFor="let tag of game?.tags" [label]="tag.label"/>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="genre">Genre</label>
+    <input id="genre" pInputText formControlName="genre" class="fullwidthInputs no-focus no-hover" readonly>
+  </div>
+
+  <div class="form-actions">
+    <button mat-flat-button color="primary" (click)="routeToOverview()">OK</button>
+  </div>
+</form>

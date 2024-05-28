@@ -28,24 +28,24 @@ export class GameCollectionComponent implements OnInit{
   }
 
   deleteGame(game: GameModel | undefined) {
-      this.confirmationService.confirm({
-        dismissableMask: true,
-        message:`Soll das Spiel ${game?.title} wirklich gelöscht werden?`,
-        header:"Spiel löschen",
-        acceptIcon: "none",
-        acceptLabel: "Löschen",
-        acceptButtonStyleClass: "p-button-danger",
-        rejectIcon: "none",
-        rejectLabel: "Abbrechen",
-        closeOnEscape: false,
-        defaultFocus: "reject",
-        accept: () => {
-          this.gameApiService.deleteGame(game?.id).subscribe({
-            next: () => {
-              this.getGames();
-            },
-          })
-        },
-      })
+    this.confirmationService.confirm({
+      dismissableMask: true,
+      message:`Soll das Spiel ${game?.title} wirklich gelöscht werden?`,
+      header:"Spiel löschen",
+      acceptIcon: "none",
+      acceptLabel: "Löschen",
+      acceptButtonStyleClass: "p-button-danger",
+      rejectIcon: "none",
+      rejectLabel: "Abbrechen",
+      closeOnEscape: false,
+      defaultFocus: "reject",
+      accept: () => {
+        this.gameApiService.deleteGame(game?.id).subscribe({
+          next: () => {
+            this.getGames();
+          },
+        })
+      },
+    })
   }
 }

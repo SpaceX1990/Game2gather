@@ -1,6 +1,7 @@
 import {Route, RouterModule, Routes} from '@angular/router';
 import {MainpageComponent} from "./app-pages/mainpage/mainpage.component";
 import {NgModule} from "@angular/core";
+import {GameDetailsComponent} from "./app-pages/game-details/game-details.component";
 import {GameCollectionComponent} from "./app-pages/game-collection/game-collection.component";
 import {SessionlistComponent} from "./app-pages/sessionlist/sessionlist.component";
 import {GameCreateComponent} from "./app-pages/game-create-or-update/game-create/game-create.component";
@@ -11,13 +12,14 @@ import {SessionEditComponent} from "./app-pages/session-add-or-edit/session-edit
 const mainpageRoute: Route = {path: "mainpage", component: MainpageComponent}
 const spielesammlungRoute: Route = {path: "spielesammlung", component: GameCollectionComponent}
 const sessionliste: Route = {path: "sessionliste", component: SessionlistComponent}
+const gameDetails: Route = {path: "gamedetails/:game-id", component: GameDetailsComponent}
 const createGameRoute: Route = {path: "creategame", component: GameCreateComponent}
 const updateGameRoute: Route = {path: "editgame/:id", component: GameUpdateComponent}
 const createSessionRoute: Route = {path:"createsession", component: SessionAddComponent}
 const updateSessionRoute: Route = {path:"sessionliste/editsession/:id", component: SessionEditComponent}
 const invalidRoute: Route = {path: "**", redirectTo: "/mainpage"}
 
-const routes: Routes = [mainpageRoute, spielesammlungRoute, sessionliste, createGameRoute, updateGameRoute, createSessionRoute, updateSessionRoute, invalidRoute];
+const routes: Routes = [mainpageRoute, spielesammlungRoute, sessionliste, createGameRoute,gameDetails, updateGameRoute, createSessionRoute, updateSessionRoute, invalidRoute];
 
 @NgModule({
   imports: [RouterModule.forRoot([...routes, ])],

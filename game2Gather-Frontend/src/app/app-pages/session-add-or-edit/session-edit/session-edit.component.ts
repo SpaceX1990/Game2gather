@@ -4,6 +4,7 @@ import {SessionAddOrEditDirective} from "../session-add-or-edit.directive";
 import {SessionModel} from "../../../models/session.model";
 import {GameModel} from "../../../models/game.model";
 import {GameVoteModel} from "../../../models/gameVote.model";
+import {FoodVoteModel} from "../../../models/foodVote.model";
 
 @Component({
   selector: 'app-session-edit',
@@ -49,14 +50,20 @@ export class SessionEditComponent extends SessionAddOrEditDirective {
       const foods = this.sessionForm.get("foodVotes")?.value || [];
       const dates = this.sessionForm.get("dateVotes")?.value || [];
 
-      const gameVotes: GameVoteModel[] = [
+      updatedSession.gameVotes = [
         //map preselected games to existing gameVoteModel else to empty voteobject
         ...games.map((selectedGame: GameModel): GameVoteModel => {
-          return this.sessionToUpdate.gameVotes.find(vote => vote.voteoption.id === selectedGame.id) || {voteoption: selectedGame};
+          return this.sessionToUpdate.gameVotes
+            .find(vote => vote.voteoption.id === selectedGame.id) || {voteoption: selectedGame};
         })];
 
-      updatedSession.gameVotes = gameVotes;
-      updatedSession.foodVotes = foods.map((food: any) => ({voteoption: food}));
+      updatedSession.foodVotes =  [
+        //map preselected foods to existing gameFoodModel else to empty voteobject
+        ...foods.map((selectedFoods: string): FoodVoteModel => {
+          return this.sessionToUpdate.foodVotes
+            .find(vote => vote.voteoption === selectedFoods) || {voteoption: selectedFoods};
+        })];
+      
       updatedSession.dateVotes = dates.map((date: any) => ({voteoption: date}));
       updatedSession.userId = 1;
       updatedSession.sessionVoteLink = this.sessionToUpdate.sessionVoteLink;

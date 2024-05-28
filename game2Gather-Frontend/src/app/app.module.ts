@@ -38,6 +38,7 @@ import {CalendarModule} from "primeng/calendar";
 import {TagModule} from "primeng/tag";
 import {SessionEditComponent} from "./app-pages/session-add-or-edit/session-edit/session-edit.component";
 import {DropdownModule} from "primeng/dropdown";
+import { SessionDetailsComponent } from './app-pages/session-details/session-details.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {DropdownModule} from "primeng/dropdown";
     GameCreateComponent,
     GameDetailsComponent,
     SessionAddComponent,
-    SessionEditComponent
+    SessionEditComponent,
+    SessionDetailsComponent
   ],
   imports: [
     BrowserModule,

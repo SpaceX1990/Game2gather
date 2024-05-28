@@ -1,0 +1,45 @@
+<div class="title-text" *ngIf="session">
+  <h2>Session "{{ session.sessionTitle }}" Details</h2>
+</div>
+<form [formGroup]="sessionForm" *ngIf="sessionForm" class="session-form">
+  <div class="form-field">
+    <div class="inline">
+      <div>
+        <label for="sessionTitle">Session Titel:</label>
+        <input id="sessionTitle" class="fullwidthInputs no-focus no-hover" pInputText type="text"
+               formControlName="title"
+               readonly/>
+      </div>
+      <div>
+        <label for="aktiv">Aktiv:</label>
+        <input id="aktiv" class="fullwidthInputs no-focus no-hover" pInputText type="text" formControlName="active"
+               readonly>
+      </div>
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="games">Spiele zum Abstimmen:</label>
+    <div id="games" pInputText style="display: flex; gap: 1%;">
+      <p-chip *ngFor="let game of sessionForm.get('gameVotes')?.value" [label]="game"/>
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="maxPlayer">Maximale Spieleranzahl:</label>
+    <input pInputText id="maxPlayer" class="fullwidthInputs no-focus no-hover" formControlName="maxPlayer" readonly>
+  </div>
+  <div class="form-field">
+    <label for="foods">Essen zum Abstimmen:</label>
+    <div id="foods" pInputText style="display: flex; gap: 1%;">
+      <p-chip *ngFor="let food of sessionForm.get('foodVotes')?.value" [label]="food"/>
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="dates">Daten zum Abstimmen:</label>
+    <div id="dates" pInputText style="display: flex; gap: 1%;">
+      <p-chip *ngFor="let date of sessionForm.get('dateVotes')?.value" [label]="date"/>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button mat-raised-button color="primary" (click)="routeToOverview()">Ok</button>
+  </div>
+</form>

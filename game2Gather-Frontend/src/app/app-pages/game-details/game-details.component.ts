@@ -39,7 +39,6 @@ export class GameDetailsComponent {
             tags: new FormControl(game.tags),
             genre: new FormControl(game.genre.label)
         });
-      console.log(game.tags)
     }
 
     routeToOverview() {

@@ -11,32 +11,36 @@ import java.util.List;
 @Data
 @Builder
 public class GameDTO {
+    //DataTransferObject for Games that is used to ensure type-safety
+    //and possibly prevent code injections
 
     private int id;
     private String title;
-    private int minimumPlayers;
-    private Integer maximumPlayers;
+    private int minPlayer;
+    private Integer maxPlayer;
     private List<Tag> tags;
     private Genre genre;
 
-    public static GameDTO ofEntity(Game game) {
+    //create DTO from normal Game
+    public static GameDTO fromModel(Game game) {
         return GameDTO.builder()
                 .id(game.getId())
                 .title(game.getTitle())
                 .genre(game.getGenre())
-                .maximumPlayers(game.getMaxPlayer())
-                .minimumPlayers(game.getMinPlayer())
+                .maxPlayer(game.getMaxPlayer())
+                .minPlayer(game.getMinPlayer())
                 .tags(game.getTags() != null ? game.getTags() : null)
                 .build();
     }
 
-    public Game toEntity() {
+    //create normal Game from DTO
+    public Game toModel() {
         return Game.builder()
                 .id(id)
                 .title(title)
                 .genre(genre)
-                .maxPlayer(maximumPlayers)
-                .minPlayer(minimumPlayers)
+                .maxPlayer(maxPlayer)
+                .minPlayer(minPlayer)
                 .tags(tags != null ? tags : null)
                 .build();
     }

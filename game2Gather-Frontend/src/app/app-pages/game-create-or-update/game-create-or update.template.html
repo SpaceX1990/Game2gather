@@ -1,38 +1,55 @@
-<div class="form-page">
-  <form [formGroup]="gameForm" class="form-container">
-    <mat-form-field class="form-field">
-      <mat-label>Title</mat-label>
-      <input matInput formControlName="title" [required]="true">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="form-field">
-      <mat-label>Minimum Players:</mat-label>
-      <input type="number" min="1" [max]="gameForm.get('maxPlayer')?.value || 15" matInput formControlName="minPlayer">
-    </mat-form-field>
-
-    <mat-form-field class="form-field">
-      <mat-label>Maximum Players:</mat-label>
-      <input type="number" [min]="gameForm.get('minPlayer')?.value || 1" matInput formControlName="maxPlayer">
-    </mat-form-field>
-
-    <mat-form-field class="form-field">
-      <mat-label>Tags</mat-label>
-      <mat-select formControlName="tags" [compareWith]="compareFn" multiple>
-        @for (tag of tagsOptions; track tag) {
-          <mat-option [value]="tag">{{ tag.label }}</mat-option>
-        }
-      </mat-select>
-
-    </mat-form-field>
-    <mat-form-field class="form-field">
-      <mat-label>Genre</mat-label>
-      <mat-select formControlName="genre" [compareWith]="compareFn">
-        @for (genre of genresOptions; track genre) {
-          <mat-option [value]="genre">{{ genre.label }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-  </form>
-  <button mat-raised-button color="primary" [disabled]="!gameForm.valid" (click)="onFormSubmit()">{{ submitLabel }}
-  </button>
+<div class="template-description__aboveForm title-text">
+  <h2>{{ htmlTemplateName }}</h2>
 </div>
+<form [formGroup]="gameForm" class="game-form">
+  <div class="form-field">
+    <label for="title">Titel</label>
+    <input pInputText id="title" class="fullwidthInputs" placeholder="Titel eingeben" formControlName="title"
+           [required]="true">
+  </div>
+
+  <div class="form-field">
+    <label for="minPlayer">Minimale Spieleranzahl:</label>
+    <p-inputNumber mode="decimal" id="minPlayer" class="fullwidthInputs" styleClass="fullwidthInputs"
+                   [showButtons]="true" [min]="1"
+                   [max]="gameForm.get('maxPlayer')?.value || 15"
+                   formControlName="minPlayer"/>
+  </div>
+
+  <div class="form-field">
+    <label for="maxPlayer">Maximale Spieleranzahl:</label>
+    <p-inputNumber mode="decimal" class="fullwidthInputs" id="maxPlayer" styleClass="fullwidthInputs"
+                   [showButtons]="true"
+                   [min]="gameForm.get('minPlayer')?.value || 1"
+                   formControlName="maxPlayer"/>
+  </div>
+
+  <div class="form-field">
+    <label for="tags">Tags</label>
+    <p-multiSelect
+      id="tags"
+      [options]="tagsOptions"
+      formControlName="tags"
+      styleClass="fullwidthInputs"
+      optionLabel="label"
+      placeholder="Tags auswählen">
+    </p-multiSelect>
+  </div>
+  <div class="form-field">
+    <label for="genre">Genre</label>
+    <p-dropdown
+      id="genre"
+      [options]="genresOptions"
+      formControlName="genre"
+      styleClass="fullwidthInputs"
+      optionLabel="label"
+      placeholder="Genre auswählen">
+    </p-dropdown>
+  </div>
+  <div class="form-actions">
+    <button mat-raised-button color="warn" (click)="routeToOverview()">Abbrechen</button>
+    <button mat-raised-button color="primary" [disabled]="!gameForm.valid" (click)="onFormSubmit()">{{ submitLabel }}
+    </button>
+  </div>
+</form>
+

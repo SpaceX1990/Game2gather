@@ -1,0 +1,57 @@
+<div class="template-description__aboveForm title-text">
+  <h2>{{ htmlTemplateName }}</h2>
+</div>
+
+<form class="session-form" [formGroup]="sessionForm" >
+  <div class="form-group">
+    <label for="sessionTitle">Session Titel:</label>
+    <input id="sessionTitle" class="fullwidthInputs" pInputText type="text" formControlName="sessionTitle"
+           placeholder="Titel eingeben"/>
+  </div>
+
+  <div class="form-group">
+    <label for="gameVotes">Spiele auswählen:</label>
+    <p-multiSelect id="gameVotes" styleClass="fullwidthInputs"
+                   [options]="(gameList | async) || undefined"
+                   formControlName="gameVotes"
+                   placeholder="Spieleoption auswählen">
+      <ng-template let-selectedItems pTemplate="selectedItems">
+        <div *ngFor="let option of selectedItems; let i = index">
+          <div>{{ option.title }}{{i != selectedItems.length -1 ? "," : ""}}</div>
+        </div>
+        <div *ngIf="!selectedItems || selectedItems.length === 0">Spieleoptionen auswählen</div>
+      </ng-template>
+      <ng-template let-option pTemplate="item">
+        <div>
+          <div>{{ option.title }}</div>
+        </div>
+      </ng-template>
+    </p-multiSelect>
+  </div>
+
+  <div class="form-group">
+    <label for="maxPlayer">Maximale Spieleranzahl:</label>
+    <p-inputNumber [showButtons]="true" id="maxPlayer" class="fullwidthInputs" styleClass="fullwidthInputs" type="number" formControlName="maxPlayer"
+           placeholder="Maximale Spieleranzahl eingeben"/>
+  </div>
+
+  <div class="form-group">
+    <label for="foodVotes">Essensoptionen:</label>
+    <p-chips id="foodVotes" styleClass="fullwidthInputs" formControlName="foodVotes" separator=","
+             placeholder="Essensoptionen eingeben"></p-chips>
+  </div>
+
+  <div class="form-group">
+    <label for="dateVotes">Datumsoptionen:</label>
+    <p-calendar id="dateVotes" styleClass="fullwidthInputs" formControlName="dateVotes" dateFormat="dd.mm.yy"
+                selectionMode="multiple" [showButtonBar]="true" placeholder="Datumsoptionen auswählen"
+                [showTime]="true"></p-calendar>
+  </div>
+
+  <div class="form-actions">
+    <button mat-raised-button color="warn" (click)="routeToOverview()">Abbrechen</button>
+    <button mat-raised-button color="primary" [disabled]="!sessionForm.valid"
+            (click)="onFormSubmit()">{{ submitLabel }}
+    </button>
+  </div>
+</form>

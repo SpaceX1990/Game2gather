@@ -1,0 +1,35 @@
+<div class="title-text">
+  <h2>Spiel "{{ game?.title }}" Details</h2>
+</div>
+<form [formGroup]="gameForm" *ngIf="gameForm" class="game-form">
+  <div class="form-field">
+    <label for="title">Titel</label>
+    <input pInputText id="title" class="fullwidthInputs no-focus no-hover" formControlName="title" readonly>
+  </div>
+
+  <div class="form-field">
+    <label for="minPlayer">Minimale Spieleranzahl:</label>
+    <input pInputText id="minPlayer" class="fullwidthInputs no-focus no-hover" formControlName="minPlayer" readonly>
+  </div>
+
+  <div class="form-field">
+    <label for="maxPlayer">Maximale Spieleranzahl:</label>
+    <input pInputText id="maxPlayer" class="fullwidthInputs no-focus no-hover" formControlName="maxPlayer" readonly>
+  </div>
+
+  <div class="form-field">
+    <label for="tags">Tags</label>
+    <div id="tags" pInputText style="display: flex; gap: 1%;">
+      <p-chip *ngFor="let tag of game?.tags" [label]="tag.label"/>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="genre">Genre</label>
+    <input id="genre" pInputText formControlName="genre" class="fullwidthInputs no-focus no-hover" readonly>
+  </div>
+
+  <div class="form-actions">
+    <button mat-flat-button color="primary" (click)="routeToOverview()">OK</button>
+  </div>
+</form>

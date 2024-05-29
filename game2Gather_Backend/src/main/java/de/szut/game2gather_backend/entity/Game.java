@@ -45,9 +45,4 @@ public class Game {
 
     @Nullable
     private byte[] imageBytes;
-
-    //escaped is is not used yet and to keep app working
-    /*@ManyToMany
-    @JoinTable
-    private List<Comment> comments = new ArrayList<>();*/
 }

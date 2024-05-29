@@ -10,17 +10,22 @@ import lombok.Getter;
 @Getter
 @Builder
 public class TagDTO {
+    //DataTransferObject for Tags that is used to ensure type-safety
+    //and possibly prevent code injections
+
     private Integer id;
     private String label;
 
-    public static TagDTO ofEntity(Tag genre) {
+    //create DTO from normal Tag
+    public static TagDTO fromModel(Tag genre) {
         return TagDTO.builder()
                 .id(genre.getId())
                 .label(genre.getLabel())
                 .build();
     }
 
-    public Tag toEntity() {
+    //create normal Tag from DTO
+    public Tag toModel() {
         return Tag.builder()
                 .id(id)
                 .label(label)

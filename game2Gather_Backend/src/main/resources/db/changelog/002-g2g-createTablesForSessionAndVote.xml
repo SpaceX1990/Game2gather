@@ -27,17 +27,6 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create player table" author="dua">
-        <createTable tableName="Player">
-            <column name="id" type="INT" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="username" type="NVARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
     <changeSet id="create session table" author="dua">
         <createTable tableName="Session">
             <column name="id" type="INT" autoIncrement="true">
@@ -63,35 +52,18 @@
                                  onDelete="CASCADE"/>
     </changeSet>
 
-    <changeSet id="create vote table" author="dua">
-        <createTable tableName="Vote">
+    <changeSet id="create player table" author="dua">
+        <createTable tableName="Player">
             <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="fk_session_id" type="INT">
-                <constraints nullable="true"/>
-            </column>
-            <column name="fk_player_id" type="INT">
+            <column name="username" type="NVARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="fk_game_id" type="INT" defaultValue="NULL">
-            <constraints nullable="true"/>
-            </column>
-            <column name="dateOption" type="DATETIME" defaultValue="NULL"/>
-            <column name="foodOption" type="NVARCHAR(255)" defaultValue="NULL"/>
-            <column name="vote_value" type="NVARCHAR(255)">
-                <constraints nullable="false"/>
+            <column name="session_id" type="INT">
+                <constraints foreignKeyName="fk_player_session_id" referencedTableName="Session" referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
         </createTable>
-        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_session_id"
-                                 referencedTableName="Session" referencedColumnNames="id"
-                                 constraintName="fk_session_vote"/>
-        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_player_id"
-                                 referencedTableName="User" referencedColumnNames="id"
-                                 constraintName="fk_player_vote"/>
-        <addForeignKeyConstraint baseTableName="Vote" baseColumnNames="fk_game_id"
-                                 referencedTableName="Game" referencedColumnNames="id"
-                                 constraintName="fk_game_vote"/>
     </changeSet>
-
 </databaseChangeLog>

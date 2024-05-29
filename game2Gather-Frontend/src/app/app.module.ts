@@ -18,17 +18,31 @@ import {InputTextModule} from "primeng/inputtext";
 import {ChipsModule} from "primeng/chips";
 import {InputNumberModule} from "primeng/inputnumber";
 import {MatCardModule} from "@angular/material/card";
-import {NgOptimizedImage} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {ChipModule} from "primeng/chip";
+import {GameDetailsComponent} from './app-pages/game-details/game-details.component';
+import {MatFormField} from "@angular/material/form-field";
+import {MatInput, MatInputModule} from "@angular/material/input";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
 import {CarouselModule} from "primeng/carousel";
 import {ImageModule} from "primeng/image";
-import { GameCreateComponent } from './app-pages/game-create-or-update/game-create/game-create.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {MatInputModule} from "@angular/material/input";
+import {GameCreateComponent} from './app-pages/game-create-or-update/game-create/game-create.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {GameUpdateComponent} from "./app-pages/game-create-or-update/game-update/game-update.component";
+import {SessionAddComponent} from "./app-pages/session-add-or-edit/session-add/session-add.component";
+import {MultiSelectModule} from "primeng/multiselect";
+import {CalendarModule} from "primeng/calendar";
+import {TagModule} from "primeng/tag";
+import {SessionEditComponent} from "./app-pages/session-add-or-edit/session-edit/session-edit.component";
+import {DropdownModule} from "primeng/dropdown";
+import {SessionDetailsComponent} from './app-pages/session-details/session-details.component';
+import {TableModule} from "primeng/table";
+import {SelectButtonModule} from "primeng/selectbutton";
+import {DividerModule} from "primeng/divider";
+import {MenuModule} from "primeng/menu";
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
   declarations: [
@@ -38,6 +52,10 @@ import {GameUpdateComponent} from "./app-pages/game-create-or-update/game-update
     GameCollectionComponent,
     GameUpdateComponent,
     GameCreateComponent,
+    GameDetailsComponent,
+    SessionAddComponent,
+    SessionEditComponent,
+    SessionDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +82,25 @@ import {GameUpdateComponent} from "./app-pages/game-create-or-update/game-update
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MultiSelectModule,
+    FormsModule,
+    CalendarModule,
+    CommonModule,
+    MatSelectModule,
+    MatFormField,
+    MatInput,
+    TagModule,
+    DropdownModule,
+    TableModule,
+    SelectButtonModule,
+    DividerModule,
+    MenuModule,
+    DialogModule,
   ],
-  providers:[ConfirmationService],
-  bootstrap: [AppComponent]
+  providers: [ConfirmationService],
+  bootstrap: [AppComponent],
+  exports: [SessionAddComponent]
 })
 export class AppModule {
 }

@@ -21,26 +21,19 @@ public class TestDataConfiguration {
 
     private final JdbcTemplate jdbcTemplate;
 
+    // After Construction Of Database, use testData files to insert testdata into database
     @PostConstruct
     private void generateTestData() {
         generateDatabaseData("db/testdata/clearTables.sql");
-        generateDatabaseData("db/testdata/gamesData.sql");
-        generateDatabaseData("db/testdata/tagsData.sql");
-        generateDatabaseData("db/testdata/commentsData.sql");
-        generateDatabaseData("db/testdata/game_tagsData.sql");
-        generateDatabaseData("db/testdata/gameUserData.sql");
-        generateDatabaseData("db/testdata/sessionData.sql");
-        generateDatabaseData("db/testdata/genreData.sql");
-        generateDatabaseData("db/testdata/game_genreData.sql");
-/*
+        generateDatabaseData("db/testdata/createTestData.sql");
         generateDatabaseData("db/testdata/voteData.sql");
-*/
     }
 
-
+    //insert testData from testData-files into database
     private void generateDatabaseData(String filename) {
         Resource resource = new ClassPathResource(filename);
 
+        //try to connect to database and execute sql in testData-files on success
         try {
             ScriptUtils.executeSqlScript(Objects.requireNonNull(jdbcTemplate.getDataSource()).getConnection(), new EncodedResource(resource, UTF_8));
         } catch (Exception e) {

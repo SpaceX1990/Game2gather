@@ -79,7 +79,7 @@
           <tr>
             <td>{{ player.username }}</td>
             <td [formGroup]="gameVotesVotes" *ngFor="let vote of session.gameVotes">
-              <p-selectButton [formControlName]="'player' + player.id + 'game' + vote.voteoption.id"
+              <p-selectButton [formControlName]="'player' + player.id + 'game' + vote.id"
                               [options]="voteValueOptions"
                               optionLabel="icon"
                               optionValue="value"
@@ -111,11 +111,43 @@
           <tr>
             <td>{{ player.username }}</td>
             <td [formGroup]="foodVotesVotes" *ngFor="let vote of session.foodVotes">
-              <p-selectButton [formControlName]="'player' + player.id + 'food' + vote.voteoption"
+              <p-selectButton [formControlName]="'player' + player.id + 'food' + vote.id"
                               [options]="voteValueOptions"
                               optionLabel="icon"
                               optionValue="value"
                               (onOptionClick)="voteFood(player,vote,$event)">
+                <ng-template let-item pTemplate>
+                  <i [class]="item.icon"></i>
+                </ng-template>
+              </p-selectButton>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <p-divider type="solid"/>
+  <div class="form-field">
+    <label for="dateVote">Datum Abstimmung:</label>
+    <div id="dateVote">
+      <p-table *ngIf="session" [value]="session.players">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Spieler</th>
+            <th *ngFor="let vote of session.dateVotes">
+              {{ simplifyDate(vote.voteoption) }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-player>
+          <tr>
+            <td>{{ player.username }}</td>
+            <td [formGroup]="dateVotesVotes" *ngFor="let vote of session.dateVotes">
+              <p-selectButton [formControlName]="'player' + player.id + 'date' + vote.id"
+                              [options]="voteValueOptions"
+                              optionLabel="icon"
+                              optionValue="value"
+                              (onOptionClick)="voteDate(player,vote,$event)">
                 <ng-template let-item pTemplate>
                   <i [class]="item.icon"></i>
                 </ng-template>

@@ -24,6 +24,7 @@ export class SessionDetailsComponent {
   session: SessionModel | undefined;
   gameVotesVotes = new FormGroup({});
   foodVotesVotes = new FormGroup({});
+  dateVotesVotes = new FormGroup({});
   sessionID: string | null;
 
   constructor(private sessionService: SessionService,
@@ -54,16 +55,17 @@ export class SessionDetailsComponent {
       userId: new FormControl(session.userId),
       gameVotes: new FormControl(selectedGames),
       foodVotes: new FormControl(session.foodVotes.map(vote => vote.voteoption)),
-      dateVotes: new FormControl(session.dateVotes.map(vote => formatDate(new Date(vote.voteoption), 'dd/MM/yyyy HH:MM', 'en-US')))
+      dateVotes: new FormControl(session.dateVotes.map(vote => this.simplifyDate(vote.voteoption)))
     });
     this.addGameVoteVoteFormControls(session);
-    this.addFoodVoteVoteFormControls(session)
+    this.addFoodVoteVoteFormControls(session);
+    this.addDateVoteVoteFormControls(session);
   }
 
   private addGameVoteVoteFormControls(session: SessionModel) {
     for (const gameVote of session.gameVotes) {
       for (const player of session.players) {
-        this.gameVotesVotes.addControl(`player${player.id}game${gameVote.voteoption.id}`
+        this.gameVotesVotes.addControl(`player${player.id}game${gameVote.id}`
           , new FormControl(
             gameVote.userVotes?.find(vote => vote.player.id == player.id)?.votevalue
           ),
@@ -75,7 +77,19 @@ export class SessionDetailsComponent {
   private addFoodVoteVoteFormControls(session: SessionModel) {
     for (const vote of session.foodVotes) {
       for (const player of session.players) {
-        this.foodVotesVotes.addControl(`player${player.id}food${vote.voteoption}`
+        this.foodVotesVotes.addControl(`player${player.id}food${vote.id}`
+          , new FormControl(
+            vote.userVotes?.find(vote => vote.player.id == player.id)?.votevalue
+          ),
+        )
+      }
+    }
+  }
+
+  private addDateVoteVoteFormControls(session: SessionModel) {
+    for (const vote of session.dateVotes) {
+      for (const player of session.players) {
+        this.dateVotesVotes.addControl(`player${player.id}date${vote.id}`
           , new FormControl(
             vote.userVotes?.find(vote => vote.player.id == player.id)?.votevalue
           ),
@@ -143,6 +157,10 @@ export class SessionDetailsComponent {
       }
     )
   }
+
+  simplifyDate(date: Date | string){
+    return formatDate(new Date(date), 'dd/MM/yyyy HH:MM', 'en-US')
+  };
 
   openDialog(userDialog: Dialog) {
     userDialog.visible = true;

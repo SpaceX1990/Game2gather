@@ -1,6 +1,8 @@
 package de.szut.game2gather_backend.service;
 
+import de.szut.game2gather_backend.dto.DateVoteDTO;
 import de.szut.game2gather_backend.entity.DateVote;
+import de.szut.game2gather_backend.entity.UserVote;
 import de.szut.game2gather_backend.repository.DateVoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -66,6 +68,21 @@ public class DateVoteService {
     public void saveVotesForSessionID(List<DateVote> votes, int sessionId) {
         for (var vote : votes) {
             saveVote(sessionId, vote);
+        }
+    }
+
+    public DateVoteDTO updateUserVotes(DateVoteDTO vote) {
+        var savedVote = dateVoteRepository.findById(vote.getId());
+        if (savedVote.isPresent() && !savedVote.get().getUserVotes().equals(vote.getUserVotes())) {
+            var voteModel = vote.toModel();
+            if (voteModel.getUserVotes() != null) {
+                for (UserVote userVote : voteModel.getUserVotes()) {
+                    voteService.saveVote(userVote);
+                }
+            }
+            return DateVoteDTO.fromModel(dateVoteRepository.save(voteModel));
+        } else {
+            throw new RuntimeException("GameVote not found or no changes");
         }
     }
 }

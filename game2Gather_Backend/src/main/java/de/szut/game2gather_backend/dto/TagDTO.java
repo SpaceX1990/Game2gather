@@ -13,14 +13,14 @@ public class TagDTO {
     private Integer id;
     private String label;
 
-    public static TagDTO toModel(Tag genre) {
+    public static TagDTO fromModel(Tag genre) {
         return TagDTO.builder()
                 .id(genre.getId())
                 .label(genre.getLabel())
                 .build();
     }
 
-    public Tag fromModel() {
+    public Tag toModel() {
         return Tag.builder()
                 .id(id)
                 .label(label)

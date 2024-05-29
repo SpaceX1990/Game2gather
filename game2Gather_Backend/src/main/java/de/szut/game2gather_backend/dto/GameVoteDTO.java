@@ -15,6 +15,8 @@ public class GameVoteDTO {
     @Nullable
     private int id;
     @Nullable
+    private int session_id;
+    @Nullable
     private Game voteoption;
     private List<UserVote> userVotes;
 
@@ -30,6 +32,14 @@ public class GameVoteDTO {
         return GameVote.builder()
                 .id(id)
                 .session_id(sessionId)
+                .userVotes(userVotes)
+                .voteoption(voteoption)
+                .build();
+    }
+    public GameVote toModel() {
+        return GameVote.builder()
+                .id(id)
+                .session_id(session_id)
                 .userVotes(userVotes)
                 .voteoption(voteoption)
                 .build();

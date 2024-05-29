@@ -14,6 +14,8 @@ import java.util.List;
 public class DateVoteDTO {
     @Nullable
     private int id;
+    @Nullable
+    private int session_id;
     private LocalDateTime voteoption;
     private List<UserVote> userVotes;
 
@@ -29,6 +31,14 @@ public class DateVoteDTO {
         return DateVote.builder()
                 .id(id)
                 .session_id(sessionId)
+                .userVotes(userVotes)
+                .voteoption(voteoption)
+                .build();
+    }
+    public DateVote toModel() {
+        return DateVote.builder()
+                .id(id)
+                .session_id(session_id)
                 .userVotes(userVotes)
                 .voteoption(voteoption)
                 .build();

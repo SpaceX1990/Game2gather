@@ -1,15 +1,13 @@
 package de.szut.game2gather_backend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,4 +15,7 @@ public class Player {
 
     @NonNull
     private String username;
+
+    @JoinColumn(name = "session_id")
+    private int session_id;
 }

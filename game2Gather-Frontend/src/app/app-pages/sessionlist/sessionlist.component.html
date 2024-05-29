@@ -1,4 +1,6 @@
-<button mat-raised-button color="primary" class="createSession_button styled-button" routerLink="/createsession">Neue Session erstellen</button>
+<button mat-raised-button color="primary" class="createSession_button styled-button" routerLink="/createsession">Neue
+  Session erstellen
+</button>
 
 <div class="carousel_content">
   <div class="carouselItem">
@@ -8,11 +10,14 @@
         <div style="display:flex; justify-content: center">
           <div class="carousel-card_border">
             <div>
-              <h4 class="mb-1">{{ activeSession?.sessionTitle }}</h4>
-              <h6 class="mt-0 mb-3">Maximale Spieleranzahl: {{ activeSession?.maxPlayer }}</h6>
+              <div [routerLink]="['/sessiondetails/' + activeSession.id]">
+                <h4 class="mb-1">{{ activeSession?.sessionTitle }}</h4>
+                <h6 class="mt-0 mb-3">Maximale Spieleranzahl: {{ activeSession?.maxPlayer }}</h6>
+              </div>
               <div class="carousel_button">
                 <button mat-raised-button color="warn" (click)="deleteSession(activeSession)">Löschen</button>
-                <button mat-raised-button color="primary"  routerLink="editsession/{{activeSession.id}}">Bearbeiten</button>
+                <button mat-raised-button color="primary" routerLink="editsession/{{activeSession.id}}">Bearbeiten
+                </button>
               </div>
             </div>
           </div>
@@ -27,8 +32,10 @@
         <div style="display:flex; justify-content: center">
           <div class="carousel-card_border">
             <div>
-              <h4 class="mb-1">{{ pastSessions?.sessionTitle }}</h4>
-              <h6 class="mt-0 mb-3">Maximale Spieleranzahl: {{ pastSessions?.maxPlayer }}</h6>
+              <div [routerLink]="['/sessiondetails/' + pastSessions.id]">
+                <h4 class="mb-1">{{ pastSessions?.sessionTitle }}</h4>
+                <h6 class="mt-0 mb-3">Maximale Spieleranzahl: {{ pastSessions?.maxPlayer }}</h6>
+              </div>
               <div class="carousel_button">
                 <p-button label="Löschen" severity="danger" (click)="deleteSession(pastSessions)"></p-button>
               </div>

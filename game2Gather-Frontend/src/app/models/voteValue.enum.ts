@@ -1,5 +1,5 @@
 export enum VoteValueEnum {
-  POSITIVE,
-  NEUTRAL,
-  NEGATIVE
+  POSITIVE= "POSITIVE",
+  NEUTRAL = "NEUTRAL",
+  NEGATIVE = "NEGATIVE"
 }

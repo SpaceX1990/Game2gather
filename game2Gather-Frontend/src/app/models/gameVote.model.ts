@@ -5,6 +5,6 @@ import {UserVoteModel} from "./userVote.model";
 export interface GameVoteModel {
   id?: number,
   voteoption: GameModel,
-  votes?: UserVoteModel[],
+  userVotes?: UserVoteModel[],
   session_id?: number
 }

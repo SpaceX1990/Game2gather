@@ -27,17 +27,6 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create player table" author="dua">
-        <createTable tableName="Player">
-            <column name="id" type="INT" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="username" type="NVARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
     <changeSet id="create session table" author="dua">
         <createTable tableName="Session">
             <column name="id" type="INT" autoIncrement="true">
@@ -61,5 +50,20 @@
                                  constraintName="FK_Session_User"
                                  referencedTableName="User" referencedColumnNames="id"
                                  onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="create player table" author="dua">
+        <createTable tableName="Player">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="session_id" type="INT">
+                <constraints foreignKeyName="fk_player_session_id" referencedTableName="Session" referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+        </createTable>
     </changeSet>
 </databaseChangeLog>

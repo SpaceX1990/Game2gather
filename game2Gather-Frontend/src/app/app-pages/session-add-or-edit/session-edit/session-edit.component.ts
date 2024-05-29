@@ -77,6 +77,7 @@ export class SessionEditComponent extends SessionAddOrEditDirective {
 
       updatedSession.userId = 1;
       updatedSession.sessionVoteLink = this.sessionToUpdate.sessionVoteLink;
+      updatedSession.players = this.sessionToUpdate.players;
 
       this.sessionService.updateSession(updatedSession).subscribe({
         next: () => {

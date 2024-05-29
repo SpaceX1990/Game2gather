@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 //declares the base url for the requests this controller will handle
 @RequestMapping(value = "/api/gameVote")
 
-//automatically creates a constructor for each field declared as final
+//automatically creates a constructor for each field declared as final as parameter
 //so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
 

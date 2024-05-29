@@ -18,7 +18,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @Configuration
 @Profile("testdata")
 
-//automatically creates a constructor for each field declared as final
+//automatically creates a constructor for each field declared as final as parameter
 //so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
 

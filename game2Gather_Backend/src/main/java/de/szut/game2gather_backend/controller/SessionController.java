@@ -16,7 +16,7 @@ import java.util.Optional;
 //declares the base url for the requests this controller will handle
 @RequestMapping(value = "/api/session")
 
-//automatically creates a constructor for each field declared as final
+//automatically creates a constructor for each field declared as final as parameter
 //so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
 

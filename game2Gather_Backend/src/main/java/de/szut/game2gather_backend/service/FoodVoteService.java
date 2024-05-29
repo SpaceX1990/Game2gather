@@ -10,9 +10,16 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+//marks this class so that a bean that gets created on application-build
+//and that can then be injected into other useCases via Autowiring or Constructor injection
 @Service
+
+//automatically creates a constructor for each field declared as final as parameter
+//so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
+
 public class FoodVoteService {
+    //Service that is used to manage FoodVote-Objects in database
 
     private final FoodVoteRepository foodVoteRepository;
     private final VoteService voteService;
@@ -60,6 +67,7 @@ public class FoodVoteService {
     private FoodVote saveVote(int sessionId, FoodVote foodVote) {
         foodVote.setSession_id(sessionId);
         if (foodVote.getUserVotes() != null) {
+            //save all userVotes that exist on vote
             voteService.saveVotesForVoteOption(foodVote.getUserVotes());
         }
         return foodVoteRepository.save(foodVote);
@@ -73,9 +81,12 @@ public class FoodVoteService {
 
     public FoodVoteDTO updateUserVotes(FoodVoteDTO vote) {
         var savedVote = foodVoteRepository.findById(vote.getId());
+        //if the vote already exists and the saved version is different
         if (savedVote.isPresent() && !savedVote.get().getUserVotes().equals(vote.getUserVotes())) {
             var voteModel = vote.toModel();
+            //if there exist userVotes on the updated vote
             if (voteModel.getUserVotes() != null) {
+                //save each userVote that exists in vote
                 for (UserVote userVote : voteModel.getUserVotes()) {
                     voteService.saveVote(userVote);
                 }

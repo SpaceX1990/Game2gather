@@ -11,6 +11,9 @@ import java.util.List;
 @Data
 @Builder
 public class FoodVoteDTO {
+    //DataTransferObject for FoodVotes that is used to ensure type-safety
+    //and possibly prevent code injections
+
     @Nullable
     private int id;
     @Nullable
@@ -20,6 +23,7 @@ public class FoodVoteDTO {
     @Nullable
     private List<UserVote> userVotes;
 
+    //create DTO from normal FoodVote
     public static FoodVoteDTO fromModel(FoodVote foodVote) {
         return FoodVoteDTO.builder()
                 .id(foodVote.getId())
@@ -28,6 +32,7 @@ public class FoodVoteDTO {
                 .build();
     }
 
+    //create normal FoodVote from DTO
     public FoodVote toModel(int sessionId) {
         return FoodVote.builder()
                 .id(id)
@@ -37,6 +42,7 @@ public class FoodVoteDTO {
                 .build();
     }
 
+    //create normal FoodVote from DTO
     public FoodVote toModel() {
         return FoodVote.builder()
                 .id(id)

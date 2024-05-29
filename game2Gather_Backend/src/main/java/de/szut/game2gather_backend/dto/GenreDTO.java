@@ -10,9 +10,13 @@ import lombok.Getter;
 @Getter
 @Builder
 public class GenreDTO {
+    //DataTransferObject for Genres that is used to ensure type-safety
+    //and possibly prevent code injections
+
     private Integer id;
     private String label;
 
+    //create DTO from normal Genre
     public static GenreDTO fromModel(final Genre genre) {
         return GenreDTO.builder()
                 .id(genre.getId())
@@ -20,6 +24,7 @@ public class GenreDTO {
                 .build();
     }
 
+    //create normal Genre from DTO
     public Genre toModel() {
         return Genre.builder()
                 .id(id)

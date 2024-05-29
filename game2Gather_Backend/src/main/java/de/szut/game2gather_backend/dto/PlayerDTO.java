@@ -10,10 +10,14 @@ import lombok.Getter;
 @Getter
 @Builder
 public class PlayerDTO {
+    //DataTransferObject for Players that is used to ensure type-safety
+    //and possibly prevent code injections
+
     private int id;
     private String username;
     private int session_id;
 
+    //create DTO from normal Player
     public static PlayerDTO fromModel(Player player) {
         return PlayerDTO.builder()
                 .id(player.getId())
@@ -22,6 +26,7 @@ public class PlayerDTO {
                 .build();
     }
 
+    //create normal Player from DTO
     public Player toModel(int session_id) {
         return Player.builder()
                 .id(id)

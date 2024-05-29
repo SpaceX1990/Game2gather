@@ -11,6 +11,8 @@ import java.util.List;
 @Data
 @Builder
 public class GameDTO {
+    //DataTransferObject for Games that is used to ensure type-safety
+    //and possibly prevent code injections
 
     private int id;
     private String title;
@@ -19,6 +21,7 @@ public class GameDTO {
     private List<Tag> tags;
     private Genre genre;
 
+    //create DTO from normal Game
     public static GameDTO fromModel(Game game) {
         return GameDTO.builder()
                 .id(game.getId())
@@ -30,6 +33,7 @@ public class GameDTO {
                 .build();
     }
 
+    //create normal Game from DTO
     public Game toModel() {
         return Game.builder()
                 .id(id)

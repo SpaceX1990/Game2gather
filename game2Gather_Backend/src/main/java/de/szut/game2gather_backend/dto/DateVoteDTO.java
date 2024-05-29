@@ -12,6 +12,9 @@ import java.util.List;
 @Data
 @Builder
 public class DateVoteDTO {
+    //DataTransferObject for DateVotes that is used to ensure type-safety
+    //and possibly prevent code injections
+
     @Nullable
     private int id;
     @Nullable
@@ -19,6 +22,7 @@ public class DateVoteDTO {
     private LocalDateTime voteoption;
     private List<UserVote> userVotes;
 
+    //create DTO from normal DateVote
     public static DateVoteDTO fromModel(DateVote dateVote) {
         return DateVoteDTO.builder()
                 .id(dateVote.getId())
@@ -27,6 +31,7 @@ public class DateVoteDTO {
                 .build();
     }
 
+    //create normal DateVote from DTO
     public DateVote toModel(int sessionId) {
         return DateVote.builder()
                 .id(id)
@@ -35,6 +40,8 @@ public class DateVoteDTO {
                 .voteoption(voteoption)
                 .build();
     }
+
+    //create normal DateVote from DTO
     public DateVote toModel() {
         return DateVote.builder()
                 .id(id)

@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/dateVote")
 @RequiredArgsConstructor
 public class DateVoteController {
+    //controller to access and manage DateVotes in Database via incoming http-requests
 
     private final DateVoteService dateVoteService;
 
+    //update the dateVote that is passed via the body of the received request
+    //by receiving a put-request on "{host}/api/dateVote/vote", where a request-body is transmitted
+    //and using the dateVoteService to update the dateVote, that is transmitted, in the database
     @PutMapping("/vote")
     public DateVoteDTO saveVote(@RequestBody DateVoteDTO dateVoteDTO) {
         return dateVoteService.updateUserVotes(dateVoteDTO);

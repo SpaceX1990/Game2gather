@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class GameApiService {
+  //service to send http-requests to the backend and access stored or create new Game-data
 
   constructor(private http: HttpClient) {
   }

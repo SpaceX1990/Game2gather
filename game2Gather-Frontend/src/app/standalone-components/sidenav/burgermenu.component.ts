@@ -27,6 +27,7 @@ export class BurgermenuComponent {
   protected isSidebarVisible: boolean = false;
 
   protected navBarPageList: MenuItem[] = [{
+    //options to display in sidenav with functions and page-routing
     items: [
       {routerLink: "/mainpage", label: "Startseite", command: () => this.toggleSidebar()},
       {routerLink: "/sessionliste", label: "Alle Sessions", command: () => this.toggleSidebar()},

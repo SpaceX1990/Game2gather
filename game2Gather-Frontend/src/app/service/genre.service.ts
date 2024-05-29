@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class GenreService {
+  //service to send http-requests to the backend and access stored or create new Genre-data
 
   constructor(private http: HttpClient) { }
 

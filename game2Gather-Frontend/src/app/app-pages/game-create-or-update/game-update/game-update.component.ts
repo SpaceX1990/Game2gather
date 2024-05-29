@@ -12,7 +12,7 @@ export class GameUpdateComponent extends GameCreateOrUpdateDirective {
 
   readonly gameId: number;
 
-  override submitLabel = 'Update game'
+  override submitLabel = 'Spiel aktualisieren'
 
   constructor(private newInjector: Injector, private activatedRoute: ActivatedRoute) {
     super(newInjector);
@@ -22,6 +22,7 @@ export class GameUpdateComponent extends GameCreateOrUpdateDirective {
 
   private getGameToUpdate() {
     this.gameApiService.getGame(this.gameId).subscribe(value => {
+      this.htmlTemplateName = `Spiel "${value.title}" bearbeiten`
       this.gameForm.patchValue(value);
     });
   }

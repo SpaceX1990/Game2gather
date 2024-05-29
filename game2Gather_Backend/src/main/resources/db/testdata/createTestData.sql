@@ -1,4 +1,5 @@
-SET IDENTITY_INSERT Game ON
+SET
+IDENTITY_INSERT Game ON
 INSERT INTO Game (id, title, min_Player, max_Player)
 VALUES (1, 'Die Siedler von Catan', 3, 4),
        (2, 'Risiko', 2, 6),
@@ -11,7 +12,6 @@ VALUES (1, 'Die Siedler von Catan', 3, 4),
        (9, 'Mensch ärgere dich nicht', 2, 4);
 SET IDENTITY_INSERT Game OFF
 
-
 SET IDENTITY_INSERT game_User ON
 INSERT INTO game_User (id, username, email, password_hash, date_created, user_firstname, user_lastname)
 VALUES (1, 'testUser1', 'testUser1@example.com', 'passwordHash1', '2024-01-02', 'Anna', 'Mueller'),
@@ -21,43 +21,52 @@ VALUES (1, 'testUser1', 'testUser1@example.com', 'passwordHash1', '2024-01-02', 
        (5, 'Nammba1', 'Nammba1@example.com', 'passwordHash5', '2024-04-16', 'Julia', 'Gaus');
 SET IDENTITY_INSERT game_User OFF
 
+SET IDENTITY_INSERT [Session] ON
+INSERT INTO [Session] (id, session_title, active, session_vote_link, max_player, fk_user_id)
+VALUES (1, 'Beste Freunde', 'true', 'game2gather.de/asdkm2nln2n', 4, 1),
+       (2, 'Strategiespiele', 'false', 'game2gather.de/asdf33g', 5, 2),
+       (3, 'My Birthdaaaaay', 'true', 'game2gather.de/anlnln3nbb', 6, 3),
+       (4, 'kleine Runde', 'false', 'game2gather.de/asodojiji', 3, 4),
+       (5, 'Wer isch der Beschte', 'false', 'game2gather.de/nlnoihud3', 10, 5);
+SET IDENTITY_INSERT [Session] OFF
+
 SET IDENTITY_INSERT Genre ON;
 INSERT INTO Genre (id, label)
-VALUES
-    (1,'Strategie'),
-    (2,'Brettspiel'),
-    (3,'Kartenspiel'),
-    (4,'Rollenspiel'),
-    (5,'Logikspiel'),
-    (6,'Geschicklichkeitsspiel'),
-    (7,'Simulation'),
-    (8,'Kriegsspiel'),
-    (9,'Abenteuer'),
-    (10,'Wirtschaftsspiel'),
-    (11,'Sport'),
-    (12,'Edukatives Spiel'),
-    (13,'Horror'),
-    (14,'Puzzle'),
-    (15,'Partyspiel'),
-    (16,'Familie'),
-    (17,'Rennspiel'),
-    (18,'Musikspiel'),
-    (19,'Trivia'),
-    (20,'Fantasy'),
-    (21,'Science-Fiction'),
-    (22,'Historisches Spiel'),
-    (23,'Ratespiel'),
-    (24,'Sammelkartenspiel'),
-    (25,'Wortspiel'),
-    (26,'Kooperatives Spiel'),
-    (27,'Bau-und Konstruktionsspiel'),
-    (28,'Kampfspiel'),
-    (29,'Survival'),
-    (30,'Digitales Brettspiel'),
-    (31,'Deckbuilder'),
-    (32,'Echtzeitstrategie'),
-    (33,'Klassiker');
-SET IDENTITY_INSERT Genre OFF
+VALUES (1, 'Strategie'),
+       (2, 'Brettspiel'),
+       (3, 'Kartenspiel'),
+       (4, 'Rollenspiel'),
+       (5, 'Logikspiel'),
+       (6, 'Geschicklichkeitsspiel'),
+       (7, 'Simulation'),
+       (8, 'Kriegsspiel'),
+       (9, 'Abenteuer'),
+       (10, 'Wirtschaftsspiel'),
+       (11, 'Sport'),
+       (12, 'Edukatives Spiel'),
+       (13, 'Horror'),
+       (14, 'Puzzle'),
+       (15, 'Partyspiel'),
+       (16, 'Familie'),
+       (17, 'Rennspiel'),
+       (18, 'Musikspiel'),
+       (19, 'Trivia'),
+       (20, 'Fantasy'),
+       (21, 'Science-Fiction'),
+       (22, 'Historisches Spiel'),
+       (23, 'Ratespiel'),
+       (24, 'Sammelkartenspiel'),
+       (25, 'Wortspiel'),
+       (26, 'Kooperatives Spiel'),
+       (27, 'Bau-und Konstruktionsspiel'),
+       (28, 'Kampfspiel'),
+       (29, 'Survival'),
+       (30, 'Digitales Brettspiel'),
+       (31, 'Deckbuilder'),
+       (32, 'Echtzeitstrategie'),
+       (33, 'Klassiker');
+SET
+IDENTITY_INSERT Genre OFF
 
 SET IDENTITY_INSERT Tag ON
 INSERT INTO Tag (id, label)
@@ -65,7 +74,8 @@ VALUES (1,'Brettspiel'),
        (2,'Strategie'),
        (3,'Familie'),
        (4,'Wortspiel');
-SET IDENTITY_INSERT Tag OFF
+SET
+IDENTITY_INSERT Tag OFF
 
 SET IDENTITY_INSERT Comment ON
 INSERT INTO Comment (id, author, date_create, content, game_id)
@@ -77,7 +87,8 @@ VALUES (1,'Spieler1', '2024-01-21 12:00:00', 'Ein Klassiker!', 1),
        (6,'Spieler6', '2024-05-21 14:30:00', 'Tolle Koop-Erfahrung!', 6),
        (7,'Spieler7', '2024-07-21 15:00:00', 'Spaßiges Wortspiel!', 7),
        (8,'Spieler8', '2024-08-21 15:30:00', 'Großartiges Partyspiel!', 8);
-SET IDENTITY_INSERT Comment OFF
+SET
+IDENTITY_INSERT Comment OFF
 
 INSERT INTO game_genre (game_id, genre_id)
 VALUES (1, 1),
@@ -102,11 +113,12 @@ VALUES (1, 2),
        (8, 4),
        (9, 1);
 
-SET IDENTITY_INSERT Player ON
-INSERT INTO Player (id,username)
-VALUES (1,'max'),
-       (2,'Susi'),
-       (3,'Foxy'),
-       (4,'n1111ce'),
-       (5,'icke')
+SET
+IDENTITY_INSERT Player ON
+INSERT INTO Player (id, username, session_id)
+VALUES (1,'max', 1),
+       (2,'Susi', 1),
+       (3,'Foxy', 1),
+       (4,'n1111ce', 2),
+       (5,'icke', 2)
 SET IDENTITY_INSERT Player OFF

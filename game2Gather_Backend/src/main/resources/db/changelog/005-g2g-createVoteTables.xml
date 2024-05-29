@@ -100,7 +100,7 @@
     <changeSet id="createDateVotesVoteTable" author="lam">
         <createTable tableName="datevote_votes">
             <column name="datevote_id" type="INT">
-                <constraints nullable="false" foreignKeyName="FK_datevote_votes_GameVote"
+                <constraints nullable="false" foreignKeyName="FK_datevote_votes_DateVote"
                              referencedTableName="Datevote" referencedColumnNames="id" deleteCascade="true"/>
             </column>
             <column name="vote_id" type="INT">
@@ -113,7 +113,7 @@
     <changeSet id="createFoodVotesVoteTable" author="lam">
         <createTable tableName="foodvote_votes">
             <column name="foodvote_id" type="INT">
-                <constraints nullable="false" foreignKeyName="FK_foodvote_votes_GameVote"
+                <constraints nullable="false" foreignKeyName="FK_foodvote_votes_FoodVote"
                              referencedTableName="Foodvote" referencedColumnNames="id" deleteCascade="true"/>
             </column>
             <column name="vote_id" type="INT">

@@ -39,6 +39,10 @@ public class Session {
 
     @Nullable
     @OneToMany(mappedBy = "session_id")
+    private List<Player> players;
+
+    @Nullable
+    @OneToMany(mappedBy = "session_id")
     private List<GameVote> gameVotes;
 
     @Nullable

@@ -17,7 +17,7 @@ public class GameService {
 
     public List<GameDTO> readAll() {
         List<Game> games = repository.findAll();
-        return games.stream().map(GameDTO::ofEntity).toList();
+        return games.stream().map(GameDTO::fromModel).toList();
     }
 
     public void delete(int id) {
@@ -25,7 +25,7 @@ public class GameService {
     }
 
     public GameDTO create(GameDTO gameDTO) {
-        return GameDTO.ofEntity(repository.save(gameDTO.toEntity()));
+        return GameDTO.fromModel(repository.save(gameDTO.toModel()));
     }
 
     public Optional<Game> read(int id) {

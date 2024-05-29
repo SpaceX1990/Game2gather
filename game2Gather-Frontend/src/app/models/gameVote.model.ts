@@ -1,10 +1,10 @@
 import {GameModel} from "./game.model";
-import {VoteModel} from "./vote.model";
+import {UserVoteModel} from "./userVote.model";
 
 
 export interface GameVoteModel {
   id?: number,
   voteoption: GameModel,
-  votes?: VoteModel[],
+  userVotes?: UserVoteModel[],
   session_id?: number
 }

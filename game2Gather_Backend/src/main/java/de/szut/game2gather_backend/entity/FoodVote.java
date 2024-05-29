@@ -27,7 +27,7 @@ public class FoodVote {
             joinColumns = @JoinColumn(name = "foodvote_id"),
             inverseJoinColumns = @JoinColumn(name = "vote_id")
     )
-    List<Vote> votes;
+    List<UserVote> userVotes;
 
     @JoinColumn(name = "session_id")
     private int session_id;

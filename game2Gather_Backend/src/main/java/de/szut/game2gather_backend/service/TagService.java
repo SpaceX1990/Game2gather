@@ -1,5 +1,6 @@
 package de.szut.game2gather_backend.service;
 
+
 import de.szut.game2gather_backend.dto.TagDTO;
 import de.szut.game2gather_backend.entity.Tag;
 import de.szut.game2gather_backend.repository.TagRepository;
@@ -15,6 +16,6 @@ public class TagService {
 
     public List<TagDTO> readAll() {
         List<Tag> tags = repository.findAll();
-        return tags.stream().map(TagDTO::ofEntity).toList();
+        return tags.stream().map(TagDTO::fromModel).toList();
     }
 }

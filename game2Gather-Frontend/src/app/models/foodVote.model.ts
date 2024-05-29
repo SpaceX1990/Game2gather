@@ -1,9 +1,9 @@
-import {VoteModel} from "./vote.model";
+import {UserVoteModel} from "./userVote.model";
 
 
 export interface FoodVoteModel {
   id?: number,
   voteoption: string,
-  votes?: VoteModel[],
+  userVotes?: UserVoteModel[],
   session_id?: number
 }

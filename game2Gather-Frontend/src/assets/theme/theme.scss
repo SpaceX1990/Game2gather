@@ -3,7 +3,7 @@
 @import './_fonts';
 @import './primeng-theme-base/_components';
 @import './_extensions';
-
+@import "primeicons/primeicons.css";
 @include mat.core();
 
 $custom-mat-theme: mat.define-light-theme((

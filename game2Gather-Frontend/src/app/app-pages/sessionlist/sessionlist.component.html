@@ -1,22 +1,23 @@
-<button mat-raised-button color="primary" class="createSession_button" routerLink="/createsession">Neue Session erstellen</button>
+<button mat-raised-button color="primary" class="createSession_button styled-button" routerLink="/createsession">Neue
+  Session erstellen
+</button>
 
 <div class="carousel_content">
   <div class="carouselItem">
     <h1 class="carouselItem-title">Neue Session</h1>
     <p-carousel [value]="activeSessions" [numVisible]="3" [numScroll]="3" [responsiveOptions]="">
-      <ng-template let-activeSessions pTemplate="item">
+      <ng-template let-activeSession pTemplate="item">
         <div style="display:flex; justify-content: center">
           <div class="carousel-card_border">
             <div>
-              <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image"
-                       class="w-6 shadow-2"
-                       width="250"></p-image>
-            </div>
-            <div>
-              <h4 class="mb-1">{{ activeSessions?.sessionTitle }}</h4>
-              <h6 class="mt-0 mb-3">Max Player: {{ activeSessions?.maxPlayer }}</h6>
+              <div [routerLink]="['/sessiondetails/' + activeSession.id]">
+                <h4 class="mb-1">{{ activeSession?.sessionTitle }}</h4>
+                <h6 class="mt-0 mb-3">Maximale Spieleranzahl: {{ activeSession?.maxPlayer }}</h6>
+              </div>
               <div class="carousel_button">
-                <p-button label="Session löschen" severity="danger" (click)="deleteSession(activeSessions)"></p-button>
+                <button mat-raised-button color="warn" (click)="deleteSession(activeSession)">Löschen</button>
+                <button mat-raised-button color="primary" routerLink="editsession/{{activeSession.id}}">Bearbeiten
+                </button>
               </div>
             </div>
           </div>
@@ -31,15 +32,12 @@
         <div style="display:flex; justify-content: center">
           <div class="carousel-card_border">
             <div>
-              <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image"
-                       class="w-6 shadow-2"
-                       width="250"></p-image>
-            </div>
-            <div>
-              <h4 class="mb-1">{{ pastSessions?.sessionTitle }}</h4>
-              <h6 class="mt-0 mb-3">Max Player: {{ pastSessions?.maxPlayer }}</h6>
+              <div [routerLink]="['/sessiondetails/' + pastSessions.id]">
+                <h4 class="mb-1">{{ pastSessions?.sessionTitle }}</h4>
+                <h6 class="mt-0 mb-3">Maximale Spieleranzahl: {{ pastSessions?.maxPlayer }}</h6>
+              </div>
               <div class="carousel_button">
-                <p-button label="Session löschen" severity="danger" (click)="deleteSession(pastSessions)"></p-button>
+                <p-button label="Löschen" severity="danger" (click)="deleteSession(pastSessions)"></p-button>
               </div>
             </div>
           </div>

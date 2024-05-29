@@ -4,6 +4,7 @@ import de.szut.game2gather_backend.entity.Game;
 import de.szut.game2gather_backend.entity.GameVote;
 import de.szut.game2gather_backend.entity.UserVote;
 import jakarta.annotation.Nullable;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class GameVoteDTO {
     @Nullable
     private int id;

@@ -23,6 +23,19 @@ public class SessionDTO {
     private List<DateVoteDTO> dateVotes;
     private List<FoodVoteDTO> foodVotes;
 
+    public SessionDTO(int id, String sessionTitle, boolean active, String sessionVoteLink, Integer maxPlayer, int userId, List<PlayerDTO> players, List<GameVoteDTO> gameVotes, List<DateVoteDTO> dateVotes, List<FoodVoteDTO> foodVotes) {
+        this.id = id;
+        this.sessionTitle = sessionTitle;
+        this.active = active;
+        this.sessionVoteLink = sessionVoteLink;
+        this.maxPlayer = maxPlayer;
+        this.userId = userId;
+        this.players = players;
+        this.gameVotes = gameVotes;
+        this.dateVotes = dateVotes;
+        this.foodVotes = foodVotes;
+    }
+
     public static SessionDTO fromModel(Session session) {
         return SessionDTO.builder()
                 .id(session.getId())

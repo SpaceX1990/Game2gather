@@ -3,6 +3,7 @@ package de.szut.game2gather_backend.dto;
 import de.szut.game2gather_backend.entity.FoodVote;
 import de.szut.game2gather_backend.entity.UserVote;
 import jakarta.annotation.Nullable;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class FoodVoteDTO {
     @Nullable
     private int id;

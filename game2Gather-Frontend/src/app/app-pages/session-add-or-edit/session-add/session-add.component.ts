@@ -9,6 +9,7 @@ import {GameModel} from "../../../models/game.model";
   styleUrls: ['../session-add-or-edit.component.scss']
 })
 export class SessionAddComponent extends SessionAddOrEditDirective {
+  //extend base-directive of session creation or update with custom page-title and submit-label
 
   override htmlTemplateName = "Neue Session anlegen";
   override submitLabel = "Session erstellen";
@@ -17,6 +18,7 @@ export class SessionAddComponent extends SessionAddOrEditDirective {
     super(newInjector);
   }
 
+  //customize inital formSubmit
   override onFormSubmit() {
     if (this.sessionForm.valid) {
       let newSession: SessionModel = this.sessionForm.value;

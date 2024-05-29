@@ -34,6 +34,7 @@ export class SessionlistComponent implements OnInit {
   }
 
   deleteSession(session: SessionModel | undefined) {
+    //open dialog to confirm or cancel session-deletion
     this.confirmationsService.confirm({
       dismissableMask: true,
       message: `Soll die Session ${session?.sessionTitle} wirklich gelöscht werden?`,

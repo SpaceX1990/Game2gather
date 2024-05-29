@@ -13,6 +13,7 @@ import {DateVoteModel} from "../../../models/dateVote.model";
   styleUrls: ['../session-add-or-edit.component.scss']
 })
 export class SessionEditComponent extends SessionAddOrEditDirective {
+  //extend base-directive of session creation or update with custom page-title and submit-label
 
   override submitLabel = "Session aktualisieren"
   private sessionToUpdate!: SessionModel;
@@ -44,9 +45,11 @@ export class SessionEditComponent extends SessionAddOrEditDirective {
     });
   }
 
+  //customize initial formSubmit
   override onFormSubmit() {
     if (this.sessionForm.valid) {
       let updatedSession: SessionModel = this.sessionForm.value;
+      //read all games, foods and dates from sessionForm
       const games = this.sessionForm.get("gameVotes")?.value || [];
       const foods = this.sessionForm.get("foodVotes")?.value || [];
       const dates = this.sessionForm.get("dateVotes")?.value || [];
@@ -79,6 +82,7 @@ export class SessionEditComponent extends SessionAddOrEditDirective {
       updatedSession.sessionVoteLink = this.sessionToUpdate.sessionVoteLink;
       updatedSession.players = this.sessionToUpdate.players;
 
+      //update session via sessionService
       this.sessionService.updateSession(updatedSession).subscribe({
         next: () => {
           this.isSubmit = true;

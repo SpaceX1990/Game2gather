@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {SessionService} from "../../service/session.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SessionModel} from "../../models/session.model";
@@ -29,7 +29,6 @@ export class SessionDetailsComponent {
 
   constructor(private sessionService: SessionService,
               private router: Router,
-              private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private voteService: VoteService) {
     this.sessionID = this.route.snapshot.paramMap.get('session-id');
@@ -45,6 +44,7 @@ export class SessionDetailsComponent {
     });
   }
 
+  //set values into form to show details
   private setSessionForm(session: SessionModel) {
     const gameVotes = session.gameVotes.map(vote => vote.voteoption);
     const selectedGames = gameVotes.map(selectedGame => selectedGame.title);
@@ -62,6 +62,7 @@ export class SessionDetailsComponent {
     this.addDateVoteVoteFormControls(session);
   }
 
+  //add GameVoteControls to formGroup for each player and its corresponding vote in each GameVote
   private addGameVoteVoteFormControls(session: SessionModel) {
     for (const gameVote of session.gameVotes) {
       for (const player of session.players) {
@@ -74,6 +75,7 @@ export class SessionDetailsComponent {
     }
   }
 
+  //add FoodVoteControls to formGroup for each player and its corresponding vote in each FoodVote
   private addFoodVoteVoteFormControls(session: SessionModel) {
     for (const vote of session.foodVotes) {
       for (const player of session.players) {
@@ -86,6 +88,7 @@ export class SessionDetailsComponent {
     }
   }
 
+  //add DateVoteControls to formGroup for each player and its corresponding vote in each DateVote
   private addDateVoteVoteFormControls(session: SessionModel) {
     for (const vote of session.dateVotes) {
       for (const player of session.players) {
@@ -102,13 +105,16 @@ export class SessionDetailsComponent {
     this.router.navigateByUrl('/sessionliste');
   }
 
+  //possible vote values for each vote-possibility
   voteValueOptions: any[] = [
     {icon: "pi pi-thumbs-down", value: VoteValueEnum.NEGATIVE},
     {icon: "pi pi-bars", value: VoteValueEnum.NEUTRAL},
     {icon: "pi pi-thumbs-up", value: VoteValueEnum.POSITIVE},
   ]
 
+  //vote for GameVote
   voteGame(player: PlayerModel, vote: GameVoteModel, clickEvent: SelectButtonOptionClickEvent) {
+    //if vote in GameVote with player id exists, update value in vote-list, else push new vote into list
     if (vote.userVotes?.find(vote => vote.player.id === player.id)) {
       vote.userVotes?.forEach(vote => {
         if (vote.player.id === player.id) {
@@ -118,10 +124,13 @@ export class SessionDetailsComponent {
     } else {
       vote.userVotes?.push({player: player, votevalue: clickEvent.option.value});
     }
+    //update GameVote with updated vote-list
     this.voteService.voteGameVote(vote).subscribe();
   }
 
+  //vote for FoodVote
   voteFood(player: PlayerModel, vote: FoodVoteModel, clickEvent: SelectButtonOptionClickEvent) {
+    //if vote in FoodVote with player id exists, update value in vote-list, else push new vote into list
     if (vote.userVotes?.find(vote => vote.player.id === player.id)) {
       vote.userVotes?.forEach(vote => {
         if (vote.player.id === player.id) {
@@ -131,10 +140,13 @@ export class SessionDetailsComponent {
     } else {
       vote.userVotes?.push({player: player, votevalue: clickEvent.option.value});
     }
+    //update FoodVote with updated vote-list
     this.voteService.voteFoodVote(vote).subscribe();
   }
 
+  //vote for DateVote
   voteDate(player: PlayerModel, vote: DateVoteModel, clickEvent: SelectButtonOptionClickEvent) {
+    //if vote in DateVote with player id exists, update value in vote-list, else push new vote into list
     if (vote.userVotes?.find(vote => vote.player.id === player.id)) {
       vote.userVotes?.forEach(vote => {
         if (vote.player.id === player.id) {
@@ -144,12 +156,14 @@ export class SessionDetailsComponent {
     } else {
       vote.userVotes?.push({player: player, votevalue: clickEvent.option.value});
     }
+    //update DateVote with updated vote-list
     this.voteService.voteDateVote(vote).subscribe();
   }
 
   addPlayer(value: string) {
-    console.log("add")
+    //push new player into player-list in session
     this.session!.players.push({id: undefined, username: value, session_id: this.sessionID!})
+    //update session with updated player-list
     this.sessionService.updateSession(this.session!).subscribe({
         next: () => {
           this.loadSession(this.sessionID!);
@@ -158,7 +172,7 @@ export class SessionDetailsComponent {
     )
   }
 
-  simplifyDate(date: Date | string){
+  simplifyDate(date: Date | string) {
     return formatDate(new Date(date), 'dd/MM/yyyy HH:MM', 'en-US')
   };
 

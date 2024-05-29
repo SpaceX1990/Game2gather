@@ -18,9 +18,12 @@ public class VoteService {
     }
 
     public void saveVote(UserVote userVote) {
-        var savedVote = voteRepository.findById(userVote.getId());
-        if (savedVote.isEmpty() || !savedVote.get().equals(userVote)) {
-            voteRepository.save(userVote);
+        if (userVote.getId() != null) {
+            var savedVote = voteRepository.findById(userVote.getId());
+            if (!savedVote.isEmpty() && savedVote.get().equals(userVote)) {
+                return;
+            }
         }
+        voteRepository.save(userVote);
     }
 }

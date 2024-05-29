@@ -9,6 +9,9 @@ import {GameVoteModel} from "../../models/gameVote.model";
 import {SelectButtonOptionClickEvent} from "primeng/selectbutton";
 import {PlayerModel} from "../../models/player.model";
 import {VoteService} from "../../service/vote.service";
+import {Dialog} from "primeng/dialog";
+import {DateVoteModel} from "../../models/dateVote.model";
+import {FoodVoteModel} from "../../models/foodVote.model";
 
 @Component({
   selector: 'app-session-details',
@@ -20,15 +23,17 @@ export class SessionDetailsComponent {
   sessionForm: FormGroup | undefined;
   session: SessionModel | undefined;
   gameVotesVotes = new FormGroup({});
+  foodVotesVotes = new FormGroup({});
+  sessionID: string | null;
 
   constructor(private sessionService: SessionService,
               private router: Router,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private voteService: VoteService) {
-    const sessionId = this.route.snapshot.paramMap.get('session-id');
-    if (sessionId) {
-      this.loadSession(sessionId);
+    this.sessionID = this.route.snapshot.paramMap.get('session-id');
+    if (this.sessionID) {
+      this.loadSession(this.sessionID);
     }
   }
 
@@ -52,14 +57,29 @@ export class SessionDetailsComponent {
       dateVotes: new FormControl(session.dateVotes.map(vote => formatDate(new Date(vote.voteoption), 'dd/MM/yyyy HH:MM', 'en-US')))
     });
     this.addGameVoteVoteFormControls(session);
+    this.addFoodVoteVoteFormControls(session)
   }
 
   private addGameVoteVoteFormControls(session: SessionModel) {
     for (const gameVote of session.gameVotes) {
-      if (gameVote.userVotes) {
-        for (const vote of gameVote.userVotes) {
-          this.gameVotesVotes.addControl(`player${vote.player.id}game${gameVote.voteoption.id}`, new FormControl(vote.votevalue))
-        }
+      for (const player of session.players) {
+        this.gameVotesVotes.addControl(`player${player.id}game${gameVote.voteoption.id}`
+          , new FormControl(
+            gameVote.userVotes?.find(vote => vote.player.id == player.id)?.votevalue
+          ),
+        )
+      }
+    }
+  }
+
+  private addFoodVoteVoteFormControls(session: SessionModel) {
+    for (const vote of session.foodVotes) {
+      for (const player of session.players) {
+        this.foodVotesVotes.addControl(`player${player.id}food${vote.voteoption}`
+          , new FormControl(
+            vote.userVotes?.find(vote => vote.player.id == player.id)?.votevalue
+          ),
+        )
       }
     }
   }
@@ -74,20 +94,62 @@ export class SessionDetailsComponent {
     {icon: "pi pi-thumbs-up", value: VoteValueEnum.POSITIVE},
   ]
 
-  voteGame(player: PlayerModel, gameVote: GameVoteModel, clickEvent: SelectButtonOptionClickEvent) {
-
-    if (gameVote.userVotes?.find(vote => vote.player.id === player.id)) {
-      gameVote.userVotes?.forEach(vote => {
+  voteGame(player: PlayerModel, vote: GameVoteModel, clickEvent: SelectButtonOptionClickEvent) {
+    if (vote.userVotes?.find(vote => vote.player.id === player.id)) {
+      vote.userVotes?.forEach(vote => {
         if (vote.player.id === player.id) {
           vote.votevalue = clickEvent.option.value;
         }
       });
     } else {
-      gameVote.userVotes?.push({player: player, votevalue: clickEvent.option.value});
+      vote.userVotes?.push({player: player, votevalue: clickEvent.option.value});
     }
-
-    this.voteService.voteGameVote(gameVote).subscribe();
+    this.voteService.voteGameVote(vote).subscribe();
   }
 
-  protected readonly FormGroup = FormGroup;
+  voteFood(player: PlayerModel, vote: FoodVoteModel, clickEvent: SelectButtonOptionClickEvent) {
+    if (vote.userVotes?.find(vote => vote.player.id === player.id)) {
+      vote.userVotes?.forEach(vote => {
+        if (vote.player.id === player.id) {
+          vote.votevalue = clickEvent.option.value;
+        }
+      });
+    } else {
+      vote.userVotes?.push({player: player, votevalue: clickEvent.option.value});
+    }
+    this.voteService.voteFoodVote(vote).subscribe();
+  }
+
+  voteDate(player: PlayerModel, vote: DateVoteModel, clickEvent: SelectButtonOptionClickEvent) {
+    if (vote.userVotes?.find(vote => vote.player.id === player.id)) {
+      vote.userVotes?.forEach(vote => {
+        if (vote.player.id === player.id) {
+          vote.votevalue = clickEvent.option.value;
+        }
+      });
+    } else {
+      vote.userVotes?.push({player: player, votevalue: clickEvent.option.value});
+    }
+    this.voteService.voteDateVote(vote).subscribe();
+  }
+
+  addPlayer(value: string) {
+    console.log("add")
+    this.session!.players.push({id: undefined, username: value, session_id: this.sessionID!})
+    this.sessionService.updateSession(this.session!).subscribe({
+        next: () => {
+          this.loadSession(this.sessionID!);
+        },
+      }
+    )
+  }
+
+  openDialog(userDialog: Dialog) {
+    userDialog.visible = true;
+  }
+
+  routeToEdit(id: number | undefined) {
+    this.router.navigateByUrl("sessionliste/editsession/" + id)
+  }
+
 }

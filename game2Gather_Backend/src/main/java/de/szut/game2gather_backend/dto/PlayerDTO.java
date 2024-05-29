@@ -24,7 +24,7 @@ public class PlayerDTO {
 
     public Player toModel(int session_id) {
         return Player.builder()
-                .id(session_id)
+                .id(id)
                 .username(username)
                 .session_id(session_id)
                 .build();

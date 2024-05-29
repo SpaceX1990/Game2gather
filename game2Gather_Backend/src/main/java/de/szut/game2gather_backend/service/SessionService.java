@@ -20,6 +20,7 @@ public class SessionService {
     private final GameVoteService gameVoteService;
     private final FoodVoteService foodVoteService;
     private final DateVoteService dateVoteService;
+    private final PlayerService playerService;
 
     @GetMapping
 
@@ -92,6 +93,14 @@ public class SessionService {
             if (!Objects.equals(updatedDateVotes, initialDateVotes)) {
                 updatedSession.setDateVotes(
                         dateVoteService.updateSessionVotesForSessionID(updatedDateVotes, initialDateVotes, updatedSession.getId())
+                );
+            }
+
+            var updatedPlayers = updatedSession.getPlayers();
+            var initialPlayers = initialSession.get().getPlayers();
+            if (!Objects.equals(updatedPlayers, initialPlayers)) {
+                updatedSession.setPlayers(
+                        playerService.updatePlayers(updatedPlayers, initialPlayers)
                 );
             }
 

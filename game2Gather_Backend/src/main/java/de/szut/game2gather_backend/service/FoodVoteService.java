@@ -1,6 +1,8 @@
 package de.szut.game2gather_backend.service;
 
+import de.szut.game2gather_backend.dto.FoodVoteDTO;
 import de.szut.game2gather_backend.entity.FoodVote;
+import de.szut.game2gather_backend.entity.UserVote;
 import de.szut.game2gather_backend.repository.FoodVoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -58,7 +60,7 @@ public class FoodVoteService {
     private FoodVote saveVote(int sessionId, FoodVote foodVote) {
         foodVote.setSession_id(sessionId);
         if (foodVote.getUserVotes() != null) {
-           voteService.saveVotesForVoteOption(foodVote.getUserVotes());
+            voteService.saveVotesForVoteOption(foodVote.getUserVotes());
         }
         return foodVoteRepository.save(foodVote);
     }
@@ -66,6 +68,21 @@ public class FoodVoteService {
     public void saveVotesForSessionID(List<FoodVote> votes, int sessionId) {
         for (var vote : votes) {
             saveVote(sessionId, vote);
+        }
+    }
+
+    public FoodVoteDTO updateUserVotes(FoodVoteDTO vote) {
+        var savedVote = foodVoteRepository.findById(vote.getId());
+        if (savedVote.isPresent() && !savedVote.get().getUserVotes().equals(vote.getUserVotes())) {
+            var voteModel = vote.toModel();
+            if (voteModel.getUserVotes() != null) {
+                for (UserVote userVote : voteModel.getUserVotes()) {
+                    voteService.saveVote(userVote);
+                }
+            }
+            return FoodVoteDTO.fromModel(foodVoteRepository.save(voteModel));
+        } else {
+            throw new RuntimeException("GameVote not found or no changes");
         }
     }
 }

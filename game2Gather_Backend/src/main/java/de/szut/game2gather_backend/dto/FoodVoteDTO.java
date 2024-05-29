@@ -14,6 +14,8 @@ public class FoodVoteDTO {
     @Nullable
     private int id;
     @Nullable
+    private int session_id;
+    @Nullable
     private String voteoption;
     @Nullable
     private List<UserVote> userVotes;
@@ -30,6 +32,15 @@ public class FoodVoteDTO {
         return FoodVote.builder()
                 .id(id)
                 .session_id(sessionId)
+                .userVotes(userVotes)
+                .voteoption(voteoption)
+                .build();
+    }
+
+    public FoodVote toModel() {
+        return FoodVote.builder()
+                .id(id)
+                .session_id(session_id)
                 .userVotes(userVotes)
                 .voteoption(voteoption)
                 .build();

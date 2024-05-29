@@ -9,8 +9,12 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
+//automatically creates getters and setters for each declared field
 @Data
+
+//automatically creates a Builder that can be used to build the object
 @Builder
+
 public class DateVoteDTO {
     //DataTransferObject for DateVotes that is used to ensure type-safety
     //and possibly prevent code injections

@@ -9,9 +9,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+//marks this class as a controller that maps requests that are sent
+//to a specific url, to specific methods
 @RestController
+
+//declares the base url for the requests this controller will handle
 @RequestMapping(value = "/api/session")
+
+//automatically creates a constructor for each field declared as final
+//so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
+
 public class SessionController {
     //controller to access and manage Sessions in Database via incoming http-requests
 

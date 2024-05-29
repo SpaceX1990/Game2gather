@@ -10,9 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+//marks this class as a controller that maps requests that are sent
+//to a specific url, to specific methods
 @RestController
+
+//declares the base url for the requests this controller will handle
 @RequestMapping(value = "/api/genre")
+
+//automatically creates a constructor for each field declared as final
+//so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
+
 public class GenreController {
     //controller to access and manage Genres in Database via incoming http-requests
 

@@ -9,9 +9,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+//marks this class as a controller that maps requests that are sent
+//to a specific url, to specific methods
 @RestController
+
+//declares the base url for the requests this controller will handle
 @RequestMapping(value = "/api/dateVote")
+
+//automatically creates a constructor for each field declared as final
+//so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
+
 public class DateVoteController {
     //controller to access and manage DateVotes in Database via incoming http-requests
 

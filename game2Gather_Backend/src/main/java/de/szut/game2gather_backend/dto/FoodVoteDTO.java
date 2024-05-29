@@ -8,8 +8,12 @@ import lombok.Data;
 
 import java.util.List;
 
+//automatically creates getters and setters for each declared field
 @Data
+
+//automatically creates a Builder that can be used to build the object
 @Builder
+
 public class FoodVoteDTO {
     //DataTransferObject for FoodVotes that is used to ensure type-safety
     //and possibly prevent code injections

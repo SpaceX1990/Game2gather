@@ -14,9 +14,14 @@ import java.util.Objects;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+//declares this class as a configuration that is used when building the project
 @Configuration
 @Profile("testdata")
+
+//automatically creates a constructor for each field declared as final
+//so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
+
 public class TestDataConfiguration {
 
     private final JdbcTemplate jdbcTemplate;

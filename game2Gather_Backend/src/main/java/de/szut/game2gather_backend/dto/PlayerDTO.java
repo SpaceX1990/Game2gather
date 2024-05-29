@@ -4,11 +4,17 @@ package de.szut.game2gather_backend.dto;
 import de.szut.game2gather_backend.entity.Player;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
+//automatically creates a constructor with all parameters for each declared field
 @AllArgsConstructor
-@Getter
+
+//automatically creates getters and setters for each declared field
+@Data
+
+//automatically creates a Builder that can be used to build the object
 @Builder
+
 public class PlayerDTO {
     //DataTransferObject for Players that is used to ensure type-safety
     //and possibly prevent code injections

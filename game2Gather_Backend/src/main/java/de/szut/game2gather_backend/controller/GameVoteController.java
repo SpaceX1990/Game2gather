@@ -6,9 +6,17 @@ import de.szut.game2gather_backend.service.GameVoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+//marks this class as a controller that maps requests that are sent
+//to a specific url, to specific methods
 @RestController
+
+//declares the base url for the requests this controller will handle
 @RequestMapping(value = "/api/gameVote")
+
+//automatically creates a constructor for each field declared as final
+//so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
+
 public class GameVoteController {
     //controller to access and manage GameVotes in Database via incoming http-requests
 

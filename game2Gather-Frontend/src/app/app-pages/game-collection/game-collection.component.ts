@@ -8,11 +8,10 @@ import {ConfirmationService} from "primeng/api";
   templateUrl: './game-collection.component.html',
   styleUrl: './game-collection.component.scss'
 })
-export class GameCollectionComponent implements OnInit{
+export class GameCollectionComponent implements OnInit {
   protected isSidebarVisible: boolean = false;
-  protected gameCollection: GameModel[] = [
-
-  ]
+  protected gameCollection: GameModel[] = []
+  protected searchTerm: string = "";
 
   constructor(private gameApiService: GameApiService, private confirmationService: ConfirmationService) {
   }
@@ -30,8 +29,8 @@ export class GameCollectionComponent implements OnInit{
   deleteGame(game: GameModel | undefined) {
     this.confirmationService.confirm({
       dismissableMask: true,
-      message:`Soll das Spiel ${game?.title} wirklich gelöscht werden?`,
-      header:"Spiel löschen",
+      message: `Soll das Spiel ${game?.title} wirklich gelöscht werden?`,
+      header: "Spiel löschen",
       acceptIcon: "none",
       acceptLabel: "Löschen",
       acceptButtonStyleClass: "p-button-danger",
@@ -47,5 +46,13 @@ export class GameCollectionComponent implements OnInit{
         })
       },
     })
+  }
+
+  filterGames(): GameModel[] {
+    return this.gameCollection.filter(game =>
+      game.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      (game.genre.label.toLowerCase().includes(this.searchTerm.toLowerCase())) ||
+      game.tags.some(tag => tag.label.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    );
   }
 }

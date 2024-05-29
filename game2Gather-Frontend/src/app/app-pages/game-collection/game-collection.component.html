@@ -2,19 +2,14 @@
   <div class="collection_header">
     <button mat-raised-button color="primary" routerLink="/creategame">Spiel hinzufügen</button>
     <p-toolbar>
-      <input type="text" pInputText placeholder="name filter">
-      <input type="text" pInputText placeholder="genre filter">
-      <p-chips placeholder="tag filter"/>
-      <p-inputNumber mode="decimal" [showButtons]="true" placeholder="min Spieler"/>
-      <p-inputNumber mode="decimal" [showButtons]="true" placeholder="max Spieler"/>
+      <input type="text" pInputText placeholder="Suchbegriff eingeben" [(ngModel)]="searchTerm">
     </p-toolbar>
   </div>
   <div class="collection_content">
-    <mat-card *ngFor="let game of gameCollection">
+    <mat-card *ngFor="let game of filterGames()">
       <div [routerLink]="['/gamedetails/' + game.id]">
         <mat-card-header>
-          <img *ngIf="!game.image" mat-card-image src="../../../assets/images/Game2Gather_Game_Logo.png"
-               alt="placeholder image"/>
+          <img *ngIf="!game.image" mat-card-image src="../../../assets/images/Game2Gather_Game_Logo.png" alt="placeholder image"/>
         </mat-card-header>
         <mat-card-content>
           <mat-card-title>
@@ -32,4 +27,3 @@
     </mat-card>
   </div>
 </div>
-<p-confirmDialog [closable]="false"></p-confirmDialog>

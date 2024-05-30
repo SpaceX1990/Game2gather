@@ -29,6 +29,7 @@ export abstract class SessionAddOrEditDirective{
     this.router = injector.get(Router);
     this.formBuilder = injector.get(FormBuilder);
     this.gameList = this.gameService.getAllGames();
+    //build basic-session-form to create session
     this.sessionForm = this.formBuilder.group({
       id: [''],
       sessionTitle: ['', Validators.required],
@@ -41,6 +42,7 @@ export abstract class SessionAddOrEditDirective{
     })
   }
 
+  //basic formSubmit to customize in directive-extending classes
   onFormSubmit() {
   }
 

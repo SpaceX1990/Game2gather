@@ -21,6 +21,8 @@ const createSessionRoute: Route = {path:"createsession", component: SessionAddCo
 const updateSessionRoute: Route = {path:"sessionliste/editsession/:id", component: SessionEditComponent}
 const invalidRoute: Route = {path: "**", redirectTo: "/mainpage"}
 
+//urls that are reachable under "{host}/{url}", where url is the path of each route (i.e. "{host]/mainpage")
+//the routes bind to a specific a component that will be reachable and accessible on that url
 const routes: Routes = [mainpageRoute, spielesammlungRoute, sessionliste, createGameRoute,gameDetails, updateGameRoute, createSessionRoute, updateSessionRoute, sessionDetails ];
 
 @NgModule({

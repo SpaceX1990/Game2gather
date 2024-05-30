@@ -8,9 +8,15 @@ import lombok.Data;
 
 import java.util.List;
 
+//automatically creates getters and setters for each declared field
 @Data
+
+//automatically creates a Builder that can be used to build the object
 @Builder
+
 public class GameDTO {
+    //DataTransferObject for Games that is used to ensure type-safety
+    //and possibly prevent code injections
 
     private int id;
     private String title;
@@ -28,6 +34,7 @@ public class GameDTO {
         this.genre = genre;
     }
 
+    //create DTO from normal Game
     public static GameDTO fromModel(Game game) {
         return GameDTO.builder()
                 .id(game.getId())
@@ -39,6 +46,7 @@ public class GameDTO {
                 .build();
     }
 
+    //create normal Game from DTO
     public Game toModel() {
         return Game.builder()
                 .id(id)

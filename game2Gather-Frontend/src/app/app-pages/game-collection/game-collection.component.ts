@@ -21,12 +21,14 @@ export class GameCollectionComponent implements OnInit {
   }
 
   getGames() {
+    //get all games via gameApiService as Observable and set gameCollection to result
     this.gameApiService.getAllGames().subscribe(result => {
       this.gameCollection = result;
     });
   }
 
   deleteGame(game: GameModel | undefined) {
+    //open dialog to confirm or cancel game-deletion
     this.confirmationService.confirm({
       dismissableMask: true,
       message: `Soll das Spiel ${game?.title} wirklich gelöscht werden?`,
@@ -39,6 +41,7 @@ export class GameCollectionComponent implements OnInit {
       closeOnEscape: false,
       defaultFocus: "reject",
       accept: () => {
+        //on confirm, delete game via gameApiService
         this.gameApiService.deleteGame(game?.id).subscribe({
           next: () => {
             this.getGames();
@@ -49,6 +52,7 @@ export class GameCollectionComponent implements OnInit {
   }
 
   filterGames(): GameModel[] {
+    //filter gameCollection for games where either genre, any tag or the name fit entered searchTerm
     return this.gameCollection.filter(game =>
       game.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
       (game.genre.label.toLowerCase().includes(this.searchTerm.toLowerCase())) ||

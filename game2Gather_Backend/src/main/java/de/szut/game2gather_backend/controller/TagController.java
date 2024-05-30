@@ -9,13 +9,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+//marks this class as a controller that maps requests that are sent
+//to a specific url, to specific methods
 @RestController
+
+//declares the base url for the requests this controller will handle
 @RequestMapping(value = "/api/tag")
+
+//automatically creates a constructor for each field declared as final as parameter
+//so that they can be injected from the springboot / bean context
 @RequiredArgsConstructor
+
 public class TagController {
+    //controller to access and manage Tags in Database via incoming http-requests
 
     private final TagService tagService;
 
+    //get all existing tags by receiving a get-request on "{host}/api/tag"
+    //and using the tagService to get all genres in the database
     @GetMapping()
     public List<TagDTO> getAllTags() {
         return tagService.readAll();

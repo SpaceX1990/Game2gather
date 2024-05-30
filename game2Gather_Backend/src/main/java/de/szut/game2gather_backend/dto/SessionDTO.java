@@ -1,15 +1,21 @@
 package de.szut.game2gather_backend.dto;
 
-import de.szut.game2gather_backend.entity.*;
+import de.szut.game2gather_backend.entity.Session;
 import jakarta.annotation.Nullable;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
+//automatically creates getters and setters for each declared field
 @Data
+
+//automatically creates a Builder that can be used to build the object
 @Builder
+
 public class SessionDTO {
+    //DataTransferObject for Sessions that is used to ensure type-safety
+    //and possibly prevent code injections
 
     @Nullable
     private int id;
@@ -36,6 +42,7 @@ public class SessionDTO {
         this.foodVotes = foodVotes;
     }
 
+    //create DTO from normal Session
     public static SessionDTO fromModel(Session session) {
         return SessionDTO.builder()
                 .id(session.getId())
@@ -51,7 +58,7 @@ public class SessionDTO {
                 .build();
     }
 
-
+    //create normal Session from DTO
     public Session toModel() {
         return Session.builder()
                 .id(id)
@@ -61,7 +68,7 @@ public class SessionDTO {
                 .userId(userId)
                 .maxPlayer(maxPlayer)
                 .players(players != null ? players.stream().map(player -> player.toModel(id)).toList() : null)
-                .gameVotes(gameVotes != null ? gameVotes.stream().map(vote -> vote.toModel(id)).toList() : null )
+                .gameVotes(gameVotes != null ? gameVotes.stream().map(vote -> vote.toModel(id)).toList() : null)
                 .dateVotes(dateVotes != null ? dateVotes.stream().map(vote -> vote.toModel(id)).toList() : null)
                 .foodVotes(foodVotes != null ? foodVotes.stream().map(vote -> vote.toModel(id)).toList() : null)
                 .build();

@@ -10,10 +10,17 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
+//automatically creates getters and setters for each declared field
 @Data
+
+//automatically creates a Builder that can be used to build the object
 @Builder
+
 @AllArgsConstructor
 public class DateVoteDTO {
+    //DataTransferObject for DateVotes that is used to ensure type-safety
+    //and possibly prevent code injections
+
     @Nullable
     private int id;
     @Nullable
@@ -21,6 +28,7 @@ public class DateVoteDTO {
     private LocalDateTime voteoption;
     private List<UserVote> userVotes;
 
+    //create DTO from normal DateVote
     public static DateVoteDTO fromModel(DateVote dateVote) {
         return DateVoteDTO.builder()
                 .id(dateVote.getId())
@@ -29,6 +37,7 @@ public class DateVoteDTO {
                 .build();
     }
 
+    //create normal DateVote from DTO
     public DateVote toModel(int sessionId) {
         return DateVote.builder()
                 .id(id)
@@ -37,6 +46,8 @@ public class DateVoteDTO {
                 .voteoption(voteoption)
                 .build();
     }
+
+    //create normal DateVote from DTO
     public DateVote toModel() {
         return DateVote.builder()
                 .id(id)

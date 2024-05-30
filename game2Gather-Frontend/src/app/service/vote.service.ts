@@ -9,6 +9,8 @@ import {FoodVoteModel} from "../models/foodVote.model";
   providedIn: 'root'
 })
 export class VoteService {
+  //service to send http-requests to the backend and access stored or create new GameVote-, DateVote or FoodVote-data
+
 
   constructor(private http: HttpClient) {
   }

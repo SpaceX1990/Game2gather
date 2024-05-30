@@ -7,6 +7,7 @@ import {SessionModel} from "../models/session.model";
   providedIn: 'root'
 })
 export class SessionService {
+  //service to send http-requests to the backend and access stored or create new Session-data
 
   constructor(private http: HttpClient) {
   }

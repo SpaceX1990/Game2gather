@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class TagService {
+  //service to send http-requests to the backend and access stored or create new Tag-data
 
   constructor(private http: HttpClient) { }
 

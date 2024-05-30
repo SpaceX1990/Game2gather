@@ -1,15 +1,23 @@
 <div class="collection">
   <div class="collection_header">
-    <button mat-raised-button color="primary" routerLink="/creategame">Spiel hinzufügen</button>
+    <button mat-raised-button color="primary" routerLink="/creategame">
+      <!--button to create new game-->
+      Spiel hinzufügen
+    </button>
     <p-toolbar>
+      <!--search element in game-collection-overview-->
       <input type="text" pInputText placeholder="Suchbegriff eingeben" [(ngModel)]="searchTerm">
     </p-toolbar>
   </div>
   <div class="collection_content">
+    <!--collection that displays games in cards-->
     <mat-card *ngFor="let game of filterGames()">
+      <!--card to display game-->
       <div [routerLink]="['/gamedetails/' + game.id]">
+        <!--click on card routes to details-page of shown game-->
         <mat-card-header>
-          <img *ngIf="!game.image" mat-card-image src="../../../assets/images/Game2Gather_Game_Logo.png" alt="placeholder image"/>
+          <img *ngIf="!game.image" mat-card-image src="../../../assets/images/Game2Gather_Game_Logo.png"
+               alt="placeholder image"/>
         </mat-card-header>
         <mat-card-content>
           <mat-card-title>
@@ -21,6 +29,7 @@
         </mat-card-content>
       </div>
       <mat-card-actions>
+        <!--buttons to delete game or route to editpage-->
         <button mat-raised-button color="warn" (click)="deleteGame(game)">Spiel löschen</button>
         <button mat-raised-button color="primary" routerLink="/editgame/{{game.id}}">Spiel bearbeiten</button>
       </mat-card-actions>

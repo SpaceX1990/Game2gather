@@ -37,23 +37,24 @@ export abstract class GameCreateOrUpdateDirective {
       genre: null as GenreModel | null
     })
 
+    //get all tags that can be saved in the game via tagService
     this.tagService.getAll().subscribe(tags => {
       this.tagsOptions = tags;
     });
 
+    //get all genres that can be saved in the game via genreService
     this.genreService.getAll().subscribe(genres => {
       this.genresOptions = genres;
     });
   }
 
+  //route to game collection
   routeToOverview() {
     this.router.navigateByUrl('/spielesammlung');
   }
 
-  compareFn(c1: any, c2: any): boolean {
-    return c1 && c2 && (c1.id === c2.id || c2 === c1.id);
-  }
-
+  //create base function to use in html and override in directve-extending classes
+  //to customize action on formSubmit
   onFormSubmit() {
   }
 }

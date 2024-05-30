@@ -10,10 +10,17 @@ import lombok.Data;
 
 import java.util.List;
 
+//automatically creates getters and setters for each declared field
 @Data
+
+//automatically creates a Builder that can be used to build the object
 @Builder
+
 @AllArgsConstructor
 public class GameVoteDTO {
+    //DataTransferObject for GameVotes that is used to ensure type-safety
+    //and possibly prevent code injections
+
     @Nullable
     private int id;
     @Nullable
@@ -22,6 +29,7 @@ public class GameVoteDTO {
     private Game voteoption;
     private List<UserVote> userVotes;
 
+    //create DTO from normal GameVote
     public static GameVoteDTO fromModel(GameVote gameVote) {
         return GameVoteDTO.builder()
                 .id(gameVote.getId())
@@ -30,6 +38,7 @@ public class GameVoteDTO {
                 .build();
     }
 
+    //create normal GameVote from DTO
     public GameVote toModel(int sessionId) {
         return GameVote.builder()
                 .id(id)
@@ -38,6 +47,8 @@ public class GameVoteDTO {
                 .voteoption(voteoption)
                 .build();
     }
+
+    //create normal GameVote from DTO
     public GameVote toModel() {
         return GameVote.builder()
                 .id(id)

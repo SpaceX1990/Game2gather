@@ -27,6 +27,7 @@ import java.util.Date;
 public class User {
     //Entity that is saved in the database
 
+    //mark this field as id of entity  and generate automatically on first persist
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -40,6 +41,7 @@ public class User {
     @NonNull
     private String passwordHash;
 
+    //save date and time of creation on first persist of entity
     @NonNull
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;

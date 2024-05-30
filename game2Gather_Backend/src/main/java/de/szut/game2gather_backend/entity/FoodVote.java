@@ -26,12 +26,14 @@ import java.util.List;
 public class FoodVote {
     //Entity that is saved in the database
 
+    //mark this field as id of entity and generate automatically on first persist
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String voteoption;
 
+    //get all userVotes that belong to dateVotes via mappingTable "foodvote_votes"
     @OneToMany
     @JoinTable(
             name = "foodvote_votes",
@@ -40,6 +42,7 @@ public class FoodVote {
     )
     List<UserVote> userVotes;
 
+    //use this field to map each FoodVote to a specific session in the database
     @JoinColumn(name = "session_id")
     private int session_id;
 }

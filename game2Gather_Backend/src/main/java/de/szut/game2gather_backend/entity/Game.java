@@ -24,6 +24,7 @@ import java.util.List;
 public class Game {
     //Entity that is saved in the database
 
+    //mark this field as id of entity and generate automatically on first persist
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -37,6 +38,7 @@ public class Game {
     @Nullable
     private Integer maxPlayer;
 
+    //get all tags that belong to game via mappingTable "game_tags"
     @Nullable
     @ManyToMany
     @JoinTable(
@@ -46,6 +48,7 @@ public class Game {
     )
     private List<Tag> tags;
 
+    //get the genre that belongs to game via mappingTable "game_genre"
     @Nullable
     @ManyToOne()
     @JoinTable(
@@ -55,6 +58,7 @@ public class Game {
     )
     private Genre genre;
 
+    //persist the game image as a byteArray
     @Nullable
     private byte[] imageBytes;
 }

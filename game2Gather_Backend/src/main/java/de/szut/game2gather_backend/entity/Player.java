@@ -21,6 +21,7 @@ import lombok.*;
 public class Player {
     //Entity that is saved in the database
 
+    //mark this field as id of entity  and generate automatically on first persist
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,6 +29,7 @@ public class Player {
     @NonNull
     private String username;
 
+    //use this field to map each Player to a specific session in the database
     @JoinColumn(name = "session_id")
     private int session_id;
 }

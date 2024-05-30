@@ -28,10 +28,12 @@ import java.util.List;
 public class GameVote {
     //Entity that is saved in the database
 
+    //mark this field as id of entity and generate automatically on first persist
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    //get the Game that belongs to GameVote via mappingTable "gamevotes_game"
     @ManyToOne
     @JoinTable(
             name = "gamevotes_game",
@@ -39,6 +41,7 @@ public class GameVote {
             inverseJoinColumns = @JoinColumn(name = "game_id"))
     private Game voteoption;
 
+    //get all userVotes that belong to gameVote via mappingTable "gamevote_votes"
     @OneToMany
     @JoinTable(
             name = "gamevote_votes",
@@ -48,7 +51,7 @@ public class GameVote {
     @Nullable
     List<UserVote> userVotes;
 
-
+    //use this field to map each DateVote to a specific session in the database
     @JoinColumn(name = "session_id")
     private int session_id;
 

@@ -27,6 +27,7 @@ import java.time.LocalDateTime;
 public class Comment {
     //Entity that is saved in the database
 
+    //mark this field as id of entity and generate automatically on first persist
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -34,6 +35,7 @@ public class Comment {
     @NonNull
     private String author;
 
+    //save date and time of creation on first persist of entity
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dateCreate;

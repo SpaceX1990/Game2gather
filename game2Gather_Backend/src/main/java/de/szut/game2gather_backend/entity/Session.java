@@ -24,6 +24,7 @@ import java.util.List;
 public class Session {
     //Entity that is saved in the database
 
+    //mark this field as id of entity  and generate automatically on first persist
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -40,27 +41,33 @@ public class Session {
     @Nullable
     private int maxPlayer;
 
+    //this field is used to mark which user the session belongs to
     @NonNull
     @Column(name = "fk_user_Id")
     private int userId;
 
+    //this field uses the userId to get the user, that owns the session
     @Nullable
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false , name = "fk_user_Id")
     private User user;
 
+    //uses the session_id property on Player to get each that belongs to session
     @Nullable
     @OneToMany(mappedBy = "session_id")
     private List<Player> players;
 
+    //uses the session_id property on GameVote to get each that belongs to session
     @Nullable
     @OneToMany(mappedBy = "session_id")
     private List<GameVote> gameVotes;
 
+    //uses the session_id property on FoodVote to get each that belongs to session
     @Nullable
     @OneToMany(mappedBy = "session_id")
     private List<FoodVote> foodVotes;
 
+    //uses the session_id property on DateVote to get each that belongs to session
     @Nullable
     @OneToMany(mappedBy = "session_id")
     private List<DateVote> dateVotes;

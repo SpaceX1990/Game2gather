@@ -28,12 +28,14 @@ import java.util.List;
 public class DateVote {
     //Entity that is saved in the database
 
+    //mark this field as id of entity  and generate automatically on first persist
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private LocalDateTime voteoption;
 
+    //get all userVotes that belong to dateVote via mappingTable "datevote_votes"
     @OneToMany
     @JoinTable(
             name = "datevote_votes",
@@ -42,6 +44,7 @@ public class DateVote {
     )
     List<UserVote> userVotes;
 
+    //use this field to map each DateVote to a specific session in the database
     @JoinColumn(name = "session_id")
     private int session_id;
 }

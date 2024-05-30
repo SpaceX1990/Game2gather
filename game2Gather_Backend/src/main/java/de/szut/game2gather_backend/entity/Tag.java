@@ -24,6 +24,7 @@ import lombok.*;
 public class Tag {
     //Entity that is saved in the database
 
+    //mark this field as id of entity  and generate automatically on first persist
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

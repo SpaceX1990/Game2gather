@@ -3,6 +3,7 @@ package de.szut.game2gather_backend.dto;
 import de.szut.game2gather_backend.entity.DateVote;
 import de.szut.game2gather_backend.entity.UserVote;
 import jakarta.annotation.Nullable;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ import java.util.List;
 //automatically creates a Builder that can be used to build the object
 @Builder
 
+@AllArgsConstructor
 public class DateVoteDTO {
     //DataTransferObject for DateVotes that is used to ensure type-safety
     //and possibly prevent code injections

@@ -25,6 +25,15 @@ public class GameDTO {
     private List<Tag> tags;
     private Genre genre;
 
+    public GameDTO(int id, String title, int minPlayer, Integer maxPlayer, List<Tag> tags, Genre genre) {
+        this.id = id;
+        this.title = title;
+        this.minPlayer = minPlayer;
+        this.maxPlayer = maxPlayer;
+        this.tags = tags;
+        this.genre = genre;
+    }
+
     //create DTO from normal Game
     public static GameDTO fromModel(Game game) {
         return GameDTO.builder()

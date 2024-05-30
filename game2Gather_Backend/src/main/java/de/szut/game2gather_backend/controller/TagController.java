@@ -1,6 +1,5 @@
 package de.szut.game2gather_backend.controller;
 
-
 import de.szut.game2gather_backend.dto.TagDTO;
 import de.szut.game2gather_backend.service.TagService;
 import lombok.RequiredArgsConstructor;

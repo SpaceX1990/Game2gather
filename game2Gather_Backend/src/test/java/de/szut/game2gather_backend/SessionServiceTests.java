@@ -30,7 +30,7 @@ public class SessionServiceTests {
     Game voteOption = new Game(1, "title", 1, 2, tags, genre, bytes);
 
     PlayerDTO player = new PlayerDTO(1, "Thomas", 1);
-    PlayerDTO player1 = new PlayerDTO(2, "William", 3);
+    PlayerDTO player1 = new PlayerDTO(2, "William", 1);
     List<PlayerDTO> players = List.of(player, player1);
 
     Player player3 = new Player();
@@ -160,15 +160,32 @@ public class SessionServiceTests {
         SessionDTO expectedSessionDTO = new SessionDTO(1, "sessiontitle", true, generatedLink, 5, 2, players, gameVotes, dateVotes, foodVotes);
 
         // Verify all fields match
-        assertEquals(expectedSessionDTO, result);
+        assertEquals(expectedSessionDTO.getId(), result.getId());
+        assertEquals(expectedSessionDTO.getSessionTitle(), result.getSessionTitle());
+        assertEquals(expectedSessionDTO.getSessionVoteLink(), result.getSessionVoteLink());
+        assertEquals(expectedSessionDTO.getMaxPlayer(), result.getMaxPlayer());
+        assertEquals(expectedSessionDTO.getUserId(), result.getUserId());
+        //test if same playerObjects in player list have same values
+        assertIterableEquals(expectedSessionDTO.getPlayers().stream().map(PlayerDTO::getId).toList(), result.getPlayers().stream().map(PlayerDTO::getId).toList());
+        assertIterableEquals(expectedSessionDTO.getPlayers().stream().map(PlayerDTO::getUsername).toList(), result.getPlayers().stream().map(PlayerDTO::getUsername).toList());
+        assertIterableEquals(expectedSessionDTO.getPlayers().stream().map(PlayerDTO::getSession_id).toList(), result.getPlayers().stream().map(PlayerDTO::getSession_id).toList());
+        //test if same FoodVoteObjects in foodVote list have same values
+        assertIterableEquals(expectedSessionDTO.getFoodVotes().stream().map(FoodVoteDTO::getId).toList(), result.getFoodVotes().stream().map(FoodVoteDTO::getId).toList());
+        assertIterableEquals(expectedSessionDTO.getFoodVotes().stream().map(FoodVoteDTO::getVoteoption).toList(), result.getFoodVotes().stream().map(FoodVoteDTO::getVoteoption).toList());
+        //test if same GameVoteObjects in gameVote list have same values
+        assertIterableEquals(expectedSessionDTO.getGameVotes().stream().map(GameVoteDTO::getVoteoption).toList(), result.getGameVotes().stream().map(GameVoteDTO::getVoteoption).toList());
+        assertIterableEquals(expectedSessionDTO.getGameVotes().stream().map(GameVoteDTO::getId).toList(), result.getGameVotes().stream().map(GameVoteDTO::getId).toList());
+        //test if same DateVoteObjects in dateVote list have same values
+        assertIterableEquals(expectedSessionDTO.getDateVotes().stream().map(DateVoteDTO::getVoteoption).toList(), result.getDateVotes().stream().map(DateVoteDTO::getVoteoption).toList());
+        assertIterableEquals(expectedSessionDTO.getDateVotes().stream().map(DateVoteDTO::getId).toList(), result.getDateVotes().stream().map(DateVoteDTO::getId).toList());
 
         // Verify interactions with mocks
         verify(sessionRepository, times(1)).save(any(Session.class));
-        verify(foodVoteService, times(0)).saveVotesForSessionID(any(), anyInt());
-        verify(gameVoteService, times(0)).saveVotesForSessionID(any(), anyInt());
-        verify(dateVoteService, times(0)).saveVotesForSessionID(any(), anyInt());
+        //vertify voteSaves are called once aswell
+        verify(foodVoteService, times(1)).saveVotesForSessionID(any(), anyInt());
+        verify(gameVoteService, times(1)).saveVotesForSessionID(any(), anyInt());
+        verify(dateVoteService, times(1)).saveVotesForSessionID(any(), anyInt());
     }
-
 
 
     @Test
@@ -193,8 +210,26 @@ public class SessionServiceTests {
         System.out.println("Expected SessionDTO: " + updatedSessionDTO.toString());
         System.out.println("Actual SessionDTO: " + result.toString());
 
-        // Assert that the result matches the updatedSessionDTO
-        assertEquals(updatedSessionDTO, result);
+        // Verify all fields match
+        assertEquals(updatedSessionDTO.getId(), result.getId());
+        assertEquals(updatedSessionDTO.getSessionTitle(), result.getSessionTitle());
+        assertEquals(updatedSessionDTO.getSessionVoteLink(), result.getSessionVoteLink());
+        assertEquals(updatedSessionDTO.getMaxPlayer(), result.getMaxPlayer());
+        assertEquals(updatedSessionDTO.getUserId(), result.getUserId());
+        //test if same playerObjects in player list have same values
+        assertIterableEquals(updatedSessionDTO.getPlayers().stream().map(PlayerDTO::getId).toList(), result.getPlayers().stream().map(PlayerDTO::getId).toList());
+        assertIterableEquals(updatedSessionDTO.getPlayers().stream().map(PlayerDTO::getUsername).toList(), result.getPlayers().stream().map(PlayerDTO::getUsername).toList());
+        assertIterableEquals(updatedSessionDTO.getPlayers().stream().map(PlayerDTO::getSession_id).toList(), result.getPlayers().stream().map(PlayerDTO::getSession_id).toList());
+        //test if same FoodVoteObjects in foodVote list have same values
+        assertIterableEquals(updatedSessionDTO.getFoodVotes().stream().map(FoodVoteDTO::getId).toList(), result.getFoodVotes().stream().map(FoodVoteDTO::getId).toList());
+        assertIterableEquals(updatedSessionDTO.getFoodVotes().stream().map(FoodVoteDTO::getVoteoption).toList(), result.getFoodVotes().stream().map(FoodVoteDTO::getVoteoption).toList());
+        //test if same GameVoteObjects in gameVote list have same values
+        assertIterableEquals(updatedSessionDTO.getGameVotes().stream().map(GameVoteDTO::getVoteoption).toList(), result.getGameVotes().stream().map(GameVoteDTO::getVoteoption).toList());
+        assertIterableEquals(updatedSessionDTO.getGameVotes().stream().map(GameVoteDTO::getId).toList(), result.getGameVotes().stream().map(GameVoteDTO::getId).toList());
+        //test if same DateVoteObjects in dateVote list have same values
+        assertIterableEquals(updatedSessionDTO.getDateVotes().stream().map(DateVoteDTO::getVoteoption).toList(), result.getDateVotes().stream().map(DateVoteDTO::getVoteoption).toList());
+        assertIterableEquals(updatedSessionDTO.getDateVotes().stream().map(DateVoteDTO::getId).toList(), result.getDateVotes().stream().map(DateVoteDTO::getId).toList());
+
 
         // Verify interactions with mocks
         verify(sessionRepository, times(1)).findById(1);
